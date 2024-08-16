@@ -30,7 +30,7 @@ public class NoticeServiceImpl implements NoticeService {
     @Override
     public NoticeDTO read(Long noticeNo) {
         Optional<Notice> result = noticeRepository.findById(noticeNo);
-        Notice notice = result.orElse();
+        Notice notice = result.orElseThrow();
     }
 
     @Override
