@@ -29,8 +29,7 @@ public class Game {
     @OneToMany(mappedBy = "game", cascade = CascadeType.ALL)
     private List<GameAnswer> answers;
 
-    @OneToMany(mappedBy = "game", cascade = CascadeType.ALL)
-    private List<GameResult> results;
+
 }
 
 
