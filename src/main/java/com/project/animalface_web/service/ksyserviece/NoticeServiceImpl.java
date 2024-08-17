@@ -32,20 +32,21 @@ public class NoticeServiceImpl implements NoticeService {
     public NoticeDTO read(Long noticeNo) {
         Optional<Notice> result = noticeRepository.findById(noticeNo);
         Notice notice = result.orElseThrow();
+        NoticeDTO noticeDTO = entityToDto(notice);
+        return noticeDTO;
     }
 
     @Override
     public void update(NoticeDTO noticeDTO) {
-
+        Optional<Notice> result = noticeRepository.findById(noticeDTO.getNoticeNo());
+        Notice notice = result.orElseThrow();
+        notice.updateNameAndContent(noticeDTO.getNoticeName(), noticeDTO.getNoticeContents());
+        noticeRepository.save(notice);
     }
 
     @Override
     public void delete(Long noticeNo) {
-
+        noticeRepository.deleteById(noticeNo);
     }
 
-    @Override
-    public void deleteAll(Long noticeNo) {
-
-    }
 }
