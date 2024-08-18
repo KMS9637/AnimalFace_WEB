@@ -8,7 +8,6 @@ public interface NoticeService {
     NoticeDTO read(Long noticeNo);
     void update(NoticeDTO noticeDTO);
     void delete(Long noticeNo);
-    void deleteAll(Long noticeNo);
 
     default Notice dtoToEntity(NoticeDTO noticeDTO) {
         Notice notice = Notice.builder()

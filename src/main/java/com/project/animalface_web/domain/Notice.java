@@ -23,5 +23,10 @@ public class Notice {
 
     @Temporal(TemporalType.DATE)
     private Date date;
+
+    public void updateNameAndContent(String noticeName, String noticeContents) {
+        this.noticeName = noticeName;
+        this.noticeContents = noticeContents;
+    }
 }
 
