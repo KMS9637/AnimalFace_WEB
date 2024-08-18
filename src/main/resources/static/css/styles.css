@@ -38,3 +38,71 @@ body {
         font-size: 3.16667vw;
     }
 }
+.app-header.home {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4.75rem;
+    position: relative;
+    background-color: #fff;
+    flex-shrink: 0;
+    padding: 0 1.25rem;
+    border: none;
+}
+
+input[id="menuicon"]{
+    display: none;
+}
+input[id="menuicon"]+label{
+    display: block;
+    position: relative;
+    width: 40px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 2;
+}
+input[id="menuicon"]+label span{
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    border-radius: 30px;
+    background: black;
+    transition: all .35s;
+}
+
+input[id="menuicon"]+label span:nth-child(1){
+    top:0;
+}
+input[id="menuicon"]+label span:nth-child(2){
+    top:50%;
+    transform: translateY(-50%);
+}
+input[id="menuicon"]+label span:nth-child(3){
+    bottom:0;
+}
+input[id="menuicon"]:checked +label span:nth-child(1){
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+}
+input[id="menuicon"]:checked +label span:nth-child(2){
+    opacity: 0;
+}
+input[id="menuicon"]:checked +label span:nth-child(3){
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
+}
+
+div[class="sidebar"]{
+    width: 200px;
+    height: 100%;
+    background-color: #000000;
+    position: fixed;
+    top: 0;
+    left: -200px;
+    z-index: 1;
+    transition: all .35s;
+}
+input[id="menuicon"]:checked +label+div{
+    left: 0;
+}
