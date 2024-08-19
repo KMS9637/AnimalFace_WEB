@@ -25,7 +25,6 @@ public class NoticeServiceImpl implements NoticeService {
         Notice notice = dtoToEntity(noticeDTO);
         Long noticeNo = noticeRepository.save(notice).getNoticeNo();
         return noticeNo;
-
     }
 
     @Override
