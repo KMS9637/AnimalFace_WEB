@@ -22,7 +22,11 @@
                               <tbody>
                               <tr th:each="dto : ${noticesList}">
                                     <th scope="row" th:text="${dto.noticeNo}"></th>
-                                    <td th:text="${dto.noticeName}"></td>
+                                    <td>
+                                          <a th:href="@{/notice/read(noticeNo=${dto.noticeNo})}">
+                                                [[${dto.noticeName}]]
+                                          </a>
+                                    </td>
                                     <td th:text="${#dates.format(dto.date, 'yyyy-MM-dd')}"></td>
                               </tr>
                               </tbody>
