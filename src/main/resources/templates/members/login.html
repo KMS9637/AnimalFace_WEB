@@ -5,19 +5,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title>방구석연구소 - 로그인</title>
-<!--    <meta name="description" content="잠금설정">-->
-<!--    <link rel="image_src" href="@@imageSrc">-->
-<!--    <meta property="og:title" content="방구석연구소 - 잠금설정" />-->
-<!--    <meta property="og:type" content="article" />-->
-<!--    <meta property="og:url" content="@@ogUrl" />-->
-<!--    <meta property="og:image" content="@@imageSrc" />-->
-<!--    <meta property="og:description" content="잠금설정" />-->
-<!--    <meta property="og:site_name" content="방구석연구소" />-->
+    <meta name="description" content="잠금설정">
+    <link rel="image_src" href="@@imageSrc">
+    <meta property="og:title" content="방구석연구소 - 잠금설정" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="@@ogUrl" />
+    <meta property="og:image" content="@@imageSrc" />
+    <meta property="og:description" content="잠금설정" />
+    <meta property="og:site_name" content="방구석연구소" />
     <link rel="canonical" href="@@ogUrl" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
-<!--    <link rel="stylesheet" href="/static/css/common.css?ver=2024032903">-->
-<!--    <link rel="stylesheet" href="/static/css/mypage.css?ver=2024032903">-->
-<!--    <script src="/static/js/jquery-3.6.0.min.js"></script>-->
+    <link rel="stylesheet" href="/static/css/common.css">
+    <link rel="stylesheet" href="/static/css/mypage.css">
+    <script src="/static/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
         "use strict";
 
@@ -34,190 +34,6 @@
             $('#userid').focus();
         });
     </script>
-
-    <style>
-        /* CSS 코드 삽입 */
-        body {
-            font-family: 'Noto Sans', sans-serif;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 0;
-        }
-
-        .content {
-            width: 90%;
-            margin: 30px auto;
-            padding: 20px;
-            background-color: #ffffff;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-
-        .card {
-            background-color: #ffffff;
-            border: none;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 0;
-        }
-
-        .table th, .table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .table th {
-            background-color: #f4f4f4;
-            color: #333;
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        .table td {
-            color: #555;
-            font-size: 0.95rem;
-        }
-
-        .table tr:hover {
-            background-color: #f9f9f9;
-        }
-
-        .table tr:last-child td {
-            border-bottom: none;
-        }
-
-        @media (max-width: 768px) {
-            .content {
-                padding: 15px;
-            }
-
-            .table th, .table td {
-                padding: 10px;
-                font-size: 0.9rem;
-            }
-        }
-
-        @media screen and (max-width: 500px) {
-            .app {
-                width: 100%;
-            }
-        }
-
-        .app {
-            width: 500px;
-            -webkit-display: flex;
-            display: -ms-flex;
-            display: flex;
-            flex-direction: column;
-            background-color: #fff;
-            margin: 0 auto;
-            overflow: hidden;
-            line-height: 1.2rem;
-            transform: skew(0);
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'RixGulim', sans-serif;
-            font-size: 16px;
-            font-weight: 400;
-            line-height: 1.5em;
-            color: #212529;
-            text-align: left;
-            background-color: #ffffff;
-        }
-
-        @media (max-width: 500px) {
-            html, body {
-                font-size: 3.16667vw;
-            }
-        }
-
-        .app-header.home {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 4.75rem;
-            position: relative;
-            background-color: #fff;
-            flex-shrink: 0;
-            padding: 0 1.25rem;
-            border: none;
-        }
-
-        input[id="menuicon"] {
-            display: none;
-        }
-
-        input[id="menuicon"] + label {
-            display: block;
-            position: relative;
-            width: 40px;
-            height: 20px;
-            cursor: pointer;
-            z-index: 2;
-        }
-
-        input[id="menuicon"] + label span {
-            display: block;
-            position: absolute;
-            width: 100%;
-            height: 3px;
-            border-radius: 30px;
-            background: black;
-            transition: all .35s;
-        }
-
-        input[id="menuicon"] + label span:nth-child(1) {
-            top: 0;
-        }
-
-        input[id="menuicon"] + label span:nth-child(2) {
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        input[id="menuicon"] + label span:nth-child(3) {
-            bottom: 0;
-        }
-
-        input[id="menuicon"]:checked + label span:nth-child(1) {
-            top: 50%;
-            transform: translateY(-50%) rotate(45deg);
-        }
-
-        input[id="menuicon"]:checked + label span:nth-child(2) {
-            opacity: 0;
-        }
-
-        input[id="menuicon"]:checked + label span:nth-child(3) {
-            bottom: 50%;
-            transform: translateY(50%) rotate(-45deg);
-        }
-
-        div[class="sidebar"] {
-            width: 200px;
-            height: 100%;
-            background-color: burlywood;
-            position: fixed;
-            top: 0;
-            left: -200px;
-            z-index: 1;
-            transition: all .35s;
-        }
-
-        input[id="menuicon"]:checked + label + div {
-            left: 0;
-        }
-    </style>
 
 </head>
 

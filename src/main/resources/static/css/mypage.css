@@ -1,108 +1,2321 @@
-@media screen and (max-width: 500px) {
-    .app {
-        width: 100%;
-    }
-}
-.app {
-    width: 500px;
-    -webkit-display: flex;
-    display: -ms-flex;
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    margin: 0 auto;
-    overflow: hidden;
-    /* letter-spacing: -1px; */
-    /* font-size: 1.05rem; */
-    line-height: 1.2rem;
-    transform: skew(0);
-}
+/***********************************************************************************************/
 
+/* category.html & search.html & pw_find.html & signup_normal.html & myroom.nickname_edit.html & signup_login.html */
+
+/***********************************************************************************************/
+
+@charset "UTF-8";
+/* mypage - myroom.html */
+
+html,
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'RixGulim', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.5em;
-    color: #212529;
-    text-align: left;
-    background-color: #ffffff;
-    /*overflow:hidden;*/
-    /* transform: skew(-0.03deg); */
+    font-size: 20.4444444px;
 }
 
 @media (max-width: 500px) {
     html,
     body {
-        font-size: 3.16667vw;
+        font-size: 4.16667vw;
     }
 }
-.app-header.home {
-    display: flex;
-    justify-content: space-between;
+
+.app .app-header {
     align-items: center;
-    height: 4.75rem;
+    height: 2.48rem;
     position: relative;
     background-color: #fff;
     flex-shrink: 0;
-    padding: 0 1.25rem;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.app .app-header .app-title {
+    font-weight: 500;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 2.48rem;
+    font-family: 'RixGulimEB', sans-serif;
+}
+
+.app .app-header .app-header-btn.back {
+    height: 100%;
+    background: transparent url(https://cdn.banggooso.com/assets/images/icons/back-arrow-b.png) no-repeat center center /
+    auto 1rem;
+}
+
+.my-info-wrap + hr {
+    background: #f6f6f6;
+}
+
+.my-info-wrap + hr + .my-test-result {
+    background: #f6f6f6;
+}
+
+.my-test-result .btn.ask {
+    display: block;
+    margin: 0 auto;
+}
+
+.my-test-result-list .test-item-wrap {
+    position: relative;
+}
+
+/* myroom_myranking.html */
+
+.test-lists-wrap .rankingBox.mim_ranking .topRanking #list_content.list_content > li:nth-child(1) {
+    background-color: #ffd524;
+    margin-top: 0;
+}
+
+.test-lists-wrap .rankingBox.mim_ranking .topRanking #list_content.list_content > li:nth-child(2) {
+    background-color: #ffe784;
+}
+
+/* myroom_setting.html */
+
+.pop_induce.logout.email .popup .wrap .logout_ask {
+    height: 60%;
+}
+
+.pop_induce.logout.email .popup .wrap .logout_ask.agree {
+    height: 40%;
     border: none;
 }
 
-input[id="menuicon"]{
-    display: none;
+.pop_induce.logout.email .popup .wrap .logout_ask span {
+    line-height: 1.2;
+    font-size: 1.055rem;
 }
-input[id="menuicon"]+label{
-    display: block;
-    position: relative;
-    width: 40px;
-    height: 20px;
+
+.pop_induce.logout.email .popup .wrap .logout_ask.agree span {
+    color: #ffd113;
+    font-size: 1.4rem;
     cursor: pointer;
-    z-index: 2;
 }
-input[id="menuicon"]+label span{
+
+.toggle-box {
+    -webkit-display: flex;
+    display: -ms-flex;
+    display: flex;
+}
+
+.toggle-box input[type='radio'],
+.toggle-box input[type='checkbox'] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.toggle-box input[type='radio'] + .toggle-label,
+.toggle-box input[type='checkbox'] + .toggle-label {
+    -webkit-display: flex;
+    display: -ms-flex;
+    display: flex;
+    width: 3.1875rem;
+    height: 2.125rem;
+    align-items: center;
+    background-color: #999999;
+    border-radius: 1.0625rem;
+    position: relative;
+    transition: background-color 0.35s ease;
+}
+
+.toggle-box input[type='radio'] + .toggle-label:before,
+.toggle-box input[type='checkbox'] + .toggle-label:before {
+    content: '';
     display: block;
     position: absolute;
-    width: 100%;
-    height: 3px;
-    border-radius: 30px;
-    background: black;
-    transition: all .35s;
+    border-radius: 100%;
+    width: 1.59375rem;
+    height: 1.59375rem;
+    background-color: #ffffff;
+    right: 0.15625rem;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.35s ease;
 }
 
-input[id="menuicon"]+label span:nth-child(1){
-    top:0;
+.toggle-box input[type='radio']:checked + .toggle-label,
+.toggle-box input[type='checkbox']:checked + .toggle-label {
+    background-color: #ffd524;
 }
-input[id="menuicon"]+label span:nth-child(2){
-    top:50%;
+
+.toggle-box input[type='radio']:checked + .toggle-label:before,
+.toggle-box input[type='checkbox']:checked + .toggle-label:before {
+    left: 0.25rem;
+    right: auto;
+}
+
+/* signup_normal.html & myroom_keyword_edit.html */
+
+.button-group .subtitle {
+    color: #222222;
+    font-size: 0.65625rem;
+    margin-bottom: 1.25rem;
+    font-weight: 500;
+    font-family: 'RixGulimEB', sans-serif;
+}
+
+.button-group.display-flex .btn-random {
+    margin-left: auto;
+}
+
+.tag-box {
+    -webkit-display: flex;
+    display: -ms-flex;
+    display: flex;
+    align-items: center;
+}
+
+.tag-box input[type='radio'],
+.tag-box input[type='checkbox'] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.tag-box input[type='radio'] + .tag-label,
+.tag-box input[type='checkbox'] + .tag-label {
+    -webkit-display: flex;
+    display: -ms-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1.4375rem;
+    height: 2.2rem;
+    text-align: center;
+    color: #ffffff;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    font-family: 'RixGulimEB', sans-serif;
+    background-color: #cccccc;
+    border-radius: 1.28125rem;
+}
+
+.tag-box input[type='radio']:checked + .tag-label.green,
+.tag-box input[type='checkbox']:checked + .tag-label.green {
+    background-color: #35964c;
+}
+
+.tag-box input[type='radio']:checked + .tag-label.lightblue,
+.tag-box input[type='checkbox']:checked + .tag-label.lightblue {
+    background-color: #7dc7ea;
+}
+
+.tag-box input[type='radio']:checked + .tag-label.orange,
+.tag-box input[type='checkbox']:checked + .tag-label.orange {
+    background-color: #ffaf21;
+}
+
+/* signup_login.html */
+
+.sign-in-other {
+    display: inline-block;
+    margin-left: auto;
+}
+
+.sign-in-other li {
+    align-items: center;
+}
+
+.sign-in-other li a {
+    color: #222222;
+    font-weight: 500;
+    font-size: 0.6875rem;
+    padding-bottom: 0.007rem;
+    border-bottom: 1px solid #222;
+}
+
+.sign-in-other li + li:before {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 0.9375rem;
+    margin: 0 0.9375rem;
+    background: #222;
+}
+
+.sns-sign-up {
+    -webkit-display: flex;
+    display: -ms-flex;
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.sns-sign-up > li {
+    width: 25%;
+    text-align: center;
+}
+
+.sns-sign-up li .sns-button {
+    display: block;
+    text-indent: -9999px;
+    width: 2.2rem;
+    height: 2.2rem;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center center;
+    margin: 0 auto;
+}
+
+.sns-sign-up li .sns-button.kakao {
+    background-image: url('https://cdn.banggooso.com/assets/images/icons/sns-kakao.png');
+}
+
+.sns-sign-up li .sns-button.facebook {
+    background-image: url('https://cdn.banggooso.com/assets/images/icons/sns-facebook.png');
+}
+
+.sns-sign-up li .sns-button.naver {
+    background-image: url('https://cdn.banggooso.com/assets/images/icons/sns-naver.png');
+}
+
+.sns-sign-up li .sns-button.apple {
+    background-image: url('https://cdn.banggooso.com/assets/images/icons/sns-apple.png');
+}
+
+.sign-up-wrap {
+    position: relative;
+    /*margin-top:4.5rem;*/
+}
+
+.sign-up-wrap > a.btn.yellow {
+    padding: 0.4rem 1.6rem;
+    border-radius: 2rem;
+    margin-top: 1rem;
+}
+
+.sign-up-wrap .sns-text {
+    margin-bottom: 1rem;
+    font-weight: 500;
+    font-family: 'RixGulimEB', sans-serif;
+    font-size: 0.88rem;
+    padding-bottom: 0.2rem;
+}
+
+.sign-in-actions + hr {
+    height: 3px;
+    width: 100%;
+    margin: 1rem 0 1.5rem;
+}
+
+.sign-in-actions > .display-flex {
+    align-items: flex-end;
+}
+
+.sign-in-actions button.btn {
+    height: 2.7rem;
+    border-radius: 0.8rem;
+    margin: 1rem auto 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.login-input {
+    font-size: 0.9rem;
+    color: #999999;
+    height: 2.4375rem;
+    border: 0 none;
+    border-bottom: 0.06rem solid #d1d1d1;
+    border-top: 0.1875rem solid transparent;
+    padding: 0 0.40625rem;
+    border-radius: 0;
+    margin-bottom: 0.5rem;
+}
+
+.login-input::-webkit-input-placeholder,
+.login-input:-ms-input-placeholder,
+.login-input::placeholder {
+    font-size: 0.6875rem;
+    color: #999999;
+}
+
+.login-input:focus {
+    outline: none;
+    border-bottom-color: #ffd524;
+}
+
+.checkbox-circle input[type='checkbox'] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.checkbox-circle input[type='checkbox'] + .checkbox-label {
+    -webkit-display: flex;
+    display: -ms-flex;
+    display: flex;
+    align-items: center;
+    color: #222222;
+    font-size: 0.7rem;
+    font-weight: 500;
+    line-height: 1em;
+    cursor: pointer;
+    font-family: 'RixGulimEB', sans-serif;
+}
+
+.checkbox-circle input[type='checkbox'] + .checkbox-label:before {
+    content: '';
+    font-weight: 700;
+    -webkit-display: flex;
+    display: -ms-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 0.13rem solid #222;
+    margin-right: 0.5625rem;
+    border-radius: 100%;
+    padding-top: 0.1rem;
+    line-height: 1em;
+}
+
+.checkbox-circle input[type='checkbox']:checked + .checkbox-label:before {
+    background: url('https://cdn.banggooso.com/assets/images/icons/check-box.png') no-repeat center center / 0.7rem;
+}
+
+#naverIdLogin {
+    border: 0;
+}
+
+#naverIdLogin img {
+    width: 100%;
+    height: auto !important;
+}
+
+/* pw_find.html & signup_normal.html */
+
+.pw_find_next,
+.pw_find_next > div,
+.pw_find_next > div button {
+    width: 100%;
+}
+
+.pw_find_next > div .btn.yellow {
+    line-height: 2.8rem;
+    font-weight: 500;
+    font-family: 'RixGulimEB', sans-serif;
+}
+
+.app-main#step1 h2.common-title {
+    text-align: center;
+    margin: 1.875rem auto 1.71875rem;
+    font-weight: 500;
+    font-family: 'RixGulimEB', sans-serif;
+}
+
+.app-main#step4 .common-form-group {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+}
+
+/* signup_normal.html */
+
+.app-main .next_btn {
+    text-align: right;
+}
+
+.app-main .next_btn .btn.yellow {
+    width: 7.03125rem;
+    height: 3.75rem;
+    border-radius: 3rem;
+    margin: 1rem 1rem 0 0;
+    font-weight: 500;
+    font-family: 'RixGulimEB', sans-serif;
+}
+
+#keyword1 {
+    margin-bottom: 1.25rem;
+    border-bottom: 2px solid #f5f5f5;
+}
+
+#keyword2 {
+    margin-bottom: 1.40625rem;
+}
+
+#keyword2 + button.btn.yellow {
+    width: 19.21875rem;
+    height: 3.75rem;
+    border-radius: 1.875rem;
+}
+
+.app-main #keyword2 + .next_btn .btn.yellow {
+    width: 100%;
+    height: 2.8125rem;
+}
+
+.radio-block {
+    -webkit-display: flex;
+    display: -ms-flex;
+    display: flex;
+    align-items: center;
+}
+
+.radio-block input[type='radio'],
+.radio-block input[type='checkbox'] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.radio-block input[type='radio'] + .radio-label,
+.radio-block input[type='checkbox'] + .radio-label {
+    color: #666666;
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: 'RixGulimEB', sans-serif;
+    text-align: center;
+    display: block;
+    position: relative;
+}
+
+.radio-block input[type='radio'] + .radio-label:before,
+.radio-block input[type='checkbox'] + .radio-label:before {
+    content: '';
+    -webkit-display: flex;
+    display: -ms-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.8125rem;
+    height: 2.8125rem;
+    margin: 0 auto 0.5625rem;
+    border: 0.125rem solid #cccccc;
+    font-weight: 500;
+    font-family: 'RixGulimEB', sans-serif;
+    border-radius: 100%;
+}
+
+.radio-block input[type='radio'] + .radio-label:after,
+.radio-block input[type='checkbox'] + .radio-label:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0.3125rem;
+    width: 2.1875rem;
+    height: 2.1875rem;
+    border-radius: 100%;
+    border: 0.125rem solid #f2f2f2;
+    background-color: #ffffff;
+    transform: translate(-50%, 0);
+}
+
+.radio-block input[type='radio']:checked + .radio-label:after,
+.radio-block input[type='checkbox']:checked + .radio-label:after {
+    background-color: #ffd524;
+    border: 0.125rem solid #ffd524;
+}
+
+.radio.block {
+    -webkit-display: flex;
+    display: -ms-flex;
+    display: flex;
+}
+
+.radio input[type='checkbox'] + .radio-label {
+    -webkit-display: flex;
+    display: -ms-flex;
+    display: flex;
+    align-items: center;
+    color: #181818;
+    font-size: 0.9375rem;
+    font-weight: 400;
+}
+
+.radio input[type='checkbox'] + .radio-label:before {
+    content: '';
+    display: block;
+    margin-right: 0.66667rem;
+    width: 1.125rem;
+    height: 1.125rem;
+    border-radius: 100%;
+    background-color: transparent;
+    background-image: url('https://cdn.banggooso.com/assets/images/common/radio-unchecked.png');
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    background-size: 100%;
+}
+
+.radio input[type='checkbox']:checked + .radio-label:before {
+    background-image: url('https://cdn.banggooso.com/assets/images/common/radio-checked.png');
+    box-shadow: 0px 0px 0.48rem 0.02rem rgba(205, 51, 90, 0.21);
+}
+
+.radio.type2 input[type='radio']:checked + .radio-label:before {
+    background-image: url('https://cdn.banggooso.com/assets/images/common/radio-checked-2.png');
+}
+
+/* myroom_lock_setting_pw.html */
+
+.lock-wrap {
+    height: 100%;
+    position: relative;
+    -webkit-display: flex;
+    display: -ms-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.lock-wrap .lock-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.lock-wrap .lock-help {
+    color: #222222;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1em;
+}
+
+.lock-wrap .lock-icon-wrap {
+    -webkit-display: flex;
+    display: -ms-flex;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2.25rem;
+}
+
+.lock-wrap .lock-icon-wrap .lock-icon + .lock-icon {
+    margin-left: 1.21875rem;
+}
+
+.lock-wrap .lock-icon-wrap.lock-1 .lock-icon:nth-child(1) {
+    background-image: url('https://cdn.banggooso.com/assets/images/icons/lock-icon-active.png');
+}
+
+.lock-wrap .lock-icon-wrap.lock-2 .lock-icon:nth-child(1),
+.lock-wrap .lock-icon-wrap.lock-2 .lock-icon:nth-child(2) {
+    background-image: url('https://cdn.banggooso.com/assets/images/icons/lock-icon-active.png');
+}
+
+.lock-wrap .lock-icon-wrap.lock-3 .lock-icon:nth-child(1),
+.lock-wrap .lock-icon-wrap.lock-3 .lock-icon:nth-child(2),
+.lock-wrap .lock-icon-wrap.lock-3 .lock-icon:nth-child(3) {
+    background-image: url('https://cdn.banggooso.com/assets/images/icons/lock-icon-active.png');
+}
+
+.lock-wrap .lock-icon-wrap.lock-4 .lock-icon:nth-child(1),
+.lock-wrap .lock-icon-wrap.lock-4 .lock-icon:nth-child(2),
+.lock-wrap .lock-icon-wrap.lock-4 .lock-icon:nth-child(3),
+.lock-wrap .lock-icon-wrap.lock-4 .lock-icon:nth-child(4) {
+    background-image: url('https://cdn.banggooso.com/assets/images/icons/lock-icon-active.png');
+}
+
+/* myroom_connection.html */
+
+.icon-notice {
+    width: 1.15625rem;
+    height: 1.1875rem;
+    background-image: url('https://cdn.banggooso.com/assets/images/icons/icon-notice.png');
+}
+
+.icon-ask {
+    width: 1.15625rem;
+    height: 1.1875rem;
+    background-image: url('https://cdn.banggooso.com/assets/images/icons/icon-ask.png');
+}
+
+.icon-chevron-right {
+    width: 0.53125rem;
+    height: 0.90625rem;
+    background-image: url('https://cdn.banggooso.com/assets/images/icons/icon-chevron-right.png');
+}
+
+.icon-member-out,
+.icon-sign-out {
+    display: block;
+    width: 1.25rem;
+    background-size: 100% 100%;
+    background-color: transparent;
+}
+
+.icon-member-out {
+    height: 1.21375rem;
+    background-image: url('https://cdn.banggooso.com/assets/images/icons/icon-member-out.png');
+}
+
+.icon-sign-out {
+    height: 1.09375rem;
+    background-image: url('https://cdn.banggooso.com/assets/images/icons/icon-sign-out.png');
+}
+
+.popup.member a.exit {
+    font-size: 1.2rem;
+    border-radius: 3rem;
+    width: 70%;
+    background: #ffffff;
+    line-height: 2.7rem;
+    border: 0.15rem solid black;
+    box-shadow: 3px 3px 0 black;
+    font-family: 'jalnan';
+}
+
+.pop_induce.member .popup {
+    position: fixed;
+    background: url('https://cdn.banggooso.com/assets/images/common/pop_member.png') no-repeat;
+    background-size: 100%;
+    left: 50%;
+    top: 50%;
+    width: 80%;
+    height: 27rem;
+    transform: translate(-50%, -50%);
+    padding-bottom: 0;
+}
+
+.pop_induce.member .popup .btn_induce a {
+    width: 65.5%;
+}
+
+.pop_induce.member .popup .wrap .btn_goRank {
+    font-size: 1rem;
+}
+
+.pop_induce.member .popup .btn_exit {
+    right: 5.58%;
+    top: 3%;
+    width: 2rem;
+    height: 2rem;
+}
+
+.pop_induce.member .popup .wrap {
+    top: 23rem;
+}
+
+/* myroom_connection.html &d myroom_setting.html */
+
+.pop_induce.logout .popup {
+    position: absolute;
+    padding-bottom: 0px;
+    height: 7rem;
+    background: #ffffff;
+    border-radius: 30px;
+    left: 50%;
+    top: 50%;
+    width: 19rem;
+    transform: translate(-50%, -50%);
+}
+
+.pop_induce.logout .popup .wrap {
+    display: inline-block;
+    color: #3c3c3c;
+    font-weight: 500;
+    font-size: 0.88rem;
+    padding-bottom: 0.06rem;
+    border: none;
+    top: 0%;
+    height: 100%;
+}
+
+.pop_induce.logout .popup .wrap .logout_ask {
+    width: 100%;
+    height: 55%;
+    border-bottom: 1px solid #d1d1d1;
+    position: relative;
+}
+
+.pop_induce.logout .popup .wrap .logout_ask span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pop_induce.logout .popup .wrap a.btn_logout {
+    width: 50%;
+    display: inline-block;
+    float: left;
+    height: 45%;
+    position: relative;
+    border-left: 1px solid #d1d1d1;
+    padding-top: 0.9rem;
+}
+
+.pop_induce.logout .popup .wrap .btn_logout.no {
+    border: none;
+}
+
+/*  */
+
+.pop_title {
+    width: 80%;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 2.48rem;
+    margin: 0 auto;
+    padding: 4.7% 0;
+    color: #ffffff;
+    font-size: 1.1rem;
+    position: absolute;
+    bottom: 6.5%;
+    left: 10%;
+    z-index: 1000;
+    display: none;
+}
+
+/* myroom_connection.html & myroom_profile_edit.html & myroom_setting.html */
+
+.feed-list li .thumb img {
+    display: block;
+}
+
+.setting-row {
+    -webkit-display: flex;
+    display: -ms-flex;
+    display: flex;
+    height: 3.78125rem;
+    border-bottom: 0.125rem solid #f5f5f5;
+    align-items: center;
+    padding: 0 1.8125rem;
+    position: relative;
+    cursor: pointer;
+}
+
+.setting-row .setting-title {
+    color: #222222;
+    font-weight: 500;
+    font-family: 'RixGulim', sans-serif;
+    font-size: 0.875rem;
+    margin-left: 0.78125rem;
+}
+
+.setting-row .icon-user {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.setting-row .setting-current {
+    color: #999999;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    margin-right: 1rem;
+    font-family: 'RixGulim', sans-serif;
+}
+
+.setting-row.member {
+    border: none;
+    height: 4.28125rem;
+    position: absolute;
+    bottom: 5rem;
+    left: 0;
+}
+
+.setting-row.member .setting-title {
+    color: #cdcdcd;
+}
+
+/* signup_login.html */
+
+.app .app-main .form_w {
+    width: 75%;
+    margin: 0 auto;
+}
+
+/* 濡쒓렇�� �ㅼ젙 �섏씠吏� - signup_normal.html */
+
+.app.signup .app-main {
+    padding: 0 2.5rem;
+}
+
+.app.signup .login-input {
+    font-size: 0.7rem;
+}
+
+.app.signup .app-header {
+    border-bottom: 0;
+}
+
+.app.signup .app-main .form_w {
+    width: 100%;
+}
+
+.app.signup button,
+.app.signup input {
+    font-family: 'RixGulim', sans-serif;
+}
+
+.app.signup .app-main > h2 {
+    margin: 1rem 0 0.3rem;
+    font-size: 1.35rem;
+    font-weight: 500;
+    font-family: 'RixGulimEB', sans-serif;
+}
+
+.app.signup a.btn.email-log {
+    width: 85%;
+    display: block;
+    height: 2.7rem;
+    line-height: 2.7rem;
+    border: 1px solid #bebebe;
+    margin: 1.2rem auto 0.5rem;
+    border-radius: 0.85rem;
+    box-shadow: 1px 4px 10px #e2e2e2;
+    font-size: 0.85rem;
+}
+
+.form-group {
+    border-bottom: 1px solid #f6f6f6;
+    height: 3.4375rem;
+    -webkit-display: flex;
+    display: -ms-flex;
+    display: flex;
+    align-self: stretch;
+}
+
+.form-group + .form-group {
+    border-top: 1px solid #f5f5f5;
+}
+
+.form-group .form-label {
+    -webkit-display: flex;
+    display: -ms-flex;
+    display: flex;
+    align-items: center;
+    width: 8.59375rem;
+    flex-shrink: 0;
+    padding-left: 1.8125rem;
+    color: #222222;
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: 'RixGulim', sans-serif;
+}
+
+.form-group .controls {
+    flex-grow: 1;
+    min-width: 0;
+    position: relative;
+}
+
+.form-group .controls .form-input {
+    height: 100%;
+    border: 0 none;
+    display: block;
+    width: 100%;
+    font-weight: 500;
+    font-size: 0.88rem;
+}
+
+.form-group .controls .form-input::-webkit-input-placeholder,
+.form-group .controls .form-input:-ms-input-placeholder,
+.form-group .controls .form-input::placeholder {
+    font-size: 0.625rem;
+    font-weight: 500;
+    color: #999999;
+}
+
+.form-group .controls .form-input:focus,
+.form-group .controls .form-input {
+    outline: none;
+}
+
+/* category.html & search.html & pw_find.html & signup_normal.html & myroom.nickname_edit.html */
+
+.sub-title {
+    width: 100%;
+    text-align: center;
+    color: #999999;
+    font-size: 1.06rem;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+}
+
+.common-form-group + .sub-title {
+    margin: 1.25rem auto 2.5rem;
+}
+
+/*  */
+
+.my-test-result .btn.ask {
+    background-image: url('https://cdn.banggooso.com/assets/images/icons/icon-btn-ask.png');
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    background-size: 100% 100%;
+    width: 8.4375rem;
+    height: 2.8125rem;
+    border-color: #e6e6e6;
+    border-radius: 1.40625rem;
+}
+
+.app-main > a.setting-row:nth-of-type(3) {
+    display: none;
+}
+
+.my-test-result .test-count {
+    color: #ec5c56;
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+    vertical-align: top;
+}
+
+/* member - signup.html */
+
+.center-block {
+    height: 100%;
+    -webkit-display: flex;
+    display: -ms-flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.center-block > a {
+    border-color: #e6e6e6;
+    color: #222222;
+    -webkit-display: flex;
+    display: -ms-flex;
+    display: flex;
+    margin: 0 auto;
+    width: 18.90625rem;
+    height: 3.75rem;
+    border-radius: 2rem;
+    margin-bottom: 0.7rem;
+}
+
+.center-block span {
+    margin: 1rem auto 0;
+    color: #a8a8a8;
+    font-size: 0.7rem;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.center-block span a {
+    color: #a8a8a8;
+    border-bottom: 1px solid #e4e4e4;
+}
+
+#login-law {
+    margin: 1rem auto 0;
+    color: #a8a8a8;
+    font-size: 0.65rem;
+    text-align: center;
+    line-height: 1.5;
+    letter-spacing: -1px;
+}
+
+#login-law a {
+    color: #a8a8a8;
+    border-bottom: 1px solid #e4e4e4;
+}
+
+.common-title {
+    color: #222222;
+    font-size: 1.1875rem;
+    font-weight: 500;
+    font-family: 'RixGulimEB', sans-serif;
+    line-height: 1.36053em;
+}
+
+/*sign-up setp2*/
+
+.app-main#step2 > .app-header > h1 {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.app-main#step2 h2.common-title {
+    text-align: center;
+    margin: 1.875rem auto 1.71875rem;
+}
+
+.common-form-group .form-label-wrap {
+    align-items: center;
+    margin-bottom: 0.4375rem;
+    margin-top: 1.875rem;
+}
+
+.common-form-group .form-label-wrap .form-label {
+    color: #222222;
+    font-size: 0.65625rem;
+    font-weight: 500;
+    line-height: 1em;
+}
+
+.common-form-group .form-label-wrap .input-length {
+    margin-left: auto;
+    color: #b3b3b3;
+    font-size: 0.65625rem;
+    font-weight: 500;
+    line-height: 1em;
+}
+
+.common-form-group .form-label-wrap .input-length strong {
+    color: #222222;
+    font-weight: 500;
+}
+
+.common-form-group .form-label-wrap .input-length {
+    float: right;
+}
+
+/* member - singup_normal.html */
+
+.app-main#step1 hr {
+    height: 1.71875rem;
+    background: #f2f2f2;
+}
+
+.app-main#step4 h2.common-title,
+.app-main#step3 h2.common-title {
+    margin: 1.875rem auto;
+    text-align: center;
+}
+
+.app-main#step3 h2.common-title + .display-flex {
+    justify-content: center;
+}
+
+.app-main#step3 h2.common-title + .display-flex label:nth-child(2) {
+    margin: 0 3.28125rem;
+}
+
+.app-main#step5 > div {
+    padding: 1.5625rem;
+}
+
+.app-main#step5 h2.common-title + .button-group {
+    margin-top: 1rem;
+}
+
+.app-main#step5 .btn-random {
+    margin-left: auto;
+}
+
+.myProfile {
+    margin-top: 1.875rem;
+}
+
+.myProfile h2 {
+    font-size: 1.2rem;
+}
+
+.myProfile .my-icon {
+    width: 17.6%;
+    border-radius: 50%;
+    margin: 0 auto 0.5rem;
+}
+
+.myProfile .my-icon img {
+    border-radius: 3rem;
+}
+
+.myProfile .my-icon + h2 {
+    margin-bottom: 1.5625rem;
+}
+
+.btn_wrap {
+    margin-top: 2.8125rem;
+}
+
+.btn_wrap .btn {
+    width: 37%;
+    height: 2.2rem;
+    border-radius: 1.32813rem;
+}
+
+.btn_wrap > a.btn.yellow {
+    width: 8.4375rem;
+    height: 2.65625rem;
+}
+
+.btn_wrap > a.btn.yellow:nth-child(2) {
+    margin-left: 1.25rem;
+}
+
+.btn .button-icon {
+    position: absolute;
+    left: 0.8125rem;
+    top: 50%;
     transform: translateY(-50%);
 }
-input[id="menuicon"]+label span:nth-child(3){
-    bottom:0;
-}
-input[id="menuicon"]:checked +label span:nth-child(1){
-    top: 50%;
-    transform: translateY(-50%) rotate(45deg);
-}
-input[id="menuicon"]:checked +label span:nth-child(2){
-    opacity: 0;
-}
-input[id="menuicon"]:checked +label span:nth-child(3){
-    bottom: 50%;
-    transform: translateY(50%) rotate(-45deg);
+
+/*************************************************************************************/
+
+/* about my total */
+
+label.profile-image-edit {
+    margin-top: 1.875rem;
 }
 
-div[class="sidebar"]{
-    width: 200px;
-    height: 100%;
-    background-color: burlywood;
-    position: fixed;
-    top: 0;
-    left: -200px;
-    z-index: 1;
-    transition: all .35s;
+.profile-image-edit {
+    position: relative;
 }
-input[id="menuicon"]:checked +label+div{
-    left: 0;
+
+.setting-row h4.setting-title + .icon-chevron-right {
+    position: absolute;
+    top: 50%;
+    right: 1.8125rem;
+    transform: translateY(-50%);
+}
+
+.profile-image-edit,
+.profile-image-edit img {
+    display: block;
+    width: 6.25rem;
+    height: 6.25rem;
+    margin: 0 auto;
+}
+
+.profile-image-edit .icon-select-picture {
+    position: absolute;
+    bottom: 0;
+    right: 0.15625rem;
+    display: inline-block;
+    margin: 0;
+    font-weight: normal;
+    text-align: center;
+    white-space: nowrap;
+    user-select: none;
+    text-decoration: none;
+    outline: 0;
+    vertical-align: middle;
+    padding: 0;
+    border: 0 none;
+    width: 1.28125rem;
+    height: 1.28125rem;
+    z-index: 2;
+    border-radius: 100%;
+    background-color: transparent;
+    background-image: url('https://cdn.banggooso.com/assets/images/icons/icon-camera.png');
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    background-size: 0.78125rem 0.6875rem;
+    background-color: #666666;
+}
+
+.profile-image-edit input[type='file'] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.profile-edit-row {
+    min-height: 5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 1rem 1.8125rem;
+    border-bottom: 0.125rem solid #f5f5f5;
+}
+
+.profile-edit-row .edit-label {
+    color: #222222;
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: 'RixGulimEB', sans-serif;
+    -webkit-display: flex;
+    display: -ms-flex;
+    display: flex;
+    align-items: center;
+    line-height: 1em;
+    margin-bottom: 0.625rem;
+}
+
+.profile-edit-row .edit-label .icon-user {
+    margin-right: 1rem;
+}
+
+.profile-edit-row .edit-anchor {
+    display: block;
+    color: #666666;
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: 'RixGulimEB', sans-serif;
+    position: relative;
+    width: 100%;
+    padding-right: 1.5625rem;
+}
+
+.profile-edit-row .edit-anchor .tag {
+    margin-right: 0.4375rem;
+    margin-top: 0.5rem;
+}
+
+.profile-edit-row .edit-anchor:after {
+    content: '';
+    background-color: transparent;
+    background-image: url('https://cdn.banggooso.com/assets/images/icons/icon-chevron-right.png');
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    width: 0.53125rem;
+    height: 0.90625rem;
+    background-size: 100% 100%;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* my - myroom_keyword_edit.html */
+
+main.app-main.keyword > div + hr {
+    height: 0.46875rem;
+    margin: 1.25rem 0;
+}
+
+main.app-main.keyword {
+    padding: 1.5625rem 1.5625rem 6.3rem;
+}
+
+#keyword_random div.tag,
+#keyword_mbti div.tag {
+    height: 2.5rem;
+    border-radius: 1.25rem;
+    padding: 0 1.4rem;
+    font-size: 0.8125rem;
+}
+
+/* my - myroom.html */
+
+.tag.orange {
+    background: #ffaf21;
+}
+
+.tag.lightblue {
+    background: #7dc7ea;
+}
+
+.tag.green {
+    background: #35964c;
+}
+
+.my-test-result ul.my-test-result + hr,
+.my-info-wrap.display-flex + hr {
+    height: 0.625rem;
+}
+
+.my-info-wrap .my-info-desc > div,
+.my-info-wrap .my-info-desc,
+.my-info-wrap .my-info-desc > div,
+.my-test-result-list,
+.my-info-wrap .my-info-desc > div .test-count {
+    -webkit-display: flex;
+    display: -ms-flex;
+    display: flex;
+    align-items: stretch;
+}
+
+.my-info-wrap .my-info-desc #keyword {
+    flex-wrap: wrap;
+}
+
+.my-info-wrap .my-info-desc #keyword .tag {
+    margin-right: 0.40625rem;
+    margin-bottom: 0.40625rem;
+}
+
+.my-info-wrap .my-info-desc > #keyword + div {
+    border-left: 3px solid #f5f5f5;
+    width: 6.375rem;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    flex-direction: column;
+}
+
+.my-info-wrap .my-info-desc > div .test-title {
+    color: #666666;
+    font-size: 0.53125rem;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1em;
+    margin-bottom: 0.3125rem;
+}
+
+.my-info-wrap .my-info-desc > div .test-count {
+    color: #f95e4e;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    font-family: 'RixGulimEB', sans-serif;
+}
+
+.my-info-wrap .my-info-desc > div .test-count:before {
+    content: '';
+    display: block;
+    width: 1.40625rem;
+    height: 1.625rem;
+    background-color: transparent;
+    background-image: url('https://cdn.banggooso.com/assets/images/icons/icon-test.png');
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    background-size: 100% 100%;
+    margin-right: 0.5rem;
+}
+
+.my-test-result,
+.search-no-result {
+    padding: 1.1875rem;
+}
+
+.my-test-result .title {
+    color: #808080;
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: 'RixGulimEB', sans-serif;
+    margin-bottom: 1.25rem;
+}
+
+.my-test-result .no-login {
+    padding: 1rem 0 2rem;
+    -webkit-display: flex;
+    display: -ms-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #cccccc;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    font-family: 'RixGulimEB', sans-serif;
+    text-align: center;
+    line-height: 1.38462em;
+}
+
+.my-test-result .no-login:after {
+    content: '';
+    width: 5.76rem;
+    height: 6.56rem;
+    margin-top: 1.09375rem;
+    background-color: transparent;
+    background-image: url('https://cdn.banggooso.com/assets/images/common/figure-character.png');
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    background-size: 100% 100%;
+    display: block;
+}
+
+.my-info-wrap {
+    align-items: flex-start;
+    padding: 3rem 0 2.7rem 2rem;
+}
+
+.my-info-wrap .my-icon {
+    width: 4.3rem;
+    height: 4.3rem;
+    flex-shrink: 0;
+    border-radius: 100%;
+    display: block;
+    overflow: hidden;
+}
+
+.my-info-wrap .my-icon img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.my-info-wrap .my-icon {
+    width: 4.3rem;
+    height: 4.3rem;
+    flex-shrink: 0;
+    border-radius: 100%;
+    display: block;
+    overflow: hidden;
+}
+
+.my-info-wrap .my-icon img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.my-info-wrap .my-info {
+    margin-left: 0.87rem;
+    flex-grow: 1;
+}
+
+.my-info-wrap .my-info .my-name {
+    color: #000000;
+    font-size: 0.96875rem;
+    font-weight: 500;
+    font-family: 'RixGulimEB', sans-serif;
+    line-height: 1em;
+    margin-bottom: 1.25rem;
+}
+
+.my-info-wrap .my-info .btn-my-info-edit {
+    display: inline-block;
+    margin: 0;
+    font-weight: normal;
+    text-align: center;
+    white-space: nowrap;
+    user-select: none;
+    text-decoration: none;
+    outline: 0;
+    vertical-align: middle;
+    padding: 0;
+    border: 0 none;
+    width: 0.78125rem;
+    height: 0.78125rem;
+    text-indent: -9999px;
+    background-color: transparent;
+    background-image: url('https://cdn.banggooso.com/assets/images/icons/icon-edit.png');
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    background-size: 100% 100%;
+    margin-left: 0.625rem;
+}
+
+.my-test-result-list {
+    padding: 0;
+    margin: 0 -1.125rem;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.my-test-result-list .test-item-wrap {
+    width: 44.2%;
+    margin: 0 2.9%;
+    margin-bottom: 1.5rem;
+    border: 4px solid #f2f2f2;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.my-test-result-list .test-item-wrap .datetime {
+    background: #f2f2f2;
+    padding: 1% 4%;
+    border-radius: 15px;
+    color: #6f6f6f;
+    font-weight: 500;
+    font-family: 'RixGulimEB', sans-serif;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 0.55rem;
+}
+
+.my-test-result-list .test-item-wrap .test-item .thumb {
+    width: 100%;
+    height: 10.3125rem;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center center;
+}
+
+.my-test-result-list .test-item-wrap .test-item .thumb img {
+    width: 100%;
+    height: 100%;
+}
+
+.my-test-result-list .test-item-wrap .test-item .text-wrap {
+    padding: 3.5% 3.5% 5% 3.5%;
+    border-top: 4px solid #f2f2f2;
+}
+
+.my-test-result-list .test-item-wrap .test-item .title {
+    color: #222222;
+    font-size: 0.88813rem;
+    font-weight: 700;
+    font-family: 'Jalnan', sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    line-height: 1.5rem;
+    margin-bottom: 0.1rem;
+}
+
+.my-test-result-list .test-item-wrap .test-item h3 {
+    color: #494949;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    line-height: 1.1;
+}
+
+.my-test-result-list .test-item-wrap .test-item .test-action {
+    align-items: center;
+    line-height: 1rem;
+}
+
+.my-test-result-list .test-item-wrap .test-item .test-action .btn-more {
+    display: none;
+    margin: 0;
+    font-weight: normal;
+    text-align: center;
+    white-space: nowrap;
+    user-select: none;
+    text-decoration: none;
+    outline: 0;
+    vertical-align: middle;
+    width: 0.84375rem;
+    height: 0.84375rem;
+    background-color: transparent;
+    background-image: url('https://cdn.banggooso.com/assets/images/icons/icon-more.png');
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    background-size: 100% auto;
+    border: 0 none;
+    padding: 0;
+    text-indent: -9999px;
+    margin-left: auto;
+}
+
+/* my - myroom_notice.html */
+
+.notice-list .notice-content p span {
+    transform: skew(0);
+}
+
+/* 留덉씠�섏씠吏� �좉툑�ㅼ젙 媛�由ш린*/
+
+.app-main > a:nth-of-type(3) {
+    display: none;
+}
+
+.my-info > h4.my-name .btn-my-info-edit {
+    vertical-align: top;
+}
+
+/* myroom_notice.html */
+
+.notice-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    height: 80%;
+}
+
+.notice-list li {
+    border-bottom: 2px solid #f5f5f5;
+}
+
+.notice-list li .notice-header {
+    position: relative;
+    padding: 1rem 2.5rem;
+}
+
+.notice-list li .notice-header:after {
+    position: absolute;
+    content: '';
+    background: url('https://cdn.banggooso.com/assets/images/icons/top-arrow-b.png') no-repeat right center / 1rem;
+    right: 1.4375rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(180deg);
+    width: 1rem;
+    height: 0.8rem;
+}
+
+.notice-list li.opened .notice-header:after {
+    transform: translateY(-50%) rotate(0deg);
+}
+
+.notice-list li .notice-header .notice-title {
+    font-family: 'RixGulim', sans-serif;
+    color: #4a4a4a;
+    font-size: 0.875rem;
+    line-height: 1.2em;
+    margin: 0;
+    font-weight: 500;
+}
+
+.notice-list li .notice-header .notice-datetime {
+    color: #7f7f7f;
+    font-size: 0.625rem;
+    font-weight: 500;
+    font-family: 'RixGulimEB', sans-serif;
+}
+
+.notice-list li .notice-content {
+    display: none;
+    padding: 1rem 2.5rem;
+    background-color: #f5f5f5;
+    color: #4a4a4a;
+    font-size: 0.6875rem;
+    font-weight: 300;
+}
+
+.notice-list li.opened .notice-header .notice-title {
+    color: #000000;
+    font-family: 'RixGulimEB', sans-serif;
+}
+
+.notice-list li.opened .notice-content {
+    display: block;
+    overflow: auto;
+    line-height: 1.36em;
+    height: 15rem;
+}
+
+/*************************************************************************************/
+
+/* popup */
+
+#del_m {
+    display: none;
+    position: absolute;
+    top: 30%;
+    width: 83%;
+    background: rgba(0, 0, 0, 0.6);
+    text-align: center;
+    color: #ffffff;
+    line-height: 4rem;
+    border-radius: 0.6rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.popup.my_pop ul.details {
+    margin: 20px 0 0 30px;
+}
+
+.popup.my_pop ul.details > li {
+    display: inline-block;
+    background: #dfdfdf;
+    width: 5px;
+    height: 5px;
+    border-radius: 5px;
+    margin-right: 7px;
+}
+
+.popup.my_pop ul.del {
+    display: none;
+    width: 9.783rem;
+    border: 1px solid #dfdfdf;
+    position: absolute;
+    top: 53px;
+    left: 25px;
+    text-align: center;
+    border-radius: 0.5rem;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
+    background: #ffffff;
+    z-index: 9999;
+    font-size: 0.9rem;
+}
+
+.popup.my_pop ul.del > li {
+    line-height: 2.2rem;
+    border-bottom: 1px solid #dfdfdf;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.popup.my_pop ul.del > li:focus,
+.popup.my_pop ul.del > li:active {
+    background: #e4e4e4;
+}
+
+.popup.my_pop ul.del > li:last-child {
+    border-bottom: 0;
+}
+
+.popup.my_pop .pop_con main.app-main {
+    margin-top: -1rem;
+}
+
+/* popup - signup_login.html & signup.html */
+
+.app .pop {
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.app .pop.active {
+    top: 0;
+    transition: ease 2s;
+}
+
+.app .pop .popup {
+    width: 100%;
+    height: calc(100% - 3rem);
+    background: #ffffff;
+    overflow: hidden;
+    bottom: 0;
+    position: absolute;
+    border-radius: 1.2rem 1.2rem 0 0;
+    overflow: hidden;
+}
+
+.app .pop .popup h1 {
+    font-weight: 500;
+    font-size: 1.23rem;
+    text-align: center;
+    border-bottom: 1px solid #d0d0d0;
+    line-height: 4rem;
+    font-family: 'RixGulimEB', sans-serif;
+}
+
+.app .pop .popup .service-notice {
+    overflow: auto;
+    font-family: 'RixGulim';
+    font-size: 0.878rem;
+    color: #222;
+    line-height: 1.4;
+    padding: 5%;
+    width: 100%;
+    height: 100%;
+    text-align: justify;
+}
+
+.app .pop#pop01 .popup .service-notice {
+    height: 90%;
+}
+
+.app .pop .popup .service-notice > ol li {
+    list-style: decimal;
+    margin-left: 1.7rem;
+}
+
+.app .pop .popup .service-notice > ul li {
+    margin-left: 1.3rem;
+}
+
+.app .pop .popup .service-notice > span {
+    font-weight: 500;
+    font-size: 1.055rem;
+    font-family: 'RixGulimEB', sans-serif;
+}
+
+.app .pop .popup .btn_exit.btn {
+    position: absolute;
+    top: 1.5rem;
+    left: 5%;
+    width: 1.1rem;
+    z-index: 999;
+}
+
+/***************************************
+      �대㈃ 怨꾩젙 蹂듦뎄 �섏씠吏� START
+***************************************/
+.activate {
+    min-width: 320px;
+}
+
+.activate main.app-main .sleepcoocooimg {
+    width: 100%;
+}
+
+.activate footer {
+    padding-top: 18px;
+}
+
+.activate .container {
+    margin-top: 49px;
+    display: flex;
+    justify-content: center;
+}
+
+.activate .container .welcome-box {
+    text-align: center;
+}
+
+.activate .container .welcome-box .title {
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.activate .container .welcome-box .contents {
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+.activate footer {
+    background: none;
+    background-color: #ffd524;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 15rem;
+    margin: 0;
+}
+
+.activate footer .btn-wrap .btn {
+    width: 272px;
+    height: 65px;
+    left: 0px;
+    top: 0px;
+
+    background: #ffffff;
+    border: 1.5px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 3px 5px 0px #000000;
+    border-radius: 80px;
+
+    font-family: Jalnan;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 21px;
+    text-align: center;
+    letter-spacing: -0.022em;
+    color: #000000;
+}
+
+/***************************************
+      �대㈃ 怨꾩젙 蹂듦뎄 �섏씠吏� END
+***************************************/
+
+@media screen and (max-width: 500px) {
+    .my-test-result .no-login:after {
+        width: 8.15625rem;
+        height: 9.34375rem;
+    }
+    .my-info-wrap .my-icon {
+        width: 4.09375rem;
+        height: 4.09375rem;
+    }
+    .my-info-wrap .my-info {
+        margin-left: 1.15625rem;
+    }
+    .sns-sign-up li + li {
+        margin-left: 0.875rem;
+    }
+}
+
+body.ja-JP .my-test-result-list .test-item-wrap .test-item .title,
+body.ja-JP .popup.member a.exit {
+    font-family: 'Corporate-Logo-Rounded';
+}
+
+body.ja-JP .app.signup .app-main > h2,
+body.ja-JP .app.signup button,
+body.ja-JP .app.signup input,
+body.ja-JP .form-group .form-label,
+body.ja-JP .notice-list li .notice-header .notice-title {
+    font-family: 'NotoSansCJKjp';
+}
+
+body.ja-JP .button-group .subtitle,
+body.ja-JP .tag-box input[type='radio'] + .tag-label,
+body.ja-JP .tag-box input[type='checkbox'] + .tag-label,
+body.ja-JP .sign-up-wrap .sns-text,
+body.ja-JP .checkbox-circle input[type='checkbox'] + .checkbox-label,
+body.ja-JP .pw_find_next > div .btn.yellow,
+body.ja-JP .app-main#step1 h2.common-title,
+body.ja-JP .app-main .next_btn .btn.yellow,
+body.ja-JP .radio-block input[type='radio'] + .radio-label,
+body.ja-JP .radio-block input[type='checkbox'] + .radio-label,
+body.ja-JP .radio-block input[type='radio'] + .radio-label:before,
+body.ja-JP .radio-block input[type='checkbox'] + .radio-label:before,
+body.ja-JP .app.signup .app-main > h2,
+body.ja-JP .common-title,
+body.ja-JP .profile-edit-row .edit-label,
+body.ja-JP .profile-edit-row .edit-anchor,
+body.ja-JP .my-info-wrap .my-info-desc > div .test-count,
+body.ja-JP .my-test-result .title,
+body.ja-JP .my-test-result .no-login,
+body.ja-JP .my-info-wrap .my-info .my-name,
+body.ja-JP .my-test-result-list .test-item-wrap .datetime,
+body.ja-JP .notice-list li .notice-header .notice-datetime,
+body.ja-JP .notice-list li.opened .notice-header .notice-title,
+body.ja-JP .app .pop .popup h1,
+body.ja-JP .app .pop .popup .service-notice > span {
+    font-family: 'NotoSansCJKjpBlack';
+}
+
+body.en-US .app.signup .app-main > h2,
+body.en-US .app.signup button,
+body.en-US .app.signup input,
+body.en-US .form-group .form-label,
+body.en-US .notice-list li .notice-header .notice-title {
+    font-family: 'OdinRoundedBold';
+}
+
+body.en-US .button-group .subtitle,
+body.en-US .tag-box input[type='radio'] + .tag-label,
+body.en-US .tag-box input[type='checkbox'] + .tag-label,
+body.en-US .sign-up-wrap .sns-text,
+body.en-US .checkbox-circle input[type='checkbox'] + .checkbox-label,
+body.en-US .pw_find_next > div .btn.yellow,
+body.en-US .app-main#step1 h2.common-title,
+body.en-US .app-main .next_btn .btn.yellow,
+body.en-US .radio-block input[type='radio'] + .radio-label,
+body.en-US .radio-block input[type='checkbox'] + .radio-label,
+body.en-US .radio-block input[type='radio'] + .radio-label:before,
+body.en-US .radio-block input[type='checkbox'] + .radio-label:before,
+body.en-US .app.signup .app-main > h2,
+body.en-US .common-title,
+body.en-US .profile-edit-row .edit-label,
+body.en-US .profile-edit-row .edit-anchor,
+body.en-US .my-info-wrap .my-info-desc > div .test-count,
+body.en-US .my-test-result .title,
+body.en-US .my-test-result .no-login,
+body.en-US .my-info-wrap .my-info .my-name,
+body.en-US .my-test-result-list .test-item-wrap .datetime,
+body.en-US .notice-list li .notice-header .notice-datetime,
+body.en-US .notice-list li.opened .notice-header .notice-title,
+body.en-US .app .pop .popup h1,
+body.en-US .app .pop .popup .service-notice > span {
+    font-family: 'OdinRoundedBold';
+    font-weight: 900;
+}
+
+body.zh-CN .my-test-result-list .test-item-wrap .test-item .title,
+body.zh-CN .popup.member a.exit {
+    font-family: 'StationCoolHappyBody2016';
+}
+
+body.zh-CN .app.signup .app-main > h2,
+body.zh-CN .app.signup button,
+body.zh-CN .app.signup input,
+body.zh-CN .form-group .form-label,
+body.zh-CN .notice-list li .notice-header .notice-title {
+    font-family: 'ZhankuLiteraryStyle';
+}
+
+body.zh-CN .button-group .subtitle,
+body.zh-CN .tag-box input[type='radio'] + .tag-label,
+body.zh-CN .tag-box input[type='checkbox'] + .tag-label,
+body.zh-CN .sign-up-wrap .sns-text,
+body.zh-CN .checkbox-circle input[type='checkbox'] + .checkbox-label,
+body.zh-CN .pw_find_next > div .btn.yellow,
+body.zh-CN .app-main#step1 h2.common-title,
+body.zh-CN .app-main .next_btn .btn.yellow,
+body.zh-CN .radio-block input[type='radio'] + .radio-label,
+body.zh-CN .radio-block input[type='checkbox'] + .radio-label,
+body.zh-CN .radio-block input[type='radio'] + .radio-label:before,
+body.zh-CN .radio-block input[type='checkbox'] + .radio-label:before,
+body.zh-CN .app.signup .app-main > h2,
+body.zh-CN .common-title,
+body.zh-CN .profile-edit-row .edit-label,
+body.zh-CN .profile-edit-row .edit-anchor,
+body.zh-CN .my-info-wrap .my-info-desc > div .test-count,
+body.zh-CN .my-test-result .title,
+body.zh-CN .my-test-result .no-login,
+body.zh-CN .my-info-wrap .my-info .my-name,
+body.zh-CN .my-test-result-list .test-item-wrap .datetime,
+body.zh-CN .notice-list li .notice-header .notice-datetime,
+body.zh-CN .notice-list li.opened .notice-header .notice-title,
+body.zh-CN .app .pop .popup h1,
+body.zh-CN .app .pop .popup .service-notice > span {
+    font-family: 'ZhankuLiteraryStyle';
+    font-weight: 900;
+}
+
+body.ca-ES .my-test-result-list .test-item-wrap .test-item .title,
+body.ca-ES .popup.member a.exit {
+    font-family: 'Ptolemy-GreatPrimer18';
+}
+
+body.ca-ES .app.signup .app-main > h2,
+body.ca-ES .app.signup button,
+body.ca-ES .app.signup input,
+body.ca-ES .form-group .form-label,
+body.ca-ES .notice-list li .notice-header .notice-title {
+    font-family: sans-serif;
+}
+
+body.ca-ES .button-group .subtitle,
+body.ca-ES .tag-box input[type='radio'] + .tag-label,
+body.ca-ES .tag-box input[type='checkbox'] + .tag-label,
+body.ca-ES .sign-up-wrap .sns-text,
+body.ca-ES .checkbox-circle input[type='checkbox'] + .checkbox-label,
+body.ca-ES .pw_find_next > div .btn.yellow,
+body.ca-ES .app-main#step1 h2.common-title,
+body.ca-ES .app-main .next_btn .btn.yellow,
+body.ca-ES .radio-block input[type='radio'] + .radio-label,
+body.ca-ES .radio-block input[type='checkbox'] + .radio-label,
+body.ca-ES .radio-block input[type='radio'] + .radio-label:before,
+body.ca-ES .radio-block input[type='checkbox'] + .radio-label:before,
+body.ca-ES .app.signup .app-main > h2,
+body.ca-ES .common-title,
+body.ca-ES .profile-edit-row .edit-label,
+body.ca-ES .profile-edit-row .edit-anchor,
+body.ca-ES .my-info-wrap .my-info-desc > div .test-count,
+body.ca-ES .my-test-result .title,
+body.ca-ES .my-test-result .no-login,
+body.ca-ES .my-info-wrap .my-info .my-name,
+body.ca-ES .my-test-result-list .test-item-wrap .datetime,
+body.ca-ES .notice-list li .notice-header .notice-datetime,
+body.ca-ES .notice-list li.opened .notice-header .notice-title,
+body.ca-ES .app .pop .popup h1,
+body.ca-ES .app .pop .popup .service-notice > span {
+    font-family: sans-serif;
+    font-weight: 900;
+}
+
+.pop_induce.member .popup .popup-message-box {
+    background: #fff;
+    text-align: center;
+    width: 60%;
+    font-size: 0.9rem;
+    border-radius: 1.5rem;
+    transform: translate(-50%, 70%);
+    left: 50%;
+    position: relative;
+}
+
+.pop_induce.member .popup .popup_text_color {
+    color: #f85e4e;
+    font-size: 1.2rem;
+}
+
+body.en-US .popup.member a.exit {
+    font-size: 0.9375rem;
+}
+
+body.ca-ES .popup.member a.exit {
+    font-size: 0.8rem;
+}
+
+body.en-US .pop_induce.member .popup .popup-message-box {
+    font-size: 0.8rem;
+    transform: translate(-50%, 50%);
+}
+
+body.zh-CN .sign-in-other li a,
+body.zh-CN .sign-in-actions button.btn,
+body.zh-CN .lock-wrap .lock-help,
+body.zh-CN .pop_induce.logout .popup .wrap,
+body.zh-CN .setting-row .setting-title,
+body.zh-CN .setting-row .setting-current,
+body.zh-CN .form-group .form-label,
+body.zh-CN .form-group .controls .form-input,
+body.zh-CN .form-group .controls .form-input::-webkit-input-placeholder,
+body.zh-CN .form-group .controls .form-input:-ms-input-placeholder,
+body.zh-CN .form-group .controls .form-input::placeholder,
+body.zh-CN .common-form-group .form-label-wrap .form-label,
+body.zh-CN .common-form-group .form-label-wrap .input-length,
+body.zh-CN .common-form-group .form-label-wrap .input-length strong,
+body.zh-CN .my-info-wrap .my-info-desc > div .test-title,
+body.zh-CN .notice-list li .notice-header .notice-title,
+body.zh-CN #del_m {
+    font-weight: 600;
+}
+
+body.ca-ES .sign-in-other li a,
+body.ca-ES .sign-in-actions button.btn,
+body.ca-ES .lock-wrap .lock-help,
+body.ca-ES .pop_induce.logout .popup .wrap,
+body.ca-ES .setting-row .setting-title,
+body.ca-ES .setting-row .setting-current,
+body.ca-ES .form-group .form-label,
+body.ca-ES .form-group .controls .form-input,
+body.ca-ES .form-group .controls .form-input::-webkit-input-placeholder,
+body.ca-ES .form-group .controls .form-input:-ms-input-placeholder,
+body.ca-ES .form-group .controls .form-input::placeholder,
+body.ca-ES .common-form-group .form-label-wrap .form-label,
+body.ca-ES .common-form-group .form-label-wrap .input-length,
+body.ca-ES .common-form-group .form-label-wrap .input-length strong,
+body.ca-ES .my-info-wrap .my-info-desc > div .test-title,
+body.ca-ES .notice-list li .notice-header .notice-title,
+body.ca-ES #del_m {
+    font-weight: 600;
+}
+
+/**
+* �� �몄떆 �섏씠吏� css
+*/
+@font-face {
+    font-family: 'RixGulimL';
+    src: url('https://cdn.banggooso.com/assets/fonts/RixGulimL.eot');
+    src: url('https://cdn.banggooso.com/assets/fonts/RixGulimL.eot?#iefix') format('embedded-opentype'),
+    url('https://cdn.banggooso.com/assets/fonts/RixGulimL.woff2') format('woff2'),
+    url('https://cdn.banggooso.com/assets/fonts/RixGulimL.woff') format('woff'),
+    url('https://cdn.banggooso.com/assets/fonts/RixGulimL.ttf') format('truetype');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'RixGulimM';
+    src: url('https://cdn.banggooso.com/assets/fonts/RixGulimM.eot');
+    src: url('https://cdn.banggooso.com/assets/fonts/RixGulimM.eot?#iefix') format('embedded-opentype'),
+    url('https://cdn.banggooso.com/assets/fonts/RixGulimM.woff2') format('woff2'),
+    url('https://cdn.banggooso.com/assets/fonts/RixGulimM.woff') format('woff'),
+    url('https://cdn.banggooso.com/assets/fonts/RixGulimM.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'RixGulimB';
+    src: url('https://cdn.banggooso.com/assets/fonts/RixGulimB.eot');
+    src: url('https://cdn.banggooso.com/assets/fonts/RixGulimB.eot?#iefix') format('embedded-opentype'),
+    url('https://cdn.banggooso.com/assets/fonts/RixGulimB.woff2') format('woff2'),
+    url('https://cdn.banggooso.com/assets/fonts/RixGulimB.woff') format('woff'),
+    url('https://cdn.banggooso.com/assets/fonts/RixGulimB.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'RixGulimEB';
+    src: url('https://cdn.banggooso.com/assets/fonts/RixGulimEB.eot');
+    src: url('https://cdn.banggooso.com/assets/fonts/RixGulimEB.eot?#iefix') format('embedded-opentype'),
+    url('https://cdn.banggooso.com/assets/fonts/RixGulimEB.woff2') format('woff2'),
+    url('https://cdn.banggooso.com/assets/fonts/RixGulimEB.woff') format('woff'),
+    url('https://cdn.banggooso.com/assets/fonts/RixGulimEB.ttf') format('truetype');
+}
+
+.push-setting-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 1.71195rem 1.46739rem;
+    border-bottom: 1.5px solid #f5f5f5;
+}
+
+.push-setting-section.denied {
+    position: relative;
+}
+
+.push-setting-section.denied > .denied-box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255, 0.9);
+    top: 0;
+}
+
+.push-setting-section > .push-setting-wrapper + .push-setting-wrapper > .push-setting-text-wrapper {
+    margin-bottom: 1.46739rem;
+}
+
+.push-setting-section
+> .push-setting-wrapper
++ .push-setting-wrapper
+> .push-setting-text-wrapper
++ .push-setting-text-wrapper {
+    margin-bottom: 0;
+}
+
+.push-setting-title {
+    font-family: 'RixGulimEB', sans-serif;
+    font-size: 0.97826rem;
+    color: #000000;
+    margin-bottom: 1.71195rem;
+    font-weight: 400;
+}
+
+/*
+.push-setting-text-wrapper {
+  /* display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: 'RixGulimM';
+
+}*/
+
+.push-setting-text > div {
+    font-family: 'RixGulimM';
+    font-size: 1.076085rem;
+    font-weight: 400;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.push-setting-text > div + div {
+    font-family: 'RixGulimL';
+    font-size: 0.880435rem;
+    font-weight: 400;
+    color: #000000;
+    opacity: 0.6;
+}
+
+/* .push-setting-btn {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+} */
+
+.push-setting-btn > .toggle-box input[type='radio'] + .toggle-label,
+.push-setting-btn > .toggle-box input[type='checkbox'] + .toggle-label {
+    width: 3.18rem;
+    height: 1.957rem;
+}
+
+.push-setting-btn > .toggle-box input[type='radio'] + .toggle-label:before,
+.push-setting-btn > .toggle-box input[type='checkbox'] + .toggle-label:before {
+    width: 1.59375rem;
+    height: 1.59375rem;
+    left: 0.15625rem;
+    top: 50%;
+}
+
+.push-setting-btn > .toggle-box input[type='radio']:checked + .toggle-label,
+.push-setting-btn > .toggle-box input[type='checkbox']:checked + .toggle-label {
+    background-color: #ffd524;
+}
+
+.push-setting-btn > .toggle-box input[type='radio']:checked + .toggle-label:before,
+.push-setting-btn > .toggle-box input[type='checkbox']:checked + .toggle-label:before {
+    right: 0.25rem;
+    left: auto;
+}
+
+.app-setting-wrapper {
+    padding: 1.1739rem 1.46739rem;
+    background: #f5f5f5;
+}
+
+.app-setting-wrapper > .app-setting-text-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.app-setting-wrapper > .app-setting-text-wrapper > div {
+    font-family: 'RixGulimEB', sans-serif;
+    font-size: 1.173915rem;
+}
+
+.app-setting-wrapper > .app-setting-text-wrapper > .app-setting-btn {
+    font-family: 'RixGulimM';
+    font-size: 0.97826rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0.6;
 }
