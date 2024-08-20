@@ -16,7 +16,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Game {
+public class Game extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long gameNo;
@@ -29,6 +29,8 @@ public class Game {
     @OneToMany(mappedBy = "game", cascade = CascadeType.ALL)
     private List<GameAnswer> answers;
 
+    @OneToMany(mappedBy = "game", cascade = CascadeType.ALL)
+    private List<GameResult> results;
 
 }
 

@@ -9,12 +9,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateGame {
+public class CreateGame extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long createGameNo;
 
     private String createGameName;
+
     private String createQuestion;
     private String createAnswer;
     private String createResult;
