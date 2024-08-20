@@ -12,16 +12,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class CreateGameDTO {
-    @NotEmpty
+
+    private Long createGameNo;
+
+    @NotEmpty(message = "게임 이름을 입력 해 주세요.")
     private String createGameName;
 
-    @NotEmpty
+    @NotEmpty(message = "게임 질문을 입력 해 주세요.")
     private String createQuestion;
 
-    @NotEmpty
+    @NotEmpty(message = "게임 답변을 입력 해 주세요.")
     private String createAnswer;
 
-    @NotEmpty
+    @NotEmpty(message = "게임 결과를 입력 해 주세요.")
     private String createResult;
 
 }

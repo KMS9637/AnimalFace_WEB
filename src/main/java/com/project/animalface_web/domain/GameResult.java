@@ -20,6 +20,8 @@ public class GameResult extends BaseEntity{
 
     private String gameResult;
 
+    private String gameResultImage;
+
     @ManyToOne
     @JoinColumn(name = "memberNo")
     private Member member;
