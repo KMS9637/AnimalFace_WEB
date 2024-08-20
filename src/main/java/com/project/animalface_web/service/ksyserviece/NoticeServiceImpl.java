@@ -6,6 +6,7 @@ import com.project.animalface_web.repository.ksyrepository.NoticeRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 
 public class NoticeServiceImpl implements NoticeService {
     private final NoticeRepository noticeRepository;
+    private final ModelMapper modelMapper;
 
 
     @Override
@@ -33,7 +35,8 @@ public class NoticeServiceImpl implements NoticeService {
     @Override
     public NoticeDTO read(Long noticeNo) {
         Optional<Notice> result = noticeRepository.findById(noticeNo);
-        Notice notice = result.orElseThrow(() -> new RuntimeException("Notice not found with id: " + noticeNo));
-        return entityToDto(notice);
+        Notice notice = result.orElseThrow();
+        NoticeDTO noticeDTO = modelMapper.map(notice, NoticeDTO.class);
+        return noticeDTO;
     }
 }
