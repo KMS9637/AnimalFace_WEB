@@ -1,22 +1,27 @@
-package com.project.animalface_web.domain;
+package com.project.animalface_web.dto.kdkdto;
 
-import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
 @Data
-@NoArgsConstructor
+@Builder
 @AllArgsConstructor
-public class CreateGame extends BaseEntity{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long createGameNo;
+@NoArgsConstructor
 
+public class CreateGameDTO {
+    @NotEmpty
     private String createGameName;
-    private String createQuestion;
-    private String createAnswer;
-    private String createResult;
-}
 
+    @NotEmpty
+    private String createQuestion;
+
+    @NotEmpty
+    private String createAnswer;
+
+    @NotEmpty
+    private String createResult;
+
+}
