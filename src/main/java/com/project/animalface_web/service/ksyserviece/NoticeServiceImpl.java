@@ -10,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -26,7 +27,6 @@ public class NoticeServiceImpl implements NoticeService {
     @Override
     public List<NoticeDTO> getNotices() {
         List<Notice> notices = noticeRepository.findAll();
-        // Convert Notice entities to NoticeDTOs
         return notices.stream()
                 .map(this::entityToDto)
                 .collect(Collectors.toList());
@@ -36,7 +36,19 @@ public class NoticeServiceImpl implements NoticeService {
     public NoticeDTO read(Long noticeNo) {
         Optional<Notice> result = noticeRepository.findById(noticeNo);
         Notice notice = result.orElseThrow();
-        NoticeDTO noticeDTO = modelMapper.map(notice, NoticeDTO.class);
-        return noticeDTO;
+        return modelMapper.map(notice, NoticeDTO.class);
+    }
+
+    @Override
+    public void update(NoticeDTO noticeDTO) {
+        Optional<Notice> result = noticeRepository.findById(noticeDTO.getNoticeNo());
+        Notice notice = result.orElseThrow();
+        notice.updateNameAndContent(noticeDTO.getNoticeName(), noticeDTO.getNoticeContents());
+        noticeRepository.save(notice);
+    }
+
+    @Override
+    public void delete(Long noticeNo) {
+        noticeRepository.deleteById(noticeNo);
     }
 }

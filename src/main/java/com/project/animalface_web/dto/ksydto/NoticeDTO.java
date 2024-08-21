@@ -23,6 +23,6 @@ public class NoticeDTO {
     @NotEmpty
     private String noticeContents;
 
-    private Date date;
+    private LocalDate date;
 
 }

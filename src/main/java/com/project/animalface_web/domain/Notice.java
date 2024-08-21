@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -21,8 +21,7 @@ public class Notice {
     private String noticeName;
     private String noticeContents;
 
-    @Temporal(TemporalType.DATE)
-    private Date date;
+    private LocalDate date;
 
     public void updateNameAndContent(String noticeName, String noticeContents) {
         this.noticeName = noticeName;
