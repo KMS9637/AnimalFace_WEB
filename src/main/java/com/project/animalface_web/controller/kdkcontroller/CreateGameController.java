@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @Log4j2
 @RequiredArgsConstructor
-
+@RequestMapping("/createGame")
 public class CreateGameController {
 
-    @GetMapping("/createGame")
+    @GetMapping("/create")
     public String create(Model model) {
-        return "createGame";
+        return "createGame/create";
     }
 }
