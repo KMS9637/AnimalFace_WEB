@@ -8,6 +8,6 @@ public class LoginController {
 
     @GetMapping("/login")
     public String loginPage() {
-        return "login3"; // resources/templates/list.html 파일을 렌더링
+        return "login";
     }
 }
