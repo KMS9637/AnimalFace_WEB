@@ -4,20 +4,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-  <title>방구석연구소 - 로그인</title>
+  <title>로그인</title>
   <meta name="description" content="잠금설정">
   <link rel="image_src" href="@@imageSrc">
-  <meta property="og:title" content="방구석연구소 - 잠금설정" />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="@@ogUrl" />
-  <meta property="og:image" content="@@imageSrc" />
-  <meta property="og:description" content="잠금설정" />
-  <meta property="og:site_name" content="방구석연구소" />
   <link rel="canonical" href="@@ogUrl" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
   <link rel="stylesheet" href="/css/common.css?ver=2024032903">
   <link rel="stylesheet" href="/css/mypage.css?ver=2024032903">
-  <script src="/assets/js/jquery-3.6.0.min.js"></script>
+  <!--    자바스크립트 나중에-->
+<!--  <script src="/assets/js/jquery-3.6.0.min.js"></script>-->
   <script type="text/javascript">
     "use strict";
 
@@ -34,8 +29,6 @@
       $('#userid').focus();
     });
   </script>
-
-
 </head>
 
 <body class="ko-KR">
@@ -47,7 +40,7 @@
   <main class="app-main">
     <h2> 로그인 </h2>
     <form class="form_w" name="frm" method="post" action="login_proc.php">
-      <input type="text" name="userid" class="login-input w-100 display-block" placeholder="아이디/이메일 입력" required autofocus value="">
+      <input type="text" name="userid" class="login-input w-100 display-block" placeholder="아이디 입력" required autofocus value="">
 
       <input type="password" name="password" id="password" class="login-input w-100 display-block" placeholder="비밀번호 입력" required value="">
 
@@ -72,18 +65,10 @@
         <p class='sns-text'>SNS로 시작하기</p>
         <ul class="sns-sign-up">
           <li><a href="#" onclick="loginWithKakao();gtag('event','로그인 페이지', { 'event_category' : 'SNS계정으로 시작하기', 'event_label' : '카카오톡 로그인'});return false;" class="sns-button kakao">카카오 계정으로 로그인</a></li>
-          <li>
-            <div id="naverIdLogin" style="display:none;"></div>
-            <a href="#" onclick="location.href = naverLogin.generateAuthorizeUrl();gtag('event','로그인 페이지', { 'event_category' : 'SNS계정으로 시작하기', 'event_label' : '네이버 로그인'});" class="sns-button naver"></a>
-          </li>
-          <li><a href="#" onclick="checkLoginState();gtag('event','로그인 페이지', { 'event_category' : 'SNS계정으로 시작하기', 'event_label' : '페이스북 로그인'});return false;" class="sns-button facebook">페이스북 아이디로 로그인</a></li>
-          <li><a href="#" onclick="checkLoginState2();gtag('event','로그인 페이지', { 'event_category' : 'SNS계정으로 시작하기', 'event_label' : 'apple ID 로그인'});return false;" class="sns-button apple">apple ID로 가입하기 로그인</a></li>
         </ul>
-
         <a class="btn email-log" href="signup.html" onclick="gtag('event','이메일로 간편가입', { 'event_category' : '로그인 페이지', 'event_label' : '간편 가입'});">이메일로 간편 가입</a>
         <span id="login-law">로그인(가입) 시 <a class="click1" href="#">이용약관</a> 및 <a class="click2" href="#">개인정보 취급방침</a>에 동의하는 것으로 간주합니다.</span>
-        <div class="pop_title">
-          비밀번호가 변경되었습니다.          </div>
+        <div class="pop_title">비밀번호가 변경되었습니다.</div>
       </div>
     </form>
   </main>
