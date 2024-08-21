@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:layout="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <title>재미보따리</title>
+        <meta name="description" content="방구석에서 시작하는 &#39;나&#39;연구소! 연애능력 테스트, 아이돌 포지션 테스트, 고인물 테스트">
+        <link rel="shortcut icon" href="./favicon.ico" />
+        <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16">
+        <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="./favicon-96x96.png" sizes="96x96">
+        <link rel="image_src" href="https://cdn.banggooso.com/assets/images/common/ogimg.jpg">
+        <link href="/css/styles.css" rel="stylesheet">
+
+        <meta property="og:title" content="방구석연구소" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://www.banggooso.com/" />
+        <meta property="og:image" content="https://cdn.banggooso.com/assets/images/common/ogimg.jpg" />
+        <meta property="og:description" content="방구석에서 시작하는 &#39;나&#39;연구소! 연애능력 테스트, 아이돌 포지션 테스트, 고인물 테스트" />
+        <meta property="og:site_name" content="방구석연구소" />
+        <meta property="fb:app_id" content="868684923711460" />
+        <link rel="canonical" href="https://www.banggooso.com/" />
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+        <link rel="stylesheet" href="/css/common.css">
+        <link rel="stylesheet" href="/css/index.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;1,600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/static/css/popup.css">
+        <script src="/assets/popups/js/popup.js?ver=2024032903"></script>
+        <script src="/assets/js/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.4.0/dist/lazyload.min.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/kas/static/kp.js"></script>
+        <script>
+            kakaoPixel('6894544435604599766').pageView();
+            kakaoPixel('6894544435604599766').search({
+                keyword: ''
+            });
+        </script>
+    </head>
+    <body class="ko-KR"><div class="app index" data-app>
+        <!-- End Google Tag Manager (noscript) -->
+        <header class="app-header home">
+            <input type="checkbox" id="menuicon">
+            <label for="menuicon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <div class="sidebar"></div>
+            <a class="logo">
+                <img src="/img/mainlogo2.png" alt="Main Logo" width="40px" height="40px">
+            </a>
+            <a class="mypage">
+                <img src="/img/mypage.png" alt="My Page" width="40px" height="40px">
+            </a>
+        </header>
+        <div layout:fragment="content"></div>
+        <div id="menu-t"></div>
+        <div id="menu">
+            <div class="profile-top">
+                <div class="login-img">
+                    <figure class="my-icon">
+                        <a class="gugugu" href="my/myroom_profile_edit.html" onclick="setPlatformGtag('프로필 사진', 'sidetab', '프로필 사진 버튼');"><img src="" alt="나 현젠디?님의 사진" id="apic"></a>
+                    </figure>
+                    <h4 class="my-name">
+                        나 현젠디?        </h4>
+                </div>
+            </div>
+            <ul class="list">
+                <li class="my-room">
+                    <a href="/my/myroom.html" onclick="setPlatformGtag('나의 방구석', 'sidetab', '나의 방구석 버튼');">
+                        <h5 class="my-icon">나의 방구석</h5>
+                    </a>
+                </li>
+                <li class="my-notice">
+                    <a href="/my/myroom_notice.html" onclick="setPlatformGtag('공지사항', 'sidetab', '공지사항 버튼');">
+                        <h5 class="my-icon">공지사항</h5>
+                    </a>
+                </li>
+                <li class="my-setting">
+                    <a href="/my/myroom_setting.html" onclick="setPlatformGtag('설정', 'sidetab', '설정 버튼');">
+                        <h5 class="my-icon">설정</h5>
+                    </a>
+                </li>
+            </ul>
+            <div class="profile-bottom">
+                <a class="my-send" href="send-ask-page.html" onclick="setPlatformGtag('의견 보내기', 'sidetab', '의견 보내기 버튼');">
+                    <span class="my-icon">의견 보내기</span>
+                </a>
+                <a class="my-introduce" href="#" onclick="goBanner('https://www.notion.so/ss/f5ad2a30e1f1491a99f26019bb78ee40');setPlatformGtag('방구석연구소란?', 'sidetab', '방구석연구소란? 버튼');">
+                    <span class="my-icon">방구석연구소란?</span>
+                </a>
+                <a class="my-brand" href="brand-page.html" onclick="setPlatformGtag('제휴 문의', 'sidetab', '제휴 문의 버튼');">
+                    <span>제휴 문의</span>
+                </a>
+                <select class="my-locale" name="my-locale" id="locale_options" onchange="setLocale(this)"></select>
+                <div class="btn-sahre-t">
+                    <a href="#" class="btn-share kakao" onclick="goBanner('http://pf.kakao.com/_iGbxmK');setPlatformGtag('카카오톡 채널', 'sidetab', 'SNS 버튼');" aria-label="share-kakao"></a>
+                    <a href="#" class="btn-share instagram" onclick="goBanner('https://www.instagram.com/banggooso.kr/');setPlatformGtag('인스타그램', 'sidetab', 'SNS 버튼');" aria-label="share-instagram"></a>
+                    <a href="#" class="btn-share twitter" onclick="goBanner('https://twitter.com/banggooso');setPlatformGtag('트위터', 'sidetab', 'SNS 버튼');" aria-label="share-twitter"></a>
+                    <a href="#" class="btn-share naver-share" onclick="goBanner('https://blog.naver.com/banggooso_official');setPlatformGtag('블로그', 'sidetab', 'SNS 버튼');" aria-label="share-naver"></a>
+                </div>
+            </div>
+        </div>  <main class="app-main">
+        <div class="home-feed">
+            <div class="main-character-wrapper">
+                <div class="text-wrapper">
+                    <div class="text_area">재미 보따리 한가득<br> 콘텐츠를 즐겨봐🎶</div>
+                </div>
+                <div class="character" onclick="javascript:clickBird('click');">
+                    <img src="https://cdn.banggooso.com/assets/images/common/character_renewal.png??ver=2024032903" alt="꾸꾸" />
+                </div>
+            </div>      <div class="recommend-wrapper">
+            <div class="recommend-list">
+                <div class="inner">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="slide-box">
+                                    <div class="thum_icon new">NEW</div>
+                                    <a href="javascript:goBanner('https://www.metavv.com/ko/content/10918065');" class="link" onclick="setPlatformGtag('추천 - 운명의 새싹 테스트', 'main', '메인 추천 버튼');" aria-label="recommendation-tab">
+                                        <div class="img-box" style="background-image:url('https://cdn.banggooso.com/assets/images/uploadImg/1723194763(1).png')"></div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="slide-box">
+                                    <div class="thum_icon new">NEW</div>
+                                    <a href="javascript:goBanner('https://www.metavv.com/ko/content/10916740');" class="link" onclick="setPlatformGtag('추천 - 냥플갱어 테스트', 'main', '메인 추천 버튼');" aria-label="recommendation-tab">
+                                        <div class="img-box" style="background-image:url('https://cdn.banggooso.com/assets/images/uploadImg/1722563374(1).jpg')"></div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="slide-box">
+                                    <div class="thum_icon new">NEW</div>
+                                    <a href="/intro.html?idx=222" class="link" onclick="setPlatformGtag('추천 - 여행 성향 케미 테스트', 'main', '메인 추천 버튼');" aria-label="recommendation-tab">
+                                        <div class="img-box" style="background-image:url('https://cdn.banggooso.com/assets/images/uploadImg/1721375878(1).png')"></div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="slide-box">
+                                    <div class="thum_icon hot">HOT</div>
+                                    <a href="/intro.html?idx=221" class="link" onclick="setPlatformGtag('추천 - 사고력 테스트', 'main', '메인 추천 버튼');" aria-label="recommendation-tab">
+                                        <div class="img-box" style="background-image:url('https://cdn.banggooso.com/assets/images/uploadImg/1721039812(1).png')"></div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>      <div class="landing-wrapper">
+            <a href="/es/home/" onclick="setPlatformGtag('서비스탭 - 감정가게', 'main', '서비스탭');" aria-label="emotionshop">
+                <img class="landing-es" onclick="" src="https://cdn.banggooso.com/assets/images/common/emotionshop.png" alt="emotionshop-image" />
+            </a>
+            <a href="/sr/" onclick="setPlatformGtag('서비스탭 - 숏퀴즈', 'main', '서비스탭');" aria-label="shortquiz">
+                <img class="landing-sr" src="https://cdn.banggooso.com/assets/images/common/shortquiz.png" alt="shortquiz-image" />
+            </a>
+        </div>
+            <ul class="all-category">
+                <li>
+                    <a class="category-item" href="/search.php?q=MBTI · 유형" onclick="setPlatformGtag('유형테스트', 'main', '전체 카테고리 버튼');">
+                        <div>
+                            <img src="https://cdn.banggooso.com/assets/images/category-icons/category-type-renewal.png" class="category-icon" alt="favicon">
+                        </div>
+                        MBTI · 유형      </a>
+                </li>
+                <li>
+                    <a class="category-item" href="/search.php?q=케미 · 궁합" onclick="setPlatformGtag('케미궁합', 'main', '전체 카테고리 버튼');">
+                        <div>
+                            <img src="https://cdn.banggooso.com/assets/images/category-icons/category-couple-renewal.png" class="category-icon" alt="favicon">
+                        </div>
+                        케미 · 궁합      </a>
+                </li>
+                <li>
+                    <a class="category-item" href="/search.php?q=연애" onclick="setPlatformGtag('연애', 'main', '전체 카테고리 버튼');">
+                        <div>
+                            <img src="https://cdn.banggooso.com/assets/images/category-icons/category-heart-renewal.png" class="category-icon" alt="favicon">
+                        </div>
+                        연애      </a>
+                </li>
+                <li>
+                    <a class="category-item" href="/search.php?q=퀴즈 · 능력고사" onclick="setPlatformGtag('퀴즈·능력고사', 'main', '전체 카테고리 버튼');">
+                        <div>
+                            <img src="https://cdn.banggooso.com/assets/images/category-icons/category-quiz-renewal.png" class="category-icon" alt="favicon">
+                        </div>
+                        퀴즈 · 능력고사      </a>
+                </li>
+                <li>
+                    <a class="category-item" href="/search.php?q=미궁 · 방탈출" onclick="setPlatformGtag('미궁·방탈출', 'main', '전체 카테고리 버튼');">
+                        <div>
+                            <img src="https://cdn.banggooso.com/assets/images/category-icons/category-escape-renewal.png" class="category-icon" alt="favicon">
+                        </div>
+                        미궁 · 방탈출      </a>
+                </li>
+                <li>
+                    <a class="category-item" href="/search.php?q=미니게임" onclick="setPlatformGtag('미니게임', 'main', '전체 카테고리 버튼');">
+                        <div>
+                            <img src="https://cdn.banggooso.com/assets/images/category-icons/category-minigame-renewal.png" class="category-icon" alt="favicon">
+                        </div>
+                        미니게임      </a>
+                </li>
+                <li>
+                    <a class="category-item" href="/search.php?q=짤 뽑기" onclick="setPlatformGtag('짤뽑기', 'main', '전체 카테고리 버튼');">
+                        <div>
+                            <img src="https://cdn.banggooso.com/assets/images/category-icons/category-pick-renewal.png" class="category-icon" alt="favicon">
+                        </div>
+                        짤 뽑기      </a>
+                </li>
+                <li>
+                    <a class="category-item" href="/search.php?q=짤 만들기" onclick="setPlatformGtag('짤만들기', 'main', '전체 카테고리 버튼');">
+                        <div>
+                            <img src="https://cdn.banggooso.com/assets/images/category-icons/category-make-renewal.png" class="category-icon" alt="favicon">
+                        </div>
+                        짤 만들기      </a>
+                </li>
+                <li>
+                    <a class="category-item" href="/search.php?q=운세 · 타로" onclick="setPlatformGtag('타로', 'main', '전체 카테고리 버튼');">
+                        <div>
+                            <img src="https://cdn.banggooso.com/assets/images/category-icons/category-luck-renewal.png" class="category-icon" alt="favicon">
+                        </div>
+                        운세 · 타로      </a>
+                </li>
+                <li>
+                    <a class="category-item" href="/sn/intro.html" onclick="setPlatformGtag('스낵테스트', 'main', '전체 카테고리 버튼');">
+                        <div>
+                            <img src="https://cdn.banggooso.com/assets/images/category-icons/category-snack-renewal.png" class="category-icon" alt="favicon">
+                        </div>
+                        스낵테스트      </a>
+                </li>
+            </ul>        <div class="event-banner-wrapper">
+            <a href="javascript:bannerClick(50,'https://www.metavv.com/ko/custom/10890030?utm_source=bs_app&amp;utm_medium=owned_media&amp;utm_campaign=template_king_got_test&amp;utm_content=0712_banner')" onclick="setPlatformGtag('배너', 'main', '킹받게하기시뮬레이션배너 클릭 버튼');">
+                <img src="https://cdn.banggooso.com/assets/images/banner/1720765339banner.png" alt="banner">
+            </a>
+        </div>
+            <ul class="feed-list">
+                <li>
+                    <a href="javascript:goBanner('https://www.metavv.com/ko/content/10918065');setPlatformGtag('운명의 새싹 테스트', 'main', '메타브 콘텐츠 버튼');">
+                        <div class="item-header">
+                            <div class="cate-icon">
+                                <img src="https://cdn.banggooso.com/assets/images/category-icons/category-type-renewal.png" class="item-icon" alt="favicon">
+                            </div>
+                            <div class="cate-title-wrap">
+                                <span class="category-title">MBTI · 유형</span>
+                            </div>
+                            <div class="feed_thum_icon_box"><div class="feed_thum_icon new">NEW</div></div>        </div>
+                        <figure class="thumb">
+                            <img class="lazy" src="https://cdn.banggooso.com/assets/images/common/lazy-empty-img.png" data-src="https://cdn.banggooso.com/assets/images/uploadImg/1723194762(PC).png" alt="운명의 새싹 테스트">
+                        </figure>
+                        <div class="item-body">
+                            <div class="title_wrap">
+                                <h4 class="title">운명의 새싹 테스트</h4>
+                            </div>
+                            <div class="s_title_wrap">
+                                <h5 class="s_title">나는 어떤 새싹으로 자랄까?</h5>
+                                <div class="metavv_icon_box" style=""><div class="feed_thum_icon_metavv"><img src="https://cdn.banggooso.com/assets/images/common/metavv-outlink-icon.png" alt="메타브 아이콘"></div></div>                      </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://cdn.banggooso.com/assets/js/clipboard.min.js"></script>
+    <script src="/assets/js/common-re.js?ver=2024032903"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 3, // 한 페이지에 표시할 슬라이드 수
+            spaceBetween: 20, // 슬라이드 간의 간격 (픽셀 단위)
+            loop: false, // 무한 루프
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
+    </body>
+</html>
