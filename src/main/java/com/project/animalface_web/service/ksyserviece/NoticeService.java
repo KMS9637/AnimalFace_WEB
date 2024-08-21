@@ -8,12 +8,15 @@ import java.util.List;
 public interface NoticeService {
     List<NoticeDTO> getNotices();
     NoticeDTO read(Long noticeNo);
+    void update(NoticeDTO noticeDTO);
+    void delete(Long noticeNo);
 
     default Notice dtoToEntity(NoticeDTO noticeDTO) {
         Notice notice = Notice.builder()
                 .noticeNo(noticeDTO.getNoticeNo())
                 .noticeName(noticeDTO.getNoticeName())
                 .noticeContents(noticeDTO.getNoticeContents())
+                .date(noticeDTO.getDate())
                 .build();
         return notice;
     }
@@ -23,6 +26,7 @@ public interface NoticeService {
                 .noticeNo(notice.getNoticeNo())
                 .noticeName(notice.getNoticeName())
                 .noticeContents(notice.getNoticeContents())
+                .date(notice.getDate())
                 .build();
         return noticeDTO;
     }

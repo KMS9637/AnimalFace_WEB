@@ -27,7 +27,7 @@
                                                 [[${dto.noticeName}]]
                                           </a>
                                     </td>
-                                    <td th:text="${#dates.format(dto.date, 'yyyy-MM-dd')}"></td>
+                                    <td th:text="${dto.getFormattedDate()}"></td>
                               </tr>
                               </tbody>
                         </table>
