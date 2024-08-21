@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <link href="/css/styles.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <div class="app" data-app style="height: 788px">
+      <header class="app-header home">
+        <input type="checkbox" id="menuicon">
+        <label for="menuicon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        <div class="sidebar"></div>
+        <a class="logo">
+          <img src="/img/mainlogo2.png" alt="Main Logo" width="40px" height="40px">
+        </a>
+        <a class="mypage">
+          <img src="/img/mypage.png" alt="My Page" width="40px" height="40px">
+        </a>
+      </header>
+      <div layout:fragment="content"></div>
+    </div>
+  </body>
+
+</html>
