@@ -1,9 +1,7 @@
 package com.project.animalface_web.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -16,6 +14,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Game extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
