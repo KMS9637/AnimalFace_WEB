@@ -21,7 +21,7 @@ public class CreateGameRepositoryTest {
     public void createGameQuestionInsert(){
         IntStream.rangeClosed(1, 30).forEach(i -> {
             CreateGameQuestion createGameQuestion = CreateGameQuestion.builder()
-                    .createQuestion("퀴즈 질문 더미" + i)
+                    .createQuestion("퀴즈 질문 더미." + i)
                     .build();
 
             CreateGameQuestion result = createGameQuestionRepository.save(createGameQuestion);
