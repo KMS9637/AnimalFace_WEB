@@ -50,14 +50,14 @@
           <button class="btn yellow w-100" onclick="gtag('event','로그인 페이지', { 'event_category' : '로그인 탭', 'event_label' : '로그인 버튼'});">로그인</button>
         </div>
         <div class="display-flex">
-          <label class="checkbox-circle">
-            <input type="checkbox" name="save" value="Y" checked="checked">
-            <span class="checkbox-label">로그인 저장</span>
-          </label>
+<!--          <label class="checkbox-circle">-->
+<!--            <input type="checkbox" name="save" value="Y" checked="checked">-->
+<!--            <span class="checkbox-label">로그인 저장</span>-->
+<!--          </label>-->
 
-          <ul class="sign-in-other">
-            <li><a href="/member/pw_find.html" onclick="gtag('event','로그인 페이지', { 'event_category' : '로그인 탭', 'event_label' : '비밀번호 찾기 버튼'});">비밀번호 찾기</a></li>
-          </ul>
+<!--          <ul class="sign-in-other">-->
+<!--            <li><a href="/member/pw_find.html" onclick="gtag('event','로그인 페이지', { 'event_category' : '로그인 탭', 'event_label' : '비밀번호 찾기 버튼'});">비밀번호 찾기</a></li>-->
+<!--          </ul>-->
         </div>
       </div>
       <hr>
@@ -66,9 +66,8 @@
         <ul class="sns-sign-up">
           <li><a href="#" onclick="loginWithKakao();gtag('event','로그인 페이지', { 'event_category' : 'SNS계정으로 시작하기', 'event_label' : '카카오톡 로그인'});return false;" class="sns-button kakao">카카오 계정으로 로그인</a></li>
         </ul>
-        <a class="btn email-log" href="signup.html" onclick="gtag('event','이메일로 간편가입', { 'event_category' : '로그인 페이지', 'event_label' : '간편 가입'});">이메일로 간편 가입</a>
+        <a class="btn email-log" href="signup.html" onclick="gtag('event','이메일로 간편가입', { 'event_category' : '로그인 페이지', 'event_label' : '간편 가입'});">회원가입</a>
         <span id="login-law">로그인(가입) 시 <a class="click1" href="#">이용약관</a> 및 <a class="click2" href="#">개인정보 취급방침</a>에 동의하는 것으로 간주합니다.</span>
-        <div class="pop_title">비밀번호가 변경되었습니다.</div>
       </div>
     </form>
   </main>
