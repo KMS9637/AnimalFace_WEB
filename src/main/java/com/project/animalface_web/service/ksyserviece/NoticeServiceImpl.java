@@ -2,7 +2,7 @@ package com.project.animalface_web.service.ksyserviece;
 
 import com.project.animalface_web.domain.Notice;
 import com.project.animalface_web.dto.ksydto.NoticeDTO;
-import com.project.animalface_web.repository.ksyrepository.NoticeRepository;
+import com.project.animalface_web.repository.kdkrepository.NoticeRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -10,7 +10,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 

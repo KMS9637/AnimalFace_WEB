@@ -2,6 +2,7 @@ package com.project.animalface_web.dto.kdkdto;
 
 import com.project.animalface_web.domain.GameAnswer;
 import com.project.animalface_web.domain.GameQuestion;
+import com.project.animalface_web.domain.Images;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
@@ -20,5 +21,8 @@ public class GameDTO {
 
     private String gameName;
 
+    private String question;
+    private String answer;
+    private Images images;
 
 }

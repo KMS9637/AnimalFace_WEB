@@ -1,11 +1,13 @@
 package com.project.animalface_web.dto.kdkdto;
 
-
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.Date;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Data
 @Builder
@@ -14,7 +16,15 @@ import java.util.Date;
 
 public class NoticeDTO {
     private Long noticeNo;
+    @NotEmpty
     private String noticeName;
+
+    @NotEmpty
     private String noticeContents;
-    private Date date;
+
+    private LocalDate date;
+
+    public String getFormattedDate() {
+        return date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+    }
 }
