@@ -1,6 +1,7 @@
 package com.project.animalface_web.repository;
 
 import com.project.animalface_web.domain.CreateGame;
+import com.project.animalface_web.domain.CreateGameQuestion;
 import com.project.animalface_web.repository.kdkrepository.CreateGameRepository;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
@@ -15,6 +16,19 @@ public class CreateGameRepositoryTest {
 
     @Autowired
     CreateGameRepository createGameRepository;
+
+    @Test
+    public void createGameQuestionInsert(){
+        IntStream.rangeClosed(1, 30).forEach(i -> {
+            CreateGameQuestion createGameQuestion = CreateGameQuestion.builder()
+                    .createQuestion("퀴즈 질문 더미" + i)
+                    .build();
+
+            CreateGameQuestion result = createGameQuestionRepository.save(createGameQuestion);
+            log.info("추가한 createGameQuestionNo: " + result.getCreateGameNo());
+        });
+    }
+
 
     @Test
     public void testInsert() {
