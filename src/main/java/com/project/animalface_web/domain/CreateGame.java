@@ -2,13 +2,17 @@ package com.project.animalface_web.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class CreateGame extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,8 +20,13 @@ public class CreateGame extends BaseEntity{
 
     private String createGameName;
 
-    private String createQuestion;
-    private String createAnswer;
-    private String createResult;
+    @OneToMany
+    private List<CreateGameQuestion> createGameQuestions;
+
+    @OneToMany
+    private List<CreateGameAnswer> createGameAnswers;
+
+    @OneToMany
+    private List<CreateGameResult> createGameResults;
 }
 
