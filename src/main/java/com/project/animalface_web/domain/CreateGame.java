@@ -20,13 +20,13 @@ public class CreateGame extends BaseEntity{
 
     private String createGameName;
 
-    @OneToMany(mappedBy = "createGame", cascade = CascadeType.ALL)
+    @OneToMany
     private List<CreateGameQuestion> createGameQuestions;
 
-    @OneToMany(mappedBy = "createGame", cascade = CascadeType.ALL)
+    @OneToMany
     private List<CreateGameAnswer> createGameAnswers;
 
-    @OneToMany(mappedBy = "createGame", cascade = CascadeType.ALL)
+    @OneToMany
     private List<CreateGameResult> createGameResults;
 }
 
