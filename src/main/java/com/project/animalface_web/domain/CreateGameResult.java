@@ -15,5 +15,8 @@ public class CreateGameResult extends BaseEntity{
     private Long createGameNo;
 
     private String createResult;
+
+    @ManyToOne
+    private CreateGame createGame;
 }
 

@@ -1,7 +1,6 @@
 package com.project.animalface_web.controller.ksycontroller;
 
-import com.project.animalface_web.domain.Notice;
-import com.project.animalface_web.dto.ksydto.NoticeDTO;
+import com.project.animalface_web.dto.kdkdto.NoticeDTO;
 import com.project.animalface_web.service.ksyserviece.NoticeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

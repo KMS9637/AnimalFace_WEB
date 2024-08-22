@@ -15,5 +15,8 @@ public class CreateGameQuestion extends BaseEntity{
     private Long createGameNo;
 
     private String createQuestion;
+
+    @ManyToOne
+    private CreateGame createGame;
 }
 
