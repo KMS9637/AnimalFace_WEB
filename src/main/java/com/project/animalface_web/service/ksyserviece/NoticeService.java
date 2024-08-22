@@ -5,6 +5,7 @@ import com.project.animalface_web.dto.ksydto.NoticeDTO;
 
 import java.util.List;
 
+
 public interface NoticeService {
     List<NoticeDTO> getNotices();
     NoticeDTO read(Long noticeNo);
