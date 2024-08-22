@@ -1,6 +1,7 @@
 package com.project.animalface_web.service;
 
-import com.project.animalface_web.dto.kdkdto.NoticeDTO;
+
+import com.project.animalface_web.dto.ksydto.NoticeDTO;
 import com.project.animalface_web.service.ksyserviece.NoticeService;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
