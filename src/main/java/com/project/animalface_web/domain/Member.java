@@ -20,9 +20,10 @@ public class Member extends BaseEntity{
 
     private String memberId;
     private String memberPw;
-    private String memberImg;
     private String memberName;
     private String memberGameResult;
+
+    private String memberImg;
 
     private boolean del;
     private boolean social;

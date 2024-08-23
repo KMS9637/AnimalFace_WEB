@@ -1,4 +1,4 @@
-package com.project.animalface_web.dto.kdkdto;
+package com.project.animalface_web.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

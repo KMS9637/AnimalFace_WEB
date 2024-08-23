@@ -1,4 +1,4 @@
-package com.project.animalface_web.repository.kdkrepository;
+package com.project.animalface_web.repository;
 
 import com.project.animalface_web.domain.Game;
 import com.project.animalface_web.domain.Notice;
