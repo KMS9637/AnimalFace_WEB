@@ -19,6 +19,7 @@ public class CreateGameResult extends BaseEntity{
     private String createResult;
 
     @ManyToOne
+    @JoinColumn(name = "create_game_id")
     private CreateGame createGame;
 }
 
