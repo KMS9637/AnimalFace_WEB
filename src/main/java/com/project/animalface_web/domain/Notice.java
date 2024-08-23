@@ -1,12 +1,15 @@
 package com.project.animalface_web.domain;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -21,8 +24,7 @@ public class Notice {
     private String noticeName;
     private String noticeContents;
 
-    @Temporal(TemporalType.DATE)
-    private Date date;
+    private LocalDate date;
 
     public void updateNameAndContent(String noticeName, String noticeContents) {
         this.noticeName = noticeName;
