@@ -15,21 +15,14 @@ import java.time.LocalDateTime;
 @Getter
 public abstract class BaseEntity {
 
-  // 작성시 해당 멤버를 만들겠다.
-  @CreatedDate
-  // 컬럼, 디비 상의 컬럼명을 regdate 사용,  변경불가.
-  @Column(name = "regdate", updatable = false, nullable = false)
-  private LocalDateTime regDate;
+    // 작성시 해당 멤버를 만들겠다.
+    @CreatedDate
+    // 컬럼, 디비 상의 컬럼명을 regdate 사용,  변경불가.
+    @Column(name = "regdate", updatable = false)
+    private LocalDateTime regDate;
 
-  // 수정시 마지막 변경일시로 업데이트 하겠다.
-  @LastModifiedDate
-  @Column(name = "moddate", nullable = false)
-  private LocalDateTime modDate;
+    // 수정시 마지막 변경일시로 업데이트 하겠다.
+    @LastModifiedDate
+    @Column(name = "moddate")
+    private LocalDateTime modDate;
 }
-
-
-
-
-
-
-
