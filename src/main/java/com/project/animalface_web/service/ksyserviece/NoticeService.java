@@ -1,9 +1,13 @@
 package com.project.animalface_web.service.ksyserviece;
 
-import com.project.animalface_web.dto.ksydto.NoticeDTO;
+import com.project.animalface_web.domain.Notice;
+import com.project.animalface_web.dto.NoticeDTO;
+
+import java.util.List;
+
 
 public interface NoticeService {
-    Long register(NoticeDTO noticeDTO);
+    List<NoticeDTO> getNotices();
     NoticeDTO read(Long noticeNo);
     void update(NoticeDTO noticeDTO);
     void delete(Long noticeNo);
@@ -13,6 +17,7 @@ public interface NoticeService {
                 .noticeNo(noticeDTO.getNoticeNo())
                 .noticeName(noticeDTO.getNoticeName())
                 .noticeContents(noticeDTO.getNoticeContents())
+                .date(noticeDTO.getDate())
                 .build();
         return notice;
     }
@@ -22,6 +27,7 @@ public interface NoticeService {
                 .noticeNo(notice.getNoticeNo())
                 .noticeName(notice.getNoticeName())
                 .noticeContents(notice.getNoticeContents())
+                .date(notice.getDate())
                 .build();
         return noticeDTO;
     }
