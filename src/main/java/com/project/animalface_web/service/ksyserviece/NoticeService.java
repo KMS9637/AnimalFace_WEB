@@ -1,6 +1,5 @@
 package com.project.animalface_web.service.ksyserviece;
 
-import com.project.animalface_web.domain.Notice;
 import com.project.animalface_web.dto.ksydto.NoticeDTO;
 
 public interface NoticeService {
