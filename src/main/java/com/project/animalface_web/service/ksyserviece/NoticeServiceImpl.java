@@ -1,12 +1,10 @@
 package com.project.animalface_web.service.ksyserviece;
 
-import com.project.animalface_web.domain.Notice;
 import com.project.animalface_web.dto.ksydto.NoticeDTO;
 import com.project.animalface_web.repository.ksyrepository.NoticeRepository;
 import groovy.util.logging.Log4j2;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
