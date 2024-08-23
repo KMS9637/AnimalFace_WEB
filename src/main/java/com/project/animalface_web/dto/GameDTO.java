@@ -1,16 +1,10 @@
-package com.project.animalface_web.dto.kdkdto;
+package com.project.animalface_web.dto;
 
-import com.project.animalface_web.domain.GameAnswer;
-import com.project.animalface_web.domain.GameQuestion;
 import com.project.animalface_web.domain.Images;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Data
 @Builder

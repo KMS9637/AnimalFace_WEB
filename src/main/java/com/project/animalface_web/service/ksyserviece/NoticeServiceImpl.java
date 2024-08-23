@@ -1,7 +1,7 @@
 package com.project.animalface_web.service.ksyserviece;
 
 import com.project.animalface_web.domain.Notice;
-import com.project.animalface_web.dto.ksydto.NoticeDTO;
+import com.project.animalface_web.dto.NoticeDTO;
 import com.project.animalface_web.repository.NoticeRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
