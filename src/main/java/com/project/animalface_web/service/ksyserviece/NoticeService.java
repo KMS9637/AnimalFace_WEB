@@ -1,7 +1,7 @@
 package com.project.animalface_web.service.ksyserviece;
 
 import com.project.animalface_web.domain.Notice;
-import com.project.animalface_web.dto.ksydto.NoticeDTO;
+import com.project.animalface_web.dto.NoticeDTO;
 
 import java.util.List;
 
@@ -9,8 +9,9 @@ import java.util.List;
 public interface NoticeService {
     List<NoticeDTO> getNotices();
     NoticeDTO read(Long noticeNo);
-    void update(NoticeDTO noticeDTO);
-    void delete(Long noticeNo);
+    NoticeDTO update(Long noticeNo, NoticeDTO noticeDTO);
+    boolean delete(Long noticeNo);
+    NoticeDTO save(NoticeDTO noticeDTO);
 
     default Notice dtoToEntity(NoticeDTO noticeDTO) {
         Notice notice = Notice.builder()
