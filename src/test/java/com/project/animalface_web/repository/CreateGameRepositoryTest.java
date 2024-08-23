@@ -54,7 +54,7 @@ public class CreateGameRepositoryTest {
                 createGameQuestionList.add(createGameQuestion);
 
                 CreateGameAnswer createGameAnswer = CreateGameAnswer.builder()
-                        .createAnswer("생성 퀴즈 답변 더미 " + j + " (게임 " + i + ")")
+                        .createAnswer("생성 퀴즈 답변. 더미 " + j + " (게임 " + i + ")")
                         .createGame(createGame) // 관계 설정
                         .build();
 
