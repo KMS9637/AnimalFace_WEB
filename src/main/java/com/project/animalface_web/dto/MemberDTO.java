@@ -1,6 +1,5 @@
-package com.project.animalface_web.dto.kdkdto;
+package com.project.animalface_web.dto;
 
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,7 +13,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class MemberJoinDTO {
+public class MemberDTO {
     private Long memberNo;
 
     @NotEmpty(message = "아이디를 입력 해 주세요.")
