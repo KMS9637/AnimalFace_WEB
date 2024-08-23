@@ -1,7 +1,6 @@
 package com.project.animalface_web.repository;
 
 import com.project.animalface_web.domain.Notice;
-import com.project.animalface_web.repository.kdkrepository.NoticeRepository;
 import com.project.animalface_web.service.ksyserviece.NoticeService;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
