@@ -1,9 +1,10 @@
 package com.project.animalface_web.service.kmsserviece;
 
-import com.project.animalface_web.domain.Member;
 import com.project.animalface_web.dto.MemberDTO;
+import org.springframework.security.core.userdetails.UserDetails;
 
 public interface MemberService {
-        Member saveEntity(Member member);
-        Member saveDto(MemberDTO memberDTO);
+        MemberDTO registerMember(MemberDTO memberDTO);
+        UserDetails loadUserByUsername(String username);
+        boolean loginMember(MemberDTO memberDTO);
 }

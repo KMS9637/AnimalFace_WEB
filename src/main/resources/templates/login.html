@@ -6,71 +6,74 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
   <title>로그인</title>
   <meta name="description" content="잠금설정">
-  <link rel="image_src" href="@@imageSrc">
-  <link rel="canonical" href="@@ogUrl" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
-  <link rel="stylesheet" href="/css/common.css?ver=2024032903">
-  <link rel="stylesheet" href="/css/mypage.css?ver=2024032903">
-  <!--    자바스크립트 나중에-->
-<!--  <script src="/assets/js/jquery-3.6.0.min.js"></script>-->
-  <script type="text/javascript">
-    "use strict";
-
-    //  start
-    document.addEventListener("DOMContentLoaded", function() {
-
-      //자동로그인
-      if (!getCookie("u_aid") || !getCookie("u_apw")) {
-        return false;
-      } else {
-        document.frm.submit();
-      }
-
-      $('#userid').focus();
-    });
-  </script>
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/mypage.css">
 </head>
 
 <body class="ko-KR">
 <div class="app signup" data-app>
   <header class="app-header display-flex">
-    <button type="button" class="app-header-btn back" title="뒤로가기" onclick="backUp();gtag('event','로그인 페이지', { 'event_category' : '상단 헤더', 'event_label' : '뒤로가기'});"></button>
+    <button type="button" class="app-header-btn back" title="뒤로가기" onclick="backUp();"></button>
   </header>
 
   <main class="app-main">
     <h2> 로그인 </h2>
-    <form class="form_w" name="frm" method="post" action="/api/members/login">
-      <input type="text" name="userid" class="login-input w-100 display-block" placeholder="아이디 입력" required autofocus value="">
-
-      <input type="password" name="password" id="password" class="login-input w-100 display-block" placeholder="비밀번호 입력" required value="">
-
-
+    <form class="form_w" name="frm" id="loginForm">
+      <input type="text" name="userid" id="userid" class="login-input w-100 display-block" placeholder="아이디 입력" required autofocus>
+      <input type="password" name="password" id="password" class="login-input w-100 display-block" placeholder="비밀번호 입력" required>
       <div class="sign-in-actions">
         <div>
-          <button class="btn yellow w-100" onclick="gtag('event','로그인 페이지', { 'event_category' : '로그인 탭', 'event_label' : '로그인 버튼'});">로그인</button>
-        </div>
-        <div class="display-flex">
-<!--          <label class="checkbox-circle">-->
-<!--            <input type="checkbox" name="save" value="Y" checked="checked">-->
-<!--            <span class="checkbox-label">로그인 저장</span>-->
-<!--          </label>-->
-
-<!--          <ul class="sign-in-other">-->
-<!--            <li><a href="/member/pw_find.html" onclick="gtag('event','로그인 페이지', { 'event_category' : '로그인 탭', 'event_label' : '비밀번호 찾기 버튼'});">비밀번호 찾기</a></li>-->
-<!--          </ul>-->
+          <button class="btn yellow w-100" type="submit">로그인</button>
         </div>
       </div>
       <hr>
       <div class="sign-up-wrap text-center">
         <p class='sns-text'>SNS로 시작하기</p>
         <ul class="sns-sign-up">
-          <li><a href="#" onclick="loginWithKakao();gtag('event','로그인 페이지', { 'event_category' : 'SNS계정으로 시작하기', 'event_label' : '카카오톡 로그인'});return false;" class="sns-button kakao">카카오 계정으로 로그인</a></li>
+          <li><a href="#" onclick="loginWithKakao(); return false;" class="sns-button kakao">카카오 계정으로 로그인</a></li>
         </ul>
-        <a class="btn email-log" href="signup.html" onclick="gtag('event','이메일로 간편가입', { 'event_category' : '로그인 페이지', 'event_label' : '간편 가입'});">회원가입</a>
-        <span id="login-law">로그인(가입) 시 <a class="click1" href="#">이용약관</a> 및 <a class="click2" href="#">개인정보 취급방침</a>에 동의하는 것으로 간주합니다.</span>
+        <button class="btn email-log" id="signupButton2">회원가입</button>
+        <span id="login-law">로그인(가입) 시 <a href="#">이용약관</a> 및 <a href="#">개인정보 취급방침</a>에 동의하는 것으로 간주합니다.</span>
       </div>
     </form>
   </main>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelector('form').addEventListener('submit', function(event) {
+      event.preventDefault(); // 기본 폼 동작 방지
+
+      const userid = document.getElementById('userid').value;
+      const password = document.getElementById('password').value;
+
+      fetch('/api/members/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          memberId: userid,
+          memberPw: password
+        })
+      })
+              .then(response => response.json())
+              .then(data => {
+                if (data === "로그인 성공") {
+                  window.location.href = '/home'; // 로그인 성공 시 홈으로 리다이렉트
+                } else {
+                  alert(data); // 로그인 실패 시 메시지 표시
+                }
+              })
+              .catch(error => console.error('Error:', error));
+    });
+
+    document.getElementById('signupButton2').addEventListener('click', function(event) {
+      event.preventDefault(); // 기본 버튼 동작 방지
+      window.location.href = '/api/members/register'; // 회원가입 페이지 URL로 변경
+    });
+  });
+</script>
 </body>
 </html>

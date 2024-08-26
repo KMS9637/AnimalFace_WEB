@@ -1,27 +1,32 @@
 <!DOCTYPE html>
-<html lang="ko">
-
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title>회원가입</title>
     <meta name="description" content="회원가입">
-    <link rel="stylesheet" href="/css/common.css?ver=2024032903">
-    <link rel="stylesheet" href="/css/mypage.css?ver=2024032903">
-<!--    자바스크립트 나중에-->
-<!--    <script src="/assets/js/jquery-3.6.0.min.js"></script>-->
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/mypage.css">
+
+    <!-- CSRF 토큰 메타 태그 추가 -->
+<!--    <meta name="csrf-token" th:content="${_csrf.token}">-->
+
+    <!-- 자바스크립트 나중에 -->
+    <!-- <script src="/assets/js/jquery-3.6.0.min.js"></script> -->
 </head>
+
 <body class="ko-KR">
 <div class="app" data-app>
     <header class="app-header">
         <button type="button" class="app-header-btn back" title="뒤로가기" onclick="history.go(-1);"></button>
         <h1 class="app-title">회원가입</h1>
     </header>
+
     <main class="app-main" id="step1">
         <div class="form-group">
             <label class="form-label">아이디</label>
             <div class="controls">
-                <input class="form-input" id="email" value="" placeholder="아이디를 입력하세요." autofocus>
+                <input class="form-input" id="email" placeholder="아이디를 입력하세요." autofocus>
             </div>
         </div>
 
@@ -44,21 +49,16 @@
             </div>
         </div>
         <div class="next_btn">
-            <button class="btn yellow" onclick="goStep(2);return false;">가입완료</button>
+            <button class="btn yellow" id="signupButton">가입완료</button>
         </div>
     </main>
-<!--    카카오톡 로그인 관련-->
-<!--    <form name="hiddenfrm" method="post" action="/member/signup_login.html?login_type=signupkakao">-->
-<!--        <input type="hidden" id="kakaosns" name="sns" value="">-->
-<!--        <input type="hidden" id="kakaosnsid" name="snsid" value="">-->
-<!--        <input type="hidden" id="kakaoemail" name="email" value="">-->
-<!--        <input type="hidden" id="kakaonickname" name="nickname" value="">-->
-<!--    </form>-->
+
     <!-- footer -->
     <footer>
-<!--        <p>사업자등록번호 897-87-01933</p>-->
-    </footer>		<!-- footer -->
+        <!-- <p>사업자등록번호 897-87-01933</p> -->
+    </footer>
 </div>
+
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         document.getElementById('signupButton').addEventListener('click', function(event) {
@@ -74,10 +74,14 @@
                 return;
             }
 
+            // CSRF 토큰을 메타 태그에서 추출
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
             fetch('/api/members/register', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken // CSRF 토큰을 헤더에 추가
                 },
                 body: JSON.stringify({
                     memberId: email,
@@ -85,7 +89,12 @@
                     memberName: nickname
                 })
             })
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok.');
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     if (data) {
                         alert('회원가입 성공');
@@ -101,9 +110,10 @@
         });
     });
 </script>
-<!--    자바스크립트 나중에-->
-<!--<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>-->
-<!--<script src="https://cdn.banggooso.com/assets/js/clipboard.min.js"></script>-->
-<!--<script src="/assets/js/common-re.js?ver=2024032903"></script>-->
+
+<!-- 자바스크립트 나중에 -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script> -->
+<!-- <script src="https://cdn.banggooso.com/assets/js/clipboard.min.js"></script> -->
+<!-- <script src="/assets/js/common-re.js?ver=2024032903"></script> -->
 </body>
 </html>

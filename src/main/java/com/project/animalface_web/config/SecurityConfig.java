@@ -12,21 +12,20 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                .csrf().disable()  // 개발 초기 단계에서 CSRF 비활성화
                 .authorizeHttpRequests()
-                .requestMatchers("/css/**", "/js/**", "/images/**", "/api/members/register").permitAll()
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()  // 모든 요청을 허용
                 .and()
-                .formLogin()
-                .loginPage("/api/members/login")
-                .permitAll();
+                .formLogin().disable();  // 기본 로그인 폼 비활성화
         return http.build();
     }
+
 }
