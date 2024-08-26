@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
   <title>로그인</title>
-  <meta name="description" content="잠금설정">
+  <meta name="description" content="로그인 페이지">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
   <link rel="stylesheet" href="/css/common.css">
   <link rel="stylesheet" href="/css/mypage.css">
@@ -14,14 +13,14 @@
 <body class="ko-KR">
 <div class="app signup" data-app>
   <header class="app-header display-flex">
-    <button type="button" class="app-header-btn back" title="뒤로가기" onclick="backUp();"></button>
+    <button type="button" class="app-header-btn back" title="뒤로가기" onclick="history.back();"></button>
   </header>
 
   <main class="app-main">
     <h2> 로그인 </h2>
-    <form class="form_w" name="frm" id="loginForm">
-      <input type="text" name="userid" id="userid" class="login-input w-100 display-block" placeholder="아이디 입력" required autofocus>
-      <input type="password" name="password" id="password" class="login-input w-100 display-block" placeholder="비밀번호 입력" required>
+    <form class="form_w" id="loginForm">
+      <input type="text" id="userid" class="login-input w-100 display-block" placeholder="아이디 입력" required autofocus>
+      <input type="password" id="password" class="login-input w-100 display-block" placeholder="비밀번호 입력" required>
       <div class="sign-in-actions">
         <div>
           <button class="btn yellow w-100" type="submit">로그인</button>
@@ -33,7 +32,7 @@
         <ul class="sns-sign-up">
           <li><a href="#" onclick="loginWithKakao(); return false;" class="sns-button kakao">카카오 계정으로 로그인</a></li>
         </ul>
-        <button class="btn email-log" id="signupButton2">회원가입</button>
+        <button type="button" class="btn email-log" id="signupButton2">회원가입</button>
         <span id="login-law">로그인(가입) 시 <a href="#">이용약관</a> 및 <a href="#">개인정보 취급방침</a>에 동의하는 것으로 간주합니다.</span>
       </div>
     </form>
@@ -42,37 +41,59 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    document.querySelector('form').addEventListener('submit', function(event) {
-      event.preventDefault(); // 기본 폼 동작 방지
+    const loginForm = document.getElementById('loginForm');
 
-      const userid = document.getElementById('userid').value;
+    loginForm.addEventListener('submit', function(event) {
+      event.preventDefault(); // 기본 폼 제출 동작 방지
+
+      const userId = document.getElementById('userid').value;
       const password = document.getElementById('password').value;
+
+      if (!userId || !password) {
+        alert("아이디와 비밀번호를 입력하세요.");
+        return;
+      }
 
       fetch('/api/members/login', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          memberId: userid,
+          memberId: userId,
           memberPw: password
         })
       })
-              .then(response => response.json())
-              .then(data => {
-                if (data === "로그인 성공") {
-                  window.location.href = '/home'; // 로그인 성공 시 홈으로 리다이렉트
+              .then(response => {
+                if (response.ok) {
+                  return response.json(); // 응답 본문을 JSON으로 읽기
                 } else {
-                  alert(data); // 로그인 실패 시 메시지 표시
+                  throw new Error('로그인 실패');
                 }
               })
-              .catch(error => console.error('Error:', error));
+              .then(data => {
+                if (data.message === "로그인 성공") {
+                  alert('로그인 성공');
+                  window.location.href = '/home'; // 로그인 성공 후 이동할 페이지
+                } else {
+                  alert('로그인 실패: 아이디 또는 비밀번호가 잘못되었습니다.');
+                }
+              })
+              .catch(error => {
+                console.error('Error:', error);
+                alert('로그인 중 오류가 발생했습니다.');
+              });
     });
 
-    document.getElementById('signupButton2').addEventListener('click', function(event) {
-      event.preventDefault(); // 기본 버튼 동작 방지
-      window.location.href = '/api/members/register'; // 회원가입 페이지 URL로 변경
+    // 회원가입 버튼 이벤트 리스너 추가
+    const signupButton = document.getElementById('signupButton2');
+    signupButton.addEventListener('click', function() {
+      window.location.href = '/api/members/register'; // 올바른 회원가입 경로 설정
     });
+
+    function loginWithKakao() {
+      alert('카카오 계정으로 로그인 기능은 아직 구현되지 않았습니다.');
+    }
   });
 </script>
 </body>
