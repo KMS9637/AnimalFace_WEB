@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -32,26 +30,50 @@
     <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.4.0/dist/lazyload.min.js"></script>
     <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/kas/static/kp.js"></script>
     <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        $('.app-main').addClass('ads-app-main-footer');
+
+        function enterkey(event) {
+            if (event.keyCode === 13) {  // Enter 키 코드가 13
+                event.preventDefault();  // 기본 동작 방지
+                let searchWord = $("input[name='q']").val().trim();
+                if (searchWord) {
+                    let encodedSearchWord = encodeURIComponent(searchWord);
+                    // searchResults URL로 이동
+                    window.location.href = 'searchResults?q=' + encodedSearchWord;
+                }
+            }
+        }
+
+        function backUp() {
+            window.location.href = '/';  // 여기에 홈 페이지의 URL을 입력하세요.
+        }
+
+        function location_this(url) {
+            window.location.href = url;
+        }
+    </script>
+    <script>
         kakaoPixel('6894544435604599766').pageView();
         kakaoPixel('6894544435604599766').search({
             keyword: ''
         });
     </script>
 </head>
-<body class="ko-KR"><div class="app search" data-app>
-    <header class="app-header test_center">
-        <button type="button" class="app-header-btn back" onclick="backUp();" title="뒤로가기"></button>
-        <h1 class="app-title">검색</h1>
-    </header>
-    <main class="app-main">
-        <div>
-            <!-- 검색창 -->
-            <div class="common-form-group" data-form-group>
-                <div class="form-control-wrap">
-                    <input class="form-control" name="q" maxlength="20" onkeydown="javascript:enterkey();" value="" autofocus data-input placeholder="검색어를 입력하세요.">
-                    <button type="button" class="btn-remove-text" data-input-clear>텍스트 삭제</button>
-                </div>
+<body>
+<header class="app-header test_center">
+    <button type="button" class="app-header-btn back" onclick="backUp();" title="뒤로가기"></button>
+    <h1 class="app-title">검색</h1>
+</header>
+<main class="app-main">
+    <div>
+        <!-- 검색창 -->
+        <div class="common-form-group" data-form-group>
+            <div class="form-control-wrap">
+                <input class="form-control" name="q" maxlength="20" onkeydown="enterkey(event);" value="" autofocus placeholder="검색어를 입력하세요.">
+                <button type="button" class="btn-remove-text" data-input-clear>텍스트 삭제</button>
             </div>
+        </div>
 
             <!-- 메인 키워드 -->
             <div class="main_default">
@@ -59,16 +81,16 @@
                     <h4 class="subtitle">대표 검색어</h4>
                 </div>
                 <div class="keyword-wrap">
-                    <a href="#" class="tag medium default" onclick="javascript:location_this(`search.php?q=MBTI · 유형`)">MBTI · 유형</a>
-                    <a href="#" class="tag medium default" onclick="javascript:location_this(`search.php?q=케미 · 궁합`)">케미 · 궁합</a>
-                    <a href="#" class="tag medium default" onclick="javascript:location_this(`search.php?q=연애`)">연애</a>
-                    <a href="#" class="tag medium default" onclick="javascript:location_this(`search.php?q=퀴즈 · 능력고사`)">퀴즈 · 능력고사</a>
-                    <a href="#" class="tag medium default" onclick="javascript:location_this(`search.php?q=미궁 · 방탈출`)">미궁 · 방탈출</a>
-                    <a href="#" class="tag medium default" onclick="javascript:location_this(`search.php?q=미니게임`)">미니게임</a>
-                    <a href="#" class="tag medium default" onclick="javascript:location_this(`search.php?q=짤 뽑기`)">짤 뽑기</a>
-                    <a href="#" class="tag medium default" onclick="javascript:location_this(`search.php?q=짤 만들기`)">짤 만들기</a>
-                    <a href="#" class="tag medium default" onclick="javascript:location_this(`search.php?q=운세 · 타로`)">운세 · 타로</a>
-                    <a href="#" class="tag medium default" onclick="javascript:location_this(`sn/intro.html`)">스낵테스트</a>
+                    <a href="#" class="tag medium default" onclick="location_this('searchResults?q=MBTI · 유형')">MBTI · 유형</a>
+                    <a href="#" class="tag medium default" onclick="location_this('searchResults?q=케미 · 궁합')">케미 · 궁합</a>
+                    <a href="#" class="tag medium default" onclick="location_this('searchResults?q=연애')">연애</a>
+                    <a href="#" class="tag medium default" onclick="location_this('searchResults?q=퀴즈 · 능력고사')">퀴즈 · 능력고사</a>
+                    <a href="#" class="tag medium default" onclick="location_this('searchResults?q=미궁 · 방탈출')">미궁 · 방탈출</a>
+                    <a href="#" class="tag medium default" onclick="location_this('searchResults?q=미니게임')">미니게임</a>
+                    <a href="#" class="tag medium default" onclick="location_this('searchResults?q=짤 뽑기')">짤 뽑기</a>
+                    <a href="#" class="tag medium default" onclick="location_this('searchResults?q=짤 만들기')">짤 만들기</a>
+                    <a href="#" class="tag medium default" onclick="location_this('searchResults?q=운세 · 타로')">운세 · 타로</a>
+                    <a href="#" class="tag medium default" onclick="location_this('sn/intro.html')">스낵테스트</a>
                 </div>
             </div>
 
@@ -106,91 +128,30 @@
                     </div>
                 </li>
             </ul>
-                  </div>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="https://cdn.banggooso.com/assets/js/clipboard.min.js"></script>
-    <script src="/assets/js/common-re.js?ver=2024082119"></script>
-    <!-- 구글 에드센스-->
-    <script data-ad-client="ca-pub-7576712279485173" crossorigin="anonymous" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        </div>
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <script src="https://cdn.banggooso.com/assets/js/clipboard.min.js"></script>
+        <script src="/assets/js/common-re.js?ver=2024082119"></script>
+        <!-- 구글 에드센스-->
+        <script data-ad-client="ca-pub-7576712279485173" crossorigin="anonymous" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
-
-
-
-
-
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-177361127-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-177361127-1');
-    </script>
-
-
-    <!-- Facebook Pixel Code -->
-    <script>
-        ! function(f, b, e, v, n, t, s) {
-            if (f.fbq) return;
-            n = f.fbq = function() {
-                n.callMethod ?
-                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            };
-            if (!f._fbq) f._fbq = n;
-            n.push = n;
-            n.loaded = !0;
-            n.version = '2.0';
-            n.queue = [];
-            t = b.createElement(e);
-            t.async = !0;
-            t.src = v;
-            s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s)
-        }(window, document, 'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '634938264117688');
-        fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=634938264117688&ev=PageView&noscript=1" alt="fb-Pixel" /></noscript>
-    <!-- End Facebook Pixel Code -->
-
-    <!-- 카카오 픽셀 그 외? -->
-    <!-- <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script> -->
-
-    <!-- 카카오 픽셀 회원가입-->
-    <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/kas/static/kp.js"></script>
-    <script>
-        kakaoPixel('6894544435604599766').pageView();
-    </script>
-
-
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        $('.app-main').addClass('ads-app-main-footer');
-        function location_this(where) {
-            let this_url = window.location.origin;
-            window.open(this_url + '/' + where, '_self');
-        }
-
-        function enterkey(event) {
-            if (event.keyCode === 13) {  // Enter 키 코드가 13
-                let searchWord = $("input[name='q']").val().trim();
-                if (searchWord) {
-                    let encodedSearchWord = encodeURIComponent(searchWord);
-                    location_this('search.php?q=' + encodedSearchWord);
-                }
-            }
-        }
-    </script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-177361127-1"></script>
         <script>
-            function backUp() {
-                window.location.href = '/';  // 여기에 홈 페이지의 URL을 입력하세요.
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
             }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-177361127-1');
+        </script>
+
+        <!-- 카카오 픽셀 회원가입-->
+        <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/kas/static/kp.js"></script>
+        <script>
+            kakaoPixel('6894544435604599766').pageView();
         </script>
 
 

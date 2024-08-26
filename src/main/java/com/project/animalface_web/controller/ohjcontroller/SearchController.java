@@ -1,5 +1,7 @@
 package com.project.animalface_web.controller.ohjcontroller;
 
+import com.project.animalface_web.service.ohjserviece.SearchService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +13,13 @@ import java.util.List;
 
 @Controller
 public class SearchController {
+
+    private final SearchService searchService;
+
+    @Autowired
+    public SearchController(SearchService searchService) {
+        this.searchService = searchService;
+    }
 
     // 검색 페이지 로딩
     @GetMapping("/search")
@@ -30,16 +39,4 @@ public class SearchController {
         // 검색 결과 페이지 반환
         return "searchResults";  // searchResults.html 뷰를 반환
     }
-
-    // 실제 검색 로직을 수행하는 서비스 (가정)
-    private SearchService searchService = new SearchService();
-
-    // SearchService 내 performSearch 메서드 구현 예
-    public class SearchService {
-        public List<String> performSearch(String query) {
-            // 실제 검색 로직 구현
-            return new ArrayList<>(); // 임시 결과 반환
-        }
-    }
 }
-
