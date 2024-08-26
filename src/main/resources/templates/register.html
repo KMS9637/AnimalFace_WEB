@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/css/mypage.css">
 
     <!-- CSRF 토큰 메타 태그 추가 -->
-    <meta name="csrf-token" th:content="${_csrf.token}">
+<!--    <meta name="csrf-token" th:content="${_csrf.token}">-->
 
     <!-- 자바스크립트 나중에 -->
     <!-- <script src="/assets/js/jquery-3.6.0.min.js"></script> -->
@@ -75,13 +75,13 @@
             }
 
             // CSRF 토큰을 메타 태그에서 추출
-            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            // const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
             fetch('/api/members/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': csrfToken // CSRF 토큰을 헤더에 추가
+                    // 'X-CSRF-TOKEN': csrfToken // CSRF 토큰을 헤더에 추가
                 },
                 body: JSON.stringify({
                     memberId: email,
@@ -98,7 +98,7 @@
                 .then(data => {
                     if (data) {
                         alert('회원가입 성공');
-                        window.location.href = '/login'; // 회원가입 후 로그인 페이지로 이동
+                        window.location.href = '/api/members/login'; // 회원가입 후 로그인 페이지로 이동
                     } else {
                         alert('회원가입 실패');
                     }
@@ -110,6 +110,7 @@
         });
     });
 </script>
+
 
 <!-- 자바스크립트 나중에 -->
 <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script> -->
