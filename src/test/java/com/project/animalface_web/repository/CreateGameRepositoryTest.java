@@ -25,8 +25,8 @@ public class CreateGameRepositoryTest {
                     CreateGame createGame = CreateGame.builder()
                             .createGameName("생성게임 이름 더미" + i)
                             .createGameQuestion("생성게임 질문 더미" + i)
-                            .createGameAnswers("생성게임 답변 더미" + i)
-                            .createGameResults("생성게임 결과 더미" + i)
+                            .createGameAnswer("생성게임 답변 더미" + i)
+                            .createGameResult("생성게임 결과 더미" + i)
                             .build();
 
                     CreateGame result = createGameRepository.save(createGame);
