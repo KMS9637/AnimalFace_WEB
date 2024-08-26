@@ -1,21 +1,48 @@
 package com.project.animalface_web.controller.kdkcontroller;
 
 import ch.qos.logback.core.model.Model;
+import com.project.animalface_web.dto.CreateGameDTO;
+import com.project.animalface_web.service.kdkserviece.CreateGameService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @Log4j2
 @RequiredArgsConstructor
 @RequestMapping("/createGame")
 public class CreateGameController {
+    private final CreateGameService createGameService;
 
     @GetMapping("/create")
     public String create(Model model) {
         return "createGame/create2";
     }//getMapping
+
+    @PostMapping("/create")
+    public String createRegister(@Valid CreateGameDTO createGameDTO
+            , BindingResult bindingResult
+            , RedirectAttributes redirectAttributes
+            , org.springframework.ui.Model model) {
+        if (bindingResult.hasErrors()) {
+            log.info("register 중 오류 발생" + bindingResult.getAllErrors());
+            redirectAttributes.addFlashAttribute(
+                    "errors", bindingResult.getAllErrors());
+            return "redirect:/createGame/create";
+        }
+        log.info("화면에서 입력 받은 내용 확인 : " + createGameDTO);
+
+        Long createGameNo = createGameService.registerCreateGame(createGameDTO);
+        redirectAttributes.addFlashAttribute("result", createGameNo);
+        redirectAttributes.addFlashAttribute("resultType", "register");
+
+        return "redirect:/main";
+    }
 
 }//Class

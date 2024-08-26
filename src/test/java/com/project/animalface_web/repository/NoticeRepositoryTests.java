@@ -21,7 +21,7 @@ public class NoticeRepositoryTests {
 
     @Test
     public void testInsert() {
-        IntStream.rangeClosed(1,100).forEach(i->
+        IntStream.rangeClosed(1,10).forEach(i->
                 {
                     Notice notice = Notice.builder()
                             .noticeNo((long) i)

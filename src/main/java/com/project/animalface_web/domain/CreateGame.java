@@ -27,9 +27,9 @@ public class CreateGame extends BaseEntity{
     private String createGameQuestion;
 
 
-    private String createGameAnswers;
+    private String createGameAnswer;
 
 
-    private String createGameResults;
+    private String createGameResult;
 }
 
