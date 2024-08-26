@@ -35,6 +35,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    implementation 'org.modelmapper:modelmapper:2.4.4'
+
 
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 
@@ -78,7 +80,7 @@ dependencies {
 
     // 시큐리티 도구
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '3.3.0'
+//    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '3.3.0'
 
     // 타임리프 화면에서, 인증된 유저 마다 화면 조건식으로 표현하는 도구
     // https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity6
