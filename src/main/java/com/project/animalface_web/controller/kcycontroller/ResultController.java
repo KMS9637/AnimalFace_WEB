@@ -20,4 +20,9 @@ public class ResultController {
 
     }
 
+    @GetMapping("/all_result")
+    public void allresult() {
+
+    }
+
 }
