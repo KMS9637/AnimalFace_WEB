@@ -7,6 +7,8 @@ public interface CreateGameService {
 
     Long registerCreateGame(CreateGameDTO createGameDTO);
 
+    CreateGameDTO readCreateGame(Long createGameNo);
+
     default CreateGameDTO entityToDTO(CreateGame createGame) {
         CreateGameDTO createGameDTO = CreateGameDTO.builder()
                 .createGameNo(createGame.getCreateGameNo())
