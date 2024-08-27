@@ -10,20 +10,32 @@
     <title>재미보따리 게임 생성</title>
     <meta name="description" content="">
     <link rel="stylesheet" href="/css/create/create2.css">
-    <!-- <link rel="stylesheet" href="/css/create.css"> -->
+    <script>
+        function validateForm() {
+            // 입력 필드 가져오기
+            var name = document.getElementById("email-phone").value.trim();
+            var question = document.getElementById("question").value.trim();
+            var answer = document.getElementById("answer").value.trim();
+            var result = document.getElementById("result").value.trim();
+
+            // 필드 유효성 검사
+            if (name === "" || question === "" || answer === "" || result === "") {
+                alert("모든 필드를 채워주세요.");
+                return false;
+            }
+
+        }
+    </script>
 </head>
 
 <body class="ko-KR">
 <div layout:fragment="content">
     <div class="app" data-app style="height: 788px">
-
         <main class="app-main brand">
             <h2>재미보따리는<br> <br> 여러분의 재미 있는 이야기를 듣고 싶어요!</h2>
             <div class="ask">
-
-                <form id="brand" action="/createGame/create" method="post">
+                <form id="brand" action="/createGame/create" method="post" onsubmit="return validateForm()">
                     <div id="form-contents">
-
                         <label for="email-phone" class="title">제목</label>
                         <input type="text" name="createGameName" class="id" id="email-phone" placeholder="제목을 적어 주세요.">
 
@@ -42,34 +54,10 @@
                         <button type="reset" id="cancel" class="btn btn-danger">초기화</button>
                     </div>
                 </form>
-
             </div>
         </main>
     </div>
 </div>
-<script>
-    // 등록하기
-    document.querySelector(".submitBtn").addEventListener("click", function(e) {
-        // 폼 유효성 검사를 통과한 경우에만 전송
-        const form = document.querySelector("#brand");
-        if (form.checkValidity()) {
-            // 만약 파일 업로드 기능이 필요하다면, 파일 데이터를 추가하는 코드 추가
-            let str = '';
-            const uploadFiles = document.querySelectorAll(".upload-file"); // 클래스명 조정 가능
-            for (let i = 0; i < uploadFiles.length; i++) {
-                const uploadFile = uploadFiles[i];
-                const imgLink = uploadFile.getAttribute("data-src");
-                str += `<input type='hidden' name='fileNames' value='${imgLink}'>`;
-            }
-            form.insertAdjacentHTML('beforeend', str);
 
-            // 폼 제출
-            form.submit();
-        } else {
-            // 폼 유효성 검사 실패 시 기본 오류 메시지를 출력
-            form.reportValidity();
-        }
-    });
-</script>
 </body>
 </html>

@@ -1,14 +1,18 @@
 package com.project.animalface_web.controller.kdkcontroller;
 
-import ch.qos.logback.core.model.Model;
+
 import com.project.animalface_web.dto.CreateGameDTO;
 import com.project.animalface_web.service.kdkserviece.CreateGameService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -23,7 +27,7 @@ public class CreateGameController {
     @GetMapping("/create")
     public String create(Model model) {
         return "createGame/create2";
-    }//getMapping
+    }//@GetMapping("/create")
 
     @PostMapping("/create")
     public String createRegister(@Valid CreateGameDTO createGameDTO
@@ -43,6 +47,37 @@ public class CreateGameController {
         redirectAttributes.addFlashAttribute("resultType", "register");
 
         return "redirect:/main";
-    }
+    }//@PostMapping("/create")
+
+    @GetMapping("/read")
+    public void read(@AuthenticationPrincipal UserDetails user, Long createGameNo, CreateGameDTO createGameDTO, Model model) {
+        log.info("CreateGameController : /read 확인 중");
+
+        CreateGameDTO createGameDTO1 = createGameService.readCreateGame(createGameNo);
+
+        log.info("CreateGameController 확인 중, createGameDTO1 : " + createGameDTO1);
+        model.addAttribute("createGameDTO", createGameDTO1);
+        model.addAttribute("user", user);
+    }//@GetMapping("/read")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }//Class

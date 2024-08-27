@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @Log4j2
 @RequiredArgsConstructor
@@ -22,6 +24,16 @@ public class CreateGameServiceImpl implements CreateGameService {
         CreateGame createGame = dtoToEntity(createGameDTO);
         Long createGameNo = createGameRepository.save(createGame).getCreateGameNo();
         return createGameNo;
-    }
+    }//registerCreateGame
 
-}
+    @Override
+    public CreateGameDTO readCreateGame(Long createGameNo) {
+        Optional<CreateGame> result = createGameRepository.findByCreateGameNo(createGameNo);
+        CreateGame createGame = result.orElseThrow();
+        CreateGameDTO createGameDTO = entityToDTO(createGame);
+
+        return createGameDTO;
+    }//readCreateGame
+
+
+}//Class
