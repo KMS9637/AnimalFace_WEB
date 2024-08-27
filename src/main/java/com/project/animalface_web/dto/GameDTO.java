@@ -15,8 +15,11 @@ public class GameDTO {
 
     private String gameName;
 
-    private String question;
-    private String answer;
+    private String questions;
+    private String answers;
+    private String results;
+
     private Images images;
 
 }
+

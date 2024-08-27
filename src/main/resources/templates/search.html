@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>방구석연구소 - 검색</title>
+    <meta name="description" content="방구석에서 시작하는 &#39;나&#39;연구소! 연애능력 테스트, 아이돌 포지션 테스트, 고인물 테스트">
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="./favicon-96x96.png" sizes="96x96">
+    <link rel="image_src" href="https://cdn.banggooso.com/assets/images/common/ogimg.jpg">
+    <meta property="og:title" content="방구석연구소" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://www.banggooso.com/" />
+    <meta property="og:image" content="https://cdn.banggooso.com/assets/images/common/ogimg.jpg" />
+    <meta property="og:description" content="방구석에서 시작하는 &#39;나&#39;연구소! 연애능력 테스트, 아이돌 포지션 테스트, 고인물 테스트" />
+    <meta property="og:site_name" content="방구석연구소" />
+    <meta property="fb:app_id" content="868684923711460" />
+    <link rel="canonical" href="https://www.banggooso.com/" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/css/main/common.css">
+    <link rel="stylesheet" href="/css/main/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/popups/css/popup.css?ver=2024082119">
+    <script src="/assets/popups/js/popup.js?ver=2024082119"></script>
+    <script src="/assets/js/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.4.0/dist/lazyload.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/kas/static/kp.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        $('.app-main').addClass('ads-app-main-footer');
+
+        function enterkey(event) {
+            if (event.keyCode === 13) {  // Enter 키 코드가 13
+                event.preventDefault();  // 기본 동작 방지
+                let searchWord = $("input[name='q']").val().trim();
+                if (searchWord) {
+                    let encodedSearchWord = encodeURIComponent(searchWord);
+                    // searchResults URL로 이동
+                    window.location.href = 'searchResults?q=' + encodedSearchWord;
+                }
+            }
+        }
+
+        function backUp() {
+            window.location.href = '/';  // 여기에 홈 페이지의 URL을 입력하세요.
+        }
+
+        function location_this(url) {
+            window.location.href = url;
+        }
+    </script>
+    <script>
+        kakaoPixel('6894544435604599766').pageView();
+        kakaoPixel('6894544435604599766').search({
+            keyword: ''
+        });
+    </script>
+</head>
+<body>
+<header class="app-header test_center">
+    <button type="button" class="app-header-btn back" onclick="backUp();" title="뒤로가기"></button>
+    <h1 class="app-title">검색</h1>
+</header>
+<main class="app-main">
+    <div>
+        <!-- 검색창 -->
+        <div class="common-form-group" data-form-group>
+            <div class="form-control-wrap">
+                <input class="form-control" name="q" maxlength="20" onkeydown="enterkey(event);" value="" autofocus placeholder="검색어를 입력하세요.">
+                <button type="button" class="btn-remove-text" data-input-clear>텍스트 삭제</button>
+            </div>
+        </div>
+
+            <!-- 메인 키워드 -->
+            <div class="main_default">
+                <div class="button-group">
+                    <h4 class="subtitle">대표 검색어</h4>
+                </div>
+                <div class="keyword-wrap">
+                    <a href="#" class="tag medium default" onclick="location_this('searchResults?q=MBTI · 유형')">MBTI · 유형</a>
+                    <a href="#" class="tag medium default" onclick="location_this('searchResults?q=케미 · 궁합')">케미 · 궁합</a>
+                    <a href="#" class="tag medium default" onclick="location_this('searchResults?q=연애')">연애</a>
+                    <a href="#" class="tag medium default" onclick="location_this('searchResults?q=퀴즈 · 능력고사')">퀴즈 · 능력고사</a>
+                    <a href="#" class="tag medium default" onclick="location_this('searchResults?q=미궁 · 방탈출')">미궁 · 방탈출</a>
+                    <a href="#" class="tag medium default" onclick="location_this('searchResults?q=미니게임')">미니게임</a>
+                    <a href="#" class="tag medium default" onclick="location_this('searchResults?q=짤 뽑기')">짤 뽑기</a>
+                    <a href="#" class="tag medium default" onclick="location_this('searchResults?q=짤 만들기')">짤 만들기</a>
+                    <a href="#" class="tag medium default" onclick="location_this('searchResults?q=운세 · 타로')">운세 · 타로</a>
+                    <a href="#" class="tag medium default" onclick="location_this('sn/intro.html')">스낵테스트</a>
+                </div>
+            </div>
+
+            <!-- 검색 결과 있을때 -->
+            <ul class="feed-list">
+                <li>
+                    <div class="item-header">
+                        <div class="cate-icon">
+                            <img src="https://cdn.banggooso.com/assets/images/category-icons/category-make-renewal.png" class="item-icon">
+                        </div>
+                        <span class="category-title">짤 만들기</span>
+                    </div>
+                    <a href="/intro.html?idx=223">
+                        <figure class="thumb">
+                            <img src='https://cdn.banggooso.com/assets/images/uploadImg/1724073537(PC).png' alt="연애 능력 테스트">
+                        </figure>
+                    </a>
+                    <div class="item-body">
+                        <div class="title_wrap">
+                            <h4 class="title">다함께 강강술래</h4>
+                        </div>
+                        <div class="s_title_wrap">
+                            <h5 class="s_title">랜선 강강술래에 함께 해줄래?</h5>
+                            <div class="item-actions">
+                                <dl data-toggle="btn-like" data-idx="223" data-uaid="" data-target="#count1">
+                                    <dt><i class="icon-join"></i></dt>
+                                    <dd id="count1">4,505</dd>
+                                </dl>
+                                <dl>
+                                    <dt><i class="icon-reply"></i></dt>
+                                    <dd>407</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <script src="https://cdn.banggooso.com/assets/js/clipboard.min.js"></script>
+        <script src="/assets/js/common-re.js?ver=2024082119"></script>
+        <!-- 구글 에드센스-->
+        <script data-ad-client="ca-pub-7576712279485173" crossorigin="anonymous" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-177361127-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-177361127-1');
+        </script>
+
+        <!-- 카카오 픽셀 회원가입-->
+        <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/kas/static/kp.js"></script>
+        <script>
+            kakaoPixel('6894544435604599766').pageView();
+        </script>
+
+
+    </main>
+</div>
+</body>
+</html>
