@@ -17,4 +17,6 @@ public class MemberController {
     public String getRegisterPage() {
         return "register";  // `src/main/resources/templates/register.html`
     }
+
+
 }
