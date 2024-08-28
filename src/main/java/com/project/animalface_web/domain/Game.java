@@ -29,6 +29,8 @@ public class Game extends BaseEntity{
     @OneToMany(mappedBy = "game", cascade = CascadeType.ALL)
     private List<GameResult> results;
 
+
+
 }
 
 

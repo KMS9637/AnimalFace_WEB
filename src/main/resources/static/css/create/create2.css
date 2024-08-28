@@ -89,6 +89,11 @@ input[type="text"]:focus, textarea:focus {
     background-color: #0056b3;
 }
 
+#submitmail {
+    padding: 8px 12px;
+    font-size: 0.95rem;
+}
+
 @media (max-width: 768px) {
     .app {
         padding: 15px;
@@ -104,7 +109,24 @@ input[type="text"]:focus, textarea:focus {
         font-size: 0.95rem;
     }
 
-    #submitmail {
+    #cancel {
+
+        width: 100%;
+        padding: 10px 15px;
+        font-size: 1rem;
+        background-color: #ffbaba;
+        color: #000000;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    #cancel:hover {
+        background-color: #ffbaba;
+    }
+
+    #cancel {
         padding: 8px 12px;
         font-size: 0.95rem;
     }

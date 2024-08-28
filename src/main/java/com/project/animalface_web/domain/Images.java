@@ -1,6 +1,7 @@
 package com.project.animalface_web.domain;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import lombok.*;
@@ -40,3 +41,5 @@ public class Images implements Comparable<Images>{
         this.faceType = faceType;
     }
 }
+//테스트 이미지 링크
+//https://ibb.co/6grghdk
