@@ -22,6 +22,6 @@ public class FaceType extends BaseEntity{
 
     private String animalImage;
     private String animalType;
-    private Long animalAccuracy;
+    private Long Accuracy;
 }
 
