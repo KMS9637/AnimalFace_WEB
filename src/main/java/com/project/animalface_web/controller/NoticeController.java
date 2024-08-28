@@ -1,4 +1,4 @@
-package com.project.animalface_web.controller.ksycontroller;
+package com.project.animalface_web.controller;
 
 import com.project.animalface_web.dto.NoticeDTO;
 import com.project.animalface_web.service.ksyserviece.NoticeService;
