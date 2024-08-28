@@ -24,7 +24,4 @@ public class NoticeDTO {
 
     private LocalDate date;
 
-    public String getFormattedDate() {
-        return date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-    }
 }
