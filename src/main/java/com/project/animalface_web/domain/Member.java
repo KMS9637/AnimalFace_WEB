@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -20,9 +19,10 @@ public class Member extends BaseEntity{
 
     private String memberId;
     private String memberPw;
-    private String memberImg;
     private String memberName;
     private String memberGameResult;
+
+    private String memberImg;
 
     private boolean del;
     private boolean social;

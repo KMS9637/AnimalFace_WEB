@@ -16,5 +16,6 @@ public class CreateGameController {
     @GetMapping("/create")
     public String create(Model model) {
         return "createGame/create2";
-    }
-}
+    }//getMapping
+
+}//Class
