@@ -39,15 +39,34 @@ public class NoticeServiceImpl implements NoticeService {
     }
 
     @Override
-    public void update(NoticeDTO noticeDTO) {
-        Optional<Notice> result = noticeRepository.findById(noticeDTO.getNoticeNo());
-        Notice notice = result.orElseThrow();
-        notice.updateNameAndContent(noticeDTO.getNoticeName(), noticeDTO.getNoticeContents());
-        noticeRepository.save(notice);
+    public NoticeDTO update(Long noticeNo, NoticeDTO noticeDTO) {
+        Optional<Notice> optionalNotice = noticeRepository.findById(noticeNo);
+        if (optionalNotice.isPresent()) {
+            Notice notice = optionalNotice.get();
+            notice.setNoticeName(noticeDTO.getNoticeName());
+            notice.setNoticeContents(noticeDTO.getNoticeContents());
+            notice.setDate(noticeDTO.getDate());
+
+            Notice updatedNotice = noticeRepository.save(notice);
+            return entityToDto(updatedNotice);
+        }
+        return null;  // or throw an exception
     }
 
     @Override
-    public void delete(Long noticeNo) {
+    public boolean delete(Long noticeNo) {
         noticeRepository.deleteById(noticeNo);
+        return false;
+    }
+
+    @Override
+    public NoticeDTO save(NoticeDTO noticeDTO) {
+        Notice notice = new Notice();
+        notice.setNoticeName(noticeDTO.getNoticeName());
+        notice.setNoticeContents(noticeDTO.getNoticeContents());
+        notice.setDate(noticeDTO.getDate());
+
+        Notice savedNotice = noticeRepository.save(notice);
+        return entityToDto(savedNotice);
     }
 }

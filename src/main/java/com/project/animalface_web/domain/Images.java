@@ -41,3 +41,5 @@ public class Images implements Comparable<Images>{
         this.faceType = faceType;
     }
 }
+//테스트 이미지 링크
+//https://ibb.co/6grghdk
