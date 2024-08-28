@@ -21,5 +21,7 @@ public class GameQuestion extends BaseEntity{
     private Game game;
 
     private String gameQuestion;
+
+    private String gameQuestionImage;
 }
 
