@@ -18,9 +18,9 @@
 
   <main class="app-main">
     <h2> 로그인 </h2>
-    <form class="form_w" id="loginForm">
-      <input type="text" id="userid" class="login-input w-100 display-block" placeholder="아이디 입력" required autofocus>
-      <input type="password" id="password" class="login-input w-100 display-block" placeholder="비밀번호 입력" required>
+    <form action="/users/login" method="post" class="form_w" id="loginForm">
+      <input type="text" id="email" name="memberId" class="login-input w-100 display-block" placeholder="아이디 입력" required autofocus>
+      <input type="password" id="password" name="memberPw" class="login-input w-100 display-block" placeholder="비밀번호 입력" required>
       <div class="sign-in-actions">
         <div>
           <button class="btn yellow w-100" type="submit">로그인</button>
@@ -49,7 +49,7 @@
       loginForm.addEventListener('submit', function(event) {
         event.preventDefault(); // 기본 폼 제출 동작 방지
 
-        const userId = document.getElementById('userid').value;
+        const userId = document.getElementById('email').value;
         const password = document.getElementById('password').value;
 
         if (!userId || !password) {
@@ -57,7 +57,7 @@
           return;
         }
 
-        fetch('/api/members/login', {
+        fetch('/users/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -93,7 +93,7 @@
     const signupButton = document.getElementById('signupButton2');
     if (signupButton) {
       signupButton.addEventListener('click', function() {
-        window.location.href = '/api/members/register'; // 올바른 회원가입 경로 설정
+        window.location.href = '/users/new'; // 올바른 회원가입 경로 설정
       });
     }
 

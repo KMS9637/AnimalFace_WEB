@@ -1,0 +1,49 @@
+package com.project.animalface_web.security;
+
+import com.project.animalface_web.domain.Member;
+import com.project.animalface_web.dto.APIUserDTO;
+import com.project.animalface_web.repository.MemberRepository;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+@Service
+@Log4j2
+@RequiredArgsConstructor
+public class APIUserDetailsService implements UserDetailsService {
+
+    //주입
+    private final MemberRepository apiUserRepository;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+        Optional<Member> result = apiUserRepository.findByMemberName(username);
+
+        Member apiUser = result.orElseThrow(() -> new UsernameNotFoundException("Cannot find mid"));
+
+        log.info("lsy APIUserDetailsService apiUser-------------------------------------");
+
+        // 일반 유저 로그인과, api 로그인 처리 확인 필요
+        APIUserDTO dto =  new APIUserDTO(
+                apiUser.getMemberName(),
+                apiUser.getMemberPw(),
+                apiUser.getMemberId(),
+                apiUser.getProfileImageId(),
+                apiUser.getRoleSet().stream().map(
+                        memberRole -> new SimpleGrantedAuthority("ROLE_"+ memberRole.name())
+                ).collect(Collectors.toList()));
+
+        log.info("lsy dto : "+dto);
+
+        return dto;
+    }
+}

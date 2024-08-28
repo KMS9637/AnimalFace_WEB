@@ -32,6 +32,10 @@ public class Member extends BaseEntity{
     private String uuid;
     private String fileName;
 
+    // 프로필 이미지, 몽고디비에 업로드
+    @Column(name = "profile_image_id")
+    private String profileImageId;
+
     // 소셜 로그인한 프로필 이미지, 미디어 서버 주소
     private String profileImageServer;
 
