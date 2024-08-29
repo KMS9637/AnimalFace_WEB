@@ -57,7 +57,7 @@ public class ImageClassifyController {
 
             String predictedLabel = rootNode.path("얼굴상 : ").asText();
 
-            String customResponse = "Predicted Label: " + predictedLabel;
+            String customResponse = "당신의 얼굴상은 " + predictedLabel+" 입니다.";
 
 
             // 임시 파일 정리

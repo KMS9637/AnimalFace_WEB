@@ -1,4 +1,4 @@
-package com.project.animalface_web.controller.ksyAPI;
+package com.project.animalface_web.controller;
 
 
 import com.project.animalface_web.dto.CreateGameDTO;
@@ -7,13 +7,9 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @RestController
 @Log4j2

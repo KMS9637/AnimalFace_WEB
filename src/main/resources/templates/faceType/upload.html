@@ -2,12 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload</title>
 </head>
 <body>
-동물상 테스트 업로드 페이지
-<form id="brand" action="/faceType/result" method="get">
-<button type="submit" id="submitmail" class="btn btn-primary submitBtn">보내기</button>
+<h1>Upload Your Image</h1>
+<form id="uploadForm">
+    <input type="file" id="image" name="image" accept="image/*" required>
+    <button type="submit">Upload and Classify</button>
 </form>
+
+<script>
+    document.getElementById('uploadForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const formData = new FormData();
+        const fileInput = document.getElementById('image');
+        const file = fileInput.files[0];
+
+        formData.append('image', file);
+
+        fetch('/classify', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.text();
+            })
+            .then(data => {
+                // 결과를 세션 스토리지에 저장하고 결과 페이지로 이동
+                sessionStorage.setItem('classificationResult', data);
+                window.location.href = '/faceType/result';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error: ' + error.message);
+            });
+    });
+</script>
 </body>
 </html>

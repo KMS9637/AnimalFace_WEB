@@ -2,9 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classification Result</title>
 </head>
 <body>
-동물상 테스트 결과 페이지
+<h1>Classification Result</h1>
+<div id="result"></div>
+<a href="/faceType/upload">Upload another image</a>
+
+<script>
+    // 세션 스토리지에서 결과 가져오기
+    const result = sessionStorage.getItem('classificationResult');
+
+    if (result) {
+        document.getElementById('result').innerHTML = `<p>${result}</p>`;
+        // 결과를 한 번 표시한 후 세션 스토리지에서 제거
+        sessionStorage.removeItem('classificationResult');
+    } else {
+        document.getElementById('result').innerHTML = `<p>No result available.</p>`;
+    }
+</script>
 </body>
 </html>
