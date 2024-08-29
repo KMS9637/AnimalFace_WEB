@@ -21,16 +21,22 @@ import java.util.stream.Collectors;
 public class APIUserDetailsService implements UserDetailsService {
 
     //주입
-    private final MemberRepository apiUserRepository;
+    private final MemberRepository memberRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String memberId) throws UsernameNotFoundException {
 
-        Optional<Member> result = apiUserRepository.findByMemberName(username);
 
+        Optional<Member> result = memberRepository.findByMemberId(memberId);
+
+
+        log.info("Received memberId for authentication: " + memberId);
+        log.info("APIUserDetailsService - loadUserByUsername method called with memberId: " + memberId);
         Member apiUser = result.orElseThrow(() -> new UsernameNotFoundException("Cannot find mid"));
 
+
         log.info("lsy APIUserDetailsService apiUser-------------------------------------");
+
 
         // 일반 유저 로그인과, api 로그인 처리 확인 필요
         APIUserDTO dto =  new APIUserDTO(
@@ -42,7 +48,9 @@ public class APIUserDetailsService implements UserDetailsService {
                         memberRole -> new SimpleGrantedAuthority("ROLE_"+ memberRole.name())
                 ).collect(Collectors.toList()));
 
+
         log.info("lsy dto : "+dto);
+
 
         return dto;
     }

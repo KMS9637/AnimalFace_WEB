@@ -30,28 +30,22 @@ public class MemberController {
     @Autowired
     PasswordEncoder bCryptPasswordEncoder;
 
-    @GetMapping
-    public String getAllUsers(@AuthenticationPrincipal UserDetails user, Model model) {
+    @GetMapping("/main")
+    public void getAllUsers(@AuthenticationPrincipal UserDetails user, Model model) {
         List<Member> users = memberService.getAllUsers();
         model.addAttribute("users", users);
         model.addAttribute("user", user);
-
-        return "main";
-        // returns users.html
     }
 
     @GetMapping("/login")
-    public String showLoginUserForm() {
-        return "login";
-        // returns create-user.html
+    public void showLoginUserForm() {
+
     }
 
-    @GetMapping("/new")
-    public String showCreateUserForm(@AuthenticationPrincipal UserDetails user, Model model) {
+    @GetMapping("/register")
+    public void showCreateUserForm(@AuthenticationPrincipal UserDetails user, Model model) {
 //        model.addAttribute("user", new User());
         model.addAttribute("user", user);
-        return "register";
-        // returns create-user.html
     }
 
     //프로필 이미지 업로드 형식으로, 몽고디비에 연결하는 코드
@@ -77,10 +71,8 @@ public class MemberController {
     }
 
     @GetMapping("/{id}/edit")
-    public String showUpdateUserForm(@PathVariable Long id, Model model) {
+    public void showUpdateUserForm(@PathVariable Long id, Model model) {
         memberService.getUserById(id).ifPresent(user -> model.addAttribute("user", user));
-        return "user/update-user";
-        // returns update-user.html
     }
 
     @PostMapping("/edit")

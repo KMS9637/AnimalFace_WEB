@@ -83,6 +83,7 @@ public class JWTUtil {
                 .parseClaimsJws(token) // 파싱 및 검증, 실패 시 에러
                 // JWT의 바디(body) 부분인 클레임을 추출
                 .getBody();
+
         return claim;
         // claim 의 샘플 예시, 사용자 정의 포함
 //        {

@@ -36,8 +36,8 @@ public class MemberService {
         return memberRepository.findById(id);
     }
 
-    public Optional<Member> getUserByUsername(String username) {
-        return memberRepository.findByMemberName(username);
+    public Optional<Member> getUserById(String memberId) {
+        return memberRepository.findByMemberId(memberId);
     }
 
     public Member createUser(Member user) {

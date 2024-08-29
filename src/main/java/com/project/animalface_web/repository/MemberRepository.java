@@ -10,5 +10,6 @@ import java.util.Optional;
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Long> {
     @EntityGraph(attributePaths = "roleSet")
-    Optional<Member> findByMemberName(String membername);
+
+    Optional<Member> findByMemberId(String memberId);
 }

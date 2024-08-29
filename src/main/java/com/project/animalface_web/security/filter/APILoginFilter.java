@@ -42,8 +42,10 @@ public class APILoginFilter extends AbstractAuthenticationProcessingFilter {
         UsernamePasswordAuthenticationToken authenticationToken
                 = new UsernamePasswordAuthenticationToken(
                         //인증할 유저명 패스워드 이름 정하기
-                jsonData.get("username"),
-                jsonData.get("password"));
+                jsonData.get("memberId"),
+                jsonData.get("memberPw"));
+
+
 
         return getAuthenticationManager().authenticate(authenticationToken);
     }
