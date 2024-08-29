@@ -9,6 +9,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -25,9 +27,9 @@ public class CreateGame extends BaseEntity{
     private String createGameQuestion;
 
 
-    private String createGameAnswers;
+    private String createGameAnswer;
 
 
-    private String createGameResults;
+    private String createGameResult;
 }
 

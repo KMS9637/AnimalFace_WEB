@@ -1,10 +1,13 @@
 package com.project.animalface_web.domain;
 
+import com.project.animalface_web.dto.ResultDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -27,5 +30,7 @@ public class GameResult extends BaseEntity{
     @ManyToOne
     @JoinColumn(name = "memberNo")
     private Member member;
+
+
 }
 

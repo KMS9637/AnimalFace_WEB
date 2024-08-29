@@ -25,31 +25,46 @@
     <p>여기에서 다양한 유형의 결과를 확인하세요!</p>
 </div>
 
-<!--유형 카드들-->
+
 <div class="type-cards-container">
-    <!-- 유형 카드 1 -->
-    <div class="type-card">
-        <img src="/static/image/type1.png" alt="Type 1">
-        <h3>유형 1</h3>
-        <p>여기에 유형 1에 대한 간단한 설명을 추가하세요.</p>
+    <!-- 데이터베이스의 결과를 반복하여 각 카드 생성 -->
+    <div th:each="result : ${results}" class="type-card">
+        <img th:src="@{${result.gameResultImage}}" alt="Game Result Image">
+        <h3 th:text="${result.gameResult}">유형 결과</h3>
+        <p>게임 번호: <span th:text="${result.gameNo}"></span></p>
+        <p>회원 번호: <span th:text="${result.memberNo}"></span></p>
+        <p>결과 ID: <span th:text="${result.resultId}"></span></p>
     </div>
-
-    <!-- 유형 카드 2 -->
-    <div class="type-card">
-        <img src="/static/image/type2.png" alt="Type 2">
-        <h3>유형 2</h3>
-        <p>여기에 유형 2에 대한 간단한 설명을 추가하세요.</p>
-    </div>
-
-    <!-- 유형 카드 3 -->
-    <div class="type-card">
-        <img src="/static/image/type3.png" alt="Type 3">
-        <h3>유형 3</h3>
-        <p>여기에 유형 3에 대한 간단한 설명을 추가하세요.</p>
-    </div>
-
-    <!-- 추가적인 유형 카드를 여기에 추가할 수 있습니다. -->
 </div>
+
+
+
+
+<!--유형 카드들-->
+<!--<div class="type-cards-container">-->
+<!--    &lt;!&ndash; 유형 카드 1 &ndash;&gt;-->
+<!--    <div class="type-card">-->
+<!--        <img src="/static/image/type1.png" alt="Type 1">-->
+<!--        <h3>유형 1</h3>-->
+<!--        <p>여기에 유형 1에 대한 간단한 설명을 추가하세요.</p>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; 유형 카드 2 &ndash;&gt;-->
+<!--    <div class="type-card">-->
+<!--        <img src="/static/image/type2.png" alt="Type 2">-->
+<!--        <h3>유형 2</h3>-->
+<!--        <p>여기에 유형 2에 대한 간단한 설명을 추가하세요.</p>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; 유형 카드 3 &ndash;&gt;-->
+<!--    <div class="type-card">-->
+<!--        <img src="/static/image/type3.png" alt="Type 3">-->
+<!--        <h3>유형 3</h3>-->
+<!--        <p>여기에 유형 3에 대한 간단한 설명을 추가하세요.</p>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; 추가적인 유형 카드를 여기에 추가할 수 있습니다. &ndash;&gt;-->
+<!--</div>-->
 
 <!--버튼들-->
 <div class="button-container">
