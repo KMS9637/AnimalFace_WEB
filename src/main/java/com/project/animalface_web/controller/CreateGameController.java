@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -29,14 +30,12 @@ public class CreateGameController {
     }//@GetMapping("/create")
 
     @PostMapping("/create")
-    public String createRegister(@Valid CreateGameDTO createGameDTO
-            , BindingResult bindingResult
-            , RedirectAttributes redirectAttributes
-            , org.springframework.ui.Model model) {
+    public String createRegister(@Valid @ModelAttribute CreateGameDTO createGameDTO,
+                                 BindingResult bindingResult,
+                                 RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             log.info("register 중 오류 발생" + bindingResult.getAllErrors());
-            redirectAttributes.addFlashAttribute(
-                    "errors", bindingResult.getAllErrors());
+            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
             return "redirect:/createGame/create";
         }
         log.info("화면에서 입력 받은 내용 확인 : " + createGameDTO);
@@ -46,7 +45,8 @@ public class CreateGameController {
         redirectAttributes.addFlashAttribute("resultType", "register");
 
         return "redirect:/main";
-    }//@PostMapping("/create")
+    }
+
 
     @GetMapping("/read")
     public void read(@AuthenticationPrincipal UserDetails user, Long createGameNo, CreateGameDTO createGameDTO, Model model) {
