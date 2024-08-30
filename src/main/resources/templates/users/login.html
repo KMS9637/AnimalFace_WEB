@@ -30,7 +30,7 @@
       <div class="sign-up-wrap text-center">
         <p class='sns-text'>SNS로 시작하기</p>
         <ul class="sns-sign-up">
-          <li><a href="#" onclick="loginWithKakao(); return false;" class="sns-button kakao">카카오 계정으로 로그인</a></li>
+          <li><a href="#" onclick="alert('카카오 계정으로 로그인 기능은 아직 구현되지 않았습니다.'); return false;" class="sns-button kakao">카카오 계정으로 로그인</a></li>
         </ul>
         <button type="button" class="btn email-log" id="signupButton2">회원가입</button>
         <span id="login-law">로그인(가입) 시 <a href="#">이용약관</a> 및 <a href="#">개인정보 취급방침</a>에 동의하는 것으로 간주합니다.</span>
@@ -39,69 +39,19 @@
   </main>
 </div>
 
-<!--<script>-->
-<!--  // DOMContentLoaded 이벤트 리스너를 사용하여 페이지 로드 후 로그인 상태를 확인-->
-<!--  document.addEventListener("DOMContentLoaded", function() {-->
+<script>
+  // DOMContentLoaded 이벤트 리스너를 사용하여 페이지 로드 후 로그인 상태를 확인
+  document.addEventListener("DOMContentLoaded", function() {
 
-<!--    // 로그인 폼 제출 이벤트 리스너-->
-<!--    const loginForm = document.getElementById('loginForm');-->
-<!--    if (loginForm) {-->
-<!--      loginForm.addEventListener('submit', function(event) {-->
-<!--        event.preventDefault(); // 기본 폼 제출 동작 방지-->
+    // 회원가입 버튼 이벤트 리스너 추가
+    const signupButton = document.getElementById('signupButton2');
+    if (signupButton) {
+      signupButton.addEventListener('click', function() {
+        window.location.href = '/users/register'; // 올바른 회원가입 경로 설정
+      });
+    }
 
-<!--        const memberId = document.getElementById('memberId').value;-->
-<!--        const memberPw = document.getElementById('memberPw').value;-->
-
-<!--        if (!memberId || !memberPw) {-->
-<!--          alert("아이디와 비밀번호를 입력하세요.");-->
-<!--          return;-->
-<!--        }-->
-
-<!--        fetch('/users/login', {-->
-<!--          method: 'POST',-->
-<!--          headers: {-->
-<!--            'Content-Type': 'application/json'-->
-<!--          },-->
-<!--          body: JSON.stringify({-->
-<!--            memberId: memberId,-->
-<!--            memberPw: memberPw-->
-<!--          })-->
-<!--        })-->
-<!--                .then(response => {-->
-<!--                  if (response.ok) {-->
-<!--                    return response.json(); // 응답 본문을 JSON으로 읽기-->
-<!--                  } else {-->
-<!--                    throw new Error('로그인 실패');-->
-<!--                  }-->
-<!--                })-->
-<!--                .then(data => {-->
-<!--                  if (data.message === "로그인 성공") {-->
-<!--                    alert('로그인 성공');-->
-<!--                    window.location.href = '/main'; // 로그인 성공 후 이동할 페이지-->
-<!--                  } else {-->
-<!--                    alert('로그인 실패: 아이디 또는 비밀번호가 잘못되었습니다.');-->
-<!--                  }-->
-<!--                })-->
-<!--                .catch(error => {-->
-<!--                  console.error('Error:', error);-->
-<!--                  alert('로그인 중 오류가 발생했습니다.');-->
-<!--                });-->
-<!--      });-->
-<!--    }-->
-
-<!--    // 회원가입 버튼 이벤트 리스너 추가-->
-<!--    const signupButton = document.getElementById('signupButton2');-->
-<!--    if (signupButton) {-->
-<!--      signupButton.addEventListener('click', function() {-->
-<!--        window.location.href = '/users/register'; // 올바른 회원가입 경로 설정-->
-<!--      });-->
-<!--    }-->
-
-<!--    // 카카오 계정 로그인 함수 (예시)-->
-<!--    function loginWithKakao() {-->
-<!--      alert('카카오 계정으로 로그인 기능은 아직 구현되지 않았습니다.');-->
-<!--    }-->
-<!--  });-->
-<!--</script>-->
+  });
+</script>
 </body>
 </html>
