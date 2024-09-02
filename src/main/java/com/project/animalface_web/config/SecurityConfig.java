@@ -106,12 +106,12 @@ public class SecurityConfig {
         http
                 .formLogin(formLogin ->
                         formLogin
-                                .loginPage("/users/login")
+                                .loginPage("/member/login")
                                 .permitAll()
                 )
                 .authorizeRequests(authorizeRequests ->
                         authorizeRequests
-                                .requestMatchers("/users/main","/users/register").permitAll()
+                                .requestMatchers("/main","/member/register").permitAll()
                                 .requestMatchers("/reservations/**","/payments/**").authenticated()
 
                 )
@@ -122,13 +122,13 @@ public class SecurityConfig {
 
         // 로그 아웃 설정.
         http.logout(
-                logout -> logout.logoutUrl("/users/logout").logoutSuccessUrl("/users/login")
+                logout -> logout.logoutUrl("/member/logout").logoutSuccessUrl("/member/login")
 
         );
 
         //로그인 후, 성공시 리다이렉트 될 페이지 지정, 간단한 버전.
         http.formLogin(formLogin ->
-                formLogin.defaultSuccessUrl("/users/main",true)
+                formLogin.defaultSuccessUrl("/main",true)
         );
 
 
