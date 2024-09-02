@@ -30,7 +30,8 @@
             });
         </script>
     </head>
-    <body class="ko-KR"><div class="app index" data-app>
+    <body class="ko-KR">
+    <div class="app index" data-app>
         <!-- End Google Tag Manager (noscript) -->
         <header class="app-header home">
             <a href="" onclick="setPlatformGtag('홈', 'main', '홈 버튼');" class="app-logo main">방구석연구소</a>
@@ -55,7 +56,15 @@
                 </div>
             </div>
             <ul class="list">
-                <li class="my-room">
+                <li class="login-item" style="display:none;">
+                    <a href="/api/members/login" onclick="setPlatformGtag('로그인', 'sidetab', '로그인 버튼');">
+                        <h5 class="my-icon">로그인</h5>
+                    </a>
+                </li>
+                <li class="logout-item" style="display:none;">
+                    <a href="#" id="logout-btn">로그아웃</a>
+                </li>
+                <li class="my-room-item">
                     <a href="/my/myroom.html" onclick="setPlatformGtag('나의 방구석', 'sidetab', '나의 방구석 버튼');">
                         <h5 class="my-icon">나의 보따리</h5>
                     </a>
@@ -224,22 +233,55 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="https://cdn.banggooso.com/assets/js/clipboard.min.js"></script>
     <script src="/assets/js/common-re.js?ver=2024032903"></script>
-    <script>
-        var swiper = new Swiper('.swiper-container', {
-            slidesPerView: 3, // 한 페이지에 표시할 슬라이드 수
-            spaceBetween: 20, // 슬라이드 간의 간격 (픽셀 단위)
-            loop: false, // 무한 루프
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
-    </script>
                 <script>
+                    // Swiper 초기화
+                    var swiper = new Swiper('.swiper-container', {
+                        slidesPerView: 3, // 한 페이지에 표시할 슬라이드 수
+                        spaceBetween: 20, // 슬라이드 간의 간격 (픽셀 단위)
+                        loop: false, // 무한 루프
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
+                        },
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        },
+                    });
+
+                    // 문서가 준비되었을 때 실행
+                    $(document).ready(function() {
+                        // 로그인 상태에 따라 메뉴 항목의 표시/숨김 조정
+                        let isLoggedIn = false; // 로그인 상태를 확인할 방법에 따라 이 값을 동적으로 설정
+
+                        if (isLoggedIn) {
+                            $('.login-item').hide();
+                            $('.logout-item').show();
+                        } else {
+                            $('.login-item').show();
+                            $('.logout-item').hide();
+                        }
+
+                        // 로그아웃 버튼 클릭 이벤트 처리
+                        $('#logout-btn').on('click', function(event) {
+                            event.preventDefault();
+                            $.ajax({
+                                url: '/api/members/logout',
+                                method: 'POST',
+                                success: function(response) {
+                                    // 로그아웃 성공 시
+                                    alert('로그아웃 되었습니다.');
+                                    location.reload(); // 페이지 새로고침
+                                },
+                                error: function(xhr, status, error) {
+                                    // 로그아웃 실패 시
+                                    alert('로그아웃에 실패했습니다. 다시 시도해 주세요.');
+                                }
+                            });
+                        });
+                    });
+
+                    // DOMContentLoaded 이벤트 처리
                     document.addEventListener("DOMContentLoaded", function() {
                         const ham = document.getElementById("ham");
                         const menu = document.getElementById("menu");
@@ -278,5 +320,8 @@
         </div>
     </main>
     </div>
+
+
+
     </body>
 </html>

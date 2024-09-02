@@ -93,86 +93,16 @@ input[id="menuicon"]:checked +label span:nth-child(3){
     transform: translateY(50%) rotate(-45deg);
 }
 
-
+div[class="sidebar"]{
+    width: 200px;
+    height: 100%;
+    background-color: burlywood;
+    position: fixed;
+    top: 0;
+    left: -200px;
+    z-index: 1;
+    transition: all .35s;
+}
 input[id="menuicon"]:checked +label+div{
     left: 0;
 }
-
-div[class="sidebar"] {
-    width: 200px;
-    height: 100%;
-    background-color: #6a6a6a;
-    position: fixed;
-    top: 0;
-    left: -300px;
-    z-index: 1;
-    transition: all .35s;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px 0 0 8px;
-    padding: 20px;
-    padding-top: 80px;
-    overflow-y: auto;
-}
-
-/* 프로필 섹션 */
-.sidebar .profile {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.sidebar .profile .login {
-    font-weight: 600;
-    color: #ffffff;
-    margin-bottom: 10px;
-}
-
-.sidebar .profile img {
-    border-radius: 50%;
-    border: 2px solid #e0e0e0;
-}
-
-/* 리스트 스타일 */
-.sidebar .list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.sidebar .list li {
-    margin-bottom: 15px;
-}
-
-.sidebar .list li a {
-    display: block;
-    padding: 10px 15px;
-    color: white;
-    border-radius: 8px;
-    transition: background-color 0.2s, color 0.2s;
-    font-weight: 500;
-    font-size: 1rem;
-    text-align: center;
-}
-
-.sidebar .list li a:hover {
-    background-color: #cccccc;
-    color: #333;
-}
-
-/* 미디어 쿼리 - 작은 화면에서 스타일 조정 */
-@media (max-width: 768px) {
-    .sidebar {
-        width: 100%;
-        left: -100%;
-        padding: 15px;
-    }
-
-    .sidebar .profile .login {
-        font-size: 0.9rem;
-    }
-
-    .sidebar .list li a {
-        font-size: 0.9rem;
-        padding: 8px 12px;
-    }
-}
-
