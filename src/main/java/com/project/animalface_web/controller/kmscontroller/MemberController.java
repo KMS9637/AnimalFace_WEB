@@ -49,7 +49,7 @@ public class MemberController {
     }
 
     //프로필 이미지 업로드 형식으로, 몽고디비에 연결하는 코드
-    @PostMapping("/register")
+    @PostMapping("/new")
     public String createUser(@ModelAttribute Member user, @RequestParam("profileImage") MultipartFile file) {
         log.info("lsy User created" + user, "multipart : " + file
         );
@@ -66,7 +66,7 @@ public class MemberController {
         } catch (IOException e) {
             throw new RuntimeException("Failed to save user profile image", e);
         }
-        return "redirect:/users/login";
+        return "redirect:/users";
         // Redirect to the list of users
     }
 
