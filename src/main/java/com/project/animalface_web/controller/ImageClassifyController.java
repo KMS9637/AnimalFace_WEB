@@ -10,7 +10,9 @@ import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 @Log4j2
 @RestController
@@ -55,10 +58,14 @@ public class ImageClassifyController {
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode rootNode = objectMapper.readTree(apiResult);
 
-            String predictedLabel = rootNode.path("얼굴상 : ").asText();
+            String predictedLabel = rootNode.path("face_type : ").asText();
+            log.info("predictedLabel : " + predictedLabel);
 
-            String customResponse = "당신의 얼굴상은 " + predictedLabel+" 입니다.";
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(new MediaType("text", "plain", StandardCharsets.UTF_8));
 
+            String customResponse = "당신의 얼굴상은 " + predictedLabel+"상 입니다.";
+            log.info("customResponse : "+customResponse);
 
             // 임시 파일 정리
             if (!convFile.delete()) {
@@ -66,7 +73,7 @@ public class ImageClassifyController {
             }
 
             // API 응답 반환
-            return new ResponseEntity<>(customResponse, HttpStatus.OK);
+            return new ResponseEntity<>(customResponse, headers, HttpStatus.OK);
         } catch (IOException e) {
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("File processing error: " + e.getMessage());

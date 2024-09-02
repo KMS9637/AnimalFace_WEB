@@ -13,6 +13,6 @@ public class MainController {
 
     @GetMapping("/main2")
     public String main2() {
-        return "main2";
+        return "main";
     }
 }

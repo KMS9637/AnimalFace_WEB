@@ -1,13 +1,11 @@
 package com.project.animalface_web.controller.kcycontroller;
 
 
-import com.project.animalface_web.domain.Game;
 import com.project.animalface_web.domain.GameResult;
 import com.project.animalface_web.dto.ResultDTO;
 import com.project.animalface_web.service.kcyserviece.ResultService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +16,7 @@ import java.util.List;
 @RequestMapping("")
 @Log4j2
 @RequiredArgsConstructor
-public class ResultController {
+public class GameResultController {
     private final ResultService resultService;
 
     @GetMapping("/result")
