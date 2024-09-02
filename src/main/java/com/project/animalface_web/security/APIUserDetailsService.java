@@ -26,6 +26,7 @@ public class APIUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String memberId) throws UsernameNotFoundException {
 
+        log.info("아 장난치지 말라고 ㅋㅋ 성공함ㅋ ㅅㄱ");
 
         Optional<Member> result = memberRepository.findByMemberId(memberId);
 
@@ -39,7 +40,7 @@ public class APIUserDetailsService implements UserDetailsService {
 
 
         // 일반 유저 로그인과, api 로그인 처리 확인 필요
-        APIUserDTO dto =  new APIUserDTO(
+        APIUserDTO dto = new APIUserDTO(
                 apiUser.getMemberName(),
                 apiUser.getMemberPw(),
                 apiUser.getMemberId(),
