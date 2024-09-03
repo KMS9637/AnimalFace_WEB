@@ -1,6 +1,6 @@
 package com.project.animalface_web.controller;
 
-import com.project.animalface_web.service.kdkserviece.FaceTypeService;
+import com.project.animalface_web.service.FaceTypeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;

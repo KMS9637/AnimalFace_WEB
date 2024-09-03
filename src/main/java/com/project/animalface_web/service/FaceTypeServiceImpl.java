@@ -1,4 +1,4 @@
-package com.project.animalface_web.service.kdkserviece;
+package com.project.animalface_web.service;
 
 import com.project.animalface_web.domain.FaceType;
 import com.project.animalface_web.dto.FaceTypeDTO;

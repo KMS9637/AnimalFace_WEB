@@ -1,8 +1,6 @@
-package com.project.animalface_web.service.kdkserviece;
+package com.project.animalface_web.service;
 
-import com.project.animalface_web.domain.CreateGame;
 import com.project.animalface_web.domain.FaceType;
-import com.project.animalface_web.dto.CreateGameDTO;
 import com.project.animalface_web.dto.FaceTypeDTO;
 
 public interface FaceTypeService {

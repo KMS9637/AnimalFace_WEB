@@ -1,4 +1,4 @@
-package com.project.animalface_web.service.ohjserviece;// SearchService.java
+package com.project.animalface_web.service;// SearchService.java
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

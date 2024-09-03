@@ -1,4 +1,4 @@
-package com.project.animalface_web.service.kcyserviece;
+package com.project.animalface_web.service;
 
 import com.project.animalface_web.domain.GameResult;
 import com.project.animalface_web.dto.ResultDTO;

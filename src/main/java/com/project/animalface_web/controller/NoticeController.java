@@ -1,7 +1,7 @@
 package com.project.animalface_web.controller;
 
 import com.project.animalface_web.dto.NoticeDTO;
-import com.project.animalface_web.service.ksyserviece.NoticeService;
+import com.project.animalface_web.service.NoticeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;

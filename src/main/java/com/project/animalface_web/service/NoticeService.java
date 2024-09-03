@@ -1,4 +1,4 @@
-package com.project.animalface_web.service.ksyserviece;
+package com.project.animalface_web.service;
 
 import com.project.animalface_web.domain.Notice;
 import com.project.animalface_web.dto.NoticeDTO;
