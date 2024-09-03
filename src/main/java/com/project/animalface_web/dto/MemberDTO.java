@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -37,7 +38,7 @@ public class MemberDTO {
     //첨부 파일 이름들
     // fileNames, uuid_fileName 구조 되어 있고,
     // 업로드 후, 해당 dto에 위의 이름 구조 파일형식으로 업로드 하기.
-    private List<String> fileNames;
+    private List<String> fileNames = new ArrayList<>();
     //    private MultipartFile profileImage;
     public void addProfileImage(String fileName) {
         this.fileNames.add(fileName);
