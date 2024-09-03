@@ -31,14 +31,14 @@
           <div id="menu">
             <div class="profile">
               <div>
-                <a th:if="${!isLoggedIn}" class="login" href="/member/login">로그인이 필요합니다.</a>
-<!--                <a th:if="${isLoggedIn}" class="profile" href="/member/profile">내 프로필</a>-->
+                <a th:if="${isLoggedIn != null and !isLoggedIn}" class="login" href="/member/login">로그인이 필요합니다.</a>
+<!--                <a th:if="${isLoggedIn != null and isLoggedIn}" class="profile" href="/member/profile">내 프로필</a>-->
                 <img src="/img/mainlogo.png" width="100px" height="100px" style="margin-top: 15px">
               </div>
             </div>
             <ul class="list">
 
-              <li class="profile2" th:if="${isLoggedIn}">
+              <li class="profile2" th:if="${isLoggedIn != null and isLoggedIn}">
                 <a href="#">나의 보따리</a>
               </li>
               <li class="notice">
@@ -51,10 +51,10 @@
                   게임 만들기
                 </a>
               </li>
-              <li class="logout" th:if="${isLoggedIn}">
+              <li class="logout" th:if="${isLoggedIn != null and isLoggedIn}">
                 <a href="/member/logout">로그아웃</a>
               </li>
-              <li class="login" th:if="${!isLoggedIn}">
+              <li class="login" th:if="${isLoggedIn != null and !isLoggedIn}">
                 <a href="/member/login">로그인</a>
               </li>
 
