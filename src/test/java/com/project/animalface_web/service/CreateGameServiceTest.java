@@ -2,7 +2,6 @@ package com.project.animalface_web.service;
 
 import com.project.animalface_web.dto.CreateGameDTO;
 import com.project.animalface_web.repository.CreateGameRepository;
-import com.project.animalface_web.service.kdkserviece.CreateGameService;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

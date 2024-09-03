@@ -2,7 +2,7 @@ package com.project.animalface_web.controller.kmscontroller;
 
 import com.project.animalface_web.domain.Member;
 import com.project.animalface_web.domain.mongoEntity.ProfileImage;
-import com.project.animalface_web.service.kmsserviece.MemberService;
+import com.project.animalface_web.service.MemberService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

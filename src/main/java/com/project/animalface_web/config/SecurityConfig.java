@@ -5,7 +5,7 @@ import com.project.animalface_web.security.filter.APILoginFilter;
 import com.project.animalface_web.security.filter.RefreshTokenFilter;
 import com.project.animalface_web.security.filter.TokenCheckFilter;
 import com.project.animalface_web.security.handler.APILoginSuccessHandler;
-import com.project.animalface_web.service.kmsserviece.MemberService;
+import com.project.animalface_web.service.MemberService;
 import com.project.animalface_web.util.JWTUtil;
 
 import lombok.RequiredArgsConstructor;
