@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <title>로그인</title>
+  <meta name="description" content="로그인 페이지">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/mypage.css">
+</head>
+
+<body class="ko-KR">
+<div class="app signup" data-app>
+  <header class="app-header display-flex">
+    <button type="button" class="app-header-btn back" title="뒤로가기" onclick="history.back();"></button>
+  </header>
+
+  <main class="app-main">
+    <h2> 로그인 </h2>
+    <form action="/member/login" method="post" class="form_w" id="loginForm">
+      <input type="text" id="memberId" name="username" class="login-input w-100 display-block" placeholder="아이디 입력" required autofocus>
+      <input type="password" id="memberPw" name="password" class="login-input w-100 display-block" placeholder="비밀번호 입력" required>
+      <div class="sign-in-actions">
+        <div>
+          <button class="btn yellow w-100" type="submit">로그인</button>
+        </div>
+      </div>
+      <hr>
+      <div class="sign-up-wrap text-center">
+        <p class='sns-text'>SNS로 시작하기</p>
+        <ul class="sns-sign-up">
+          <li>
+            <a href="/oauth2/authorization/kakao" class="kakao-login">
+              <img src="/img/sns-kakao.png" alt="카카오 로그인 화면">
+            </a>
+          </li>
+        </ul>
+        <button type="button" class="btn email-log" id="signupButton2">회원가입</button>
+        <span id="login-law">로그인(가입) 시 <a href="#">이용약관</a> 및 <a href="#">개인정보 취급방침</a>에 동의하는 것으로 간주합니다.</span>
+      </div>
+    </form>
+  </main>
+</div>
+
+<script>
+  // DOMContentLoaded 이벤트 리스너를 사용하여 페이지 로드 후 로그인 상태를 확인
+  document.addEventListener("DOMContentLoaded", function() {
+
+    // // 로그인 폼 제출 이벤트 리스너
+    // const loginForm = document.getElementById('loginForm');
+    // if (loginForm) {
+    //   loginForm.addEventListener('submit', function(event) {
+    //     event.preventDefault(); // 기본 폼 제출 동작 방지
+    //
+    //     const memberId = document.getElementById('memberId').value;
+    //     const memberPw = document.getElementById('memberPw').value;
+    //
+    //     if (!memberId || !memberPw) {
+    //       alert("아이디와 비밀번호를 입력하세요.");
+    //       return;
+    //     }
+    //
+    //     fetch('/users/login', {
+    //       method: 'POST',
+    //       headers: {
+    //         'Content-Type': 'application/json'
+    //       },
+    //       body: JSON.stringify({
+    //         memberId: memberId,
+    //         memberPw: memberPw
+    //       })
+    //     })
+    //             .then(response => {
+    //               if (response.ok) {
+    //                 return response.json(); // 응답 본문을 JSON으로 읽기
+    //               } else {
+    //                 throw new Error('로그인 실패');
+    //               }
+    //             })
+    //             .then(data => {
+    //               if (data.message === "로그인 성공") {
+    //                 alert('로그인 성공');
+    //                 window.location.href = '/main'; // 로그인 성공 후 이동할 페이지
+    //               } else {
+    //                 alert('로그인 실패: 아이디 또는 비밀번호가 잘못되었습니다.');
+    //               }
+    //             })
+    //             .catch(error => {
+    //               console.error('Error:', error);
+    //               alert('로그인 중 오류가 발생했습니다.');
+    //             });
+    //   });
+    // }
+
+    // 회원가입 버튼 이벤트 리스너 추가
+    const signupButton = document.getElementById('signupButton2');
+    if (signupButton) {
+      signupButton.addEventListener('click', function() {
+        window.location.href = '/member/register'; // 올바른 회원가입 경로 설정
+      });
+    }
+
+    // 카카오 계정 로그인 함수 (예시)
+    function loginWithKakao() {
+      alert('카카오 계정으로 로그인 기능은 아직 구현되지 않았습니다.');
+    }
+  });
+</script>
+</body>
+</html>

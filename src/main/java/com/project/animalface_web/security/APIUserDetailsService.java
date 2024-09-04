@@ -1,0 +1,57 @@
+package com.project.animalface_web.security;
+
+import com.project.animalface_web.domain.Member;
+import com.project.animalface_web.dto.MemberDTO;
+import com.project.animalface_web.repository.MemberRepository;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+@Service
+@Log4j2
+@RequiredArgsConstructor
+public class APIUserDetailsService implements UserDetailsService {
+
+    //주입
+    private final MemberRepository memberRepository;
+
+    @Override
+    public UserDetails loadUserByUsername(String memberId) throws UsernameNotFoundException {
+
+        log.info("아 장난치지 말라고 ㅋㅋ 성공함ㅋ ㅅㄱ");
+
+        Optional<Member> result = memberRepository.findByMemberId(memberId);
+
+
+        log.info("Received memberId for authentication: " + memberId);
+        log.info("APIUserDetailsService - loadUserByUsername method called with memberId: " + memberId);
+        Member apiUser = result.orElseThrow(() -> new UsernameNotFoundException("Cannot find mid"));
+
+
+        log.info("lsy APIUserDetailsService apiUser-------------------------------------");
+
+
+        // 일반 유저 로그인과, api 로그인 처리 확인 필요
+        MemberDTO dto = new MemberDTO(
+                apiUser.getMemberName(),
+                apiUser.getMemberPw(),
+                apiUser.getMemberId(),
+                apiUser.getProfileImageId(),
+                apiUser.getRoleSet().stream().map(
+                        memberRole -> new SimpleGrantedAuthority("ROLE_"+ memberRole.name())
+                ).collect(Collectors.toList()));
+
+
+        log.info("lsy dto : "+dto);
+
+
+        return dto;
+    }
+}

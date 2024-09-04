@@ -1,19 +1,17 @@
 package com.project.animalface_web.dto;
 
 import jakarta.validation.constraints.NotEmpty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 
-import java.util.List;
+import java.util.Collection;
 
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class MemberDTO {
+@Getter
+@Setter
+@ToString
+public class MemberDTO extends User {
     private Long memberNo;
 
     @NotEmpty(message = "아이디를 입력 해 주세요.")
@@ -31,16 +29,25 @@ public class MemberDTO {
     private String memberGameResult;
 
     //프로필 사진 위해 필요
-    private String uuid;
-    private String fileName;
+//    private String uuid;
+//    private String fileName;
 
     //첨부 파일 이름들
     // fileNames, uuid_fileName 구조 되어 있고,
     // 업로드 후, 해당 dto에 위의 이름 구조 파일형식으로 업로드 하기.
-    private List<String> fileNames;
-    //    private MultipartFile profileImage;
-    public void addProfileImage(String fileName) {
-        this.fileNames.add(fileName);
+//    private List<String> fileNames;
+
+    public MemberDTO(String memberId, String memberPw, String memberImg, String memberName, Collection<? extends GrantedAuthority> authorities) {
+        super(memberId, memberPw, authorities);
+        this.memberId = memberId;
+        this.memberPw = memberPw;
+        this.memberImg = memberImg;
+        this.memberName = memberName;
     }
+
+    //    private MultipartFile profileImage;
+//    public void addProfileImage(String fileName) {
+//        this.fileNames.add(fileName);
+//    }
 
 }
