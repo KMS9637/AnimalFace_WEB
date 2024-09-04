@@ -2,7 +2,7 @@ package com.project.animalface_web.controller;
 
 
 import com.project.animalface_web.dto.CreateGameDTO;
-import com.project.animalface_web.service.kdkserviece.CreateGameService;
+import com.project.animalface_web.service.CreateGameService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

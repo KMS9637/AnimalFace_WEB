@@ -5,8 +5,7 @@ import com.project.animalface_web.security.filter.APILoginFilter;
 import com.project.animalface_web.security.filter.RefreshTokenFilter;
 import com.project.animalface_web.security.filter.TokenCheckFilter;
 import com.project.animalface_web.security.handler.APILoginSuccessHandler;
-//import com.project.animalface_web.security.handler.CustomSocialLoginSuccessHandler;
-import com.project.animalface_web.service.kmsserviece.MemberService;
+import com.project.animalface_web.service.MemberService;
 import com.project.animalface_web.util.JWTUtil;
 
 import lombok.RequiredArgsConstructor;
@@ -21,7 +20,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -124,7 +122,7 @@ public class SecurityConfig {
 
         // 로그 아웃 설정.
         http.logout(
-                logout -> logout.logoutUrl("/member/logout").logoutSuccessUrl("/main?logout=true")
+                logout -> logout.logoutUrl("/member/logout").logoutSuccessUrl("/member/login")
 
         );
 
@@ -141,24 +139,8 @@ public class SecurityConfig {
             httpSecurityCorsConfigurer.configurationSource(corsConfigurationSource());
         });
 
-        //카카오 로그인 API 설정
-//        http.oauth2Login(
-//                // 로그인 후 처리 , 적용하기.
-//                oauthLogin -> oauthLogin.loginPage("/member/login")
-//                        .successHandler(authenticationSuccessHandler())
-//        );
-
-//        // 동일 아이피에서 분당 요청 횟수 10회 제한 , 필터 설정.
-//        http.addFilterBefore(rateLimitingFilter, UsernamePasswordAuthenticationFilter.class);
-
         return http.build();
     }
-    // 소셜 로그인 후, 후처리 하는 빈등록.
-//    @Bean
-//    public AuthenticationSuccessHandler authenticationSuccessHandler() {
-//        return new CustomSocialLoginSuccessHandler(passwordEncoder());
-//    }
-
     // 세션 분리 해서 정책 설정 샘플코드
     //  http
     //                .formLogin(formLogin ->

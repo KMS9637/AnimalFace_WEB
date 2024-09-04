@@ -1,4 +1,4 @@
-package com.project.animalface_web.service.kmsserviece;
+package com.project.animalface_web.service;
 
 import com.project.animalface_web.domain.Member;
 import com.project.animalface_web.domain.MemberRole;
