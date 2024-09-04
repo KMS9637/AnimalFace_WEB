@@ -30,6 +30,13 @@ public class TokenCheckFilter extends OncePerRequestFilter {
     private final JWTUtil jwtUtil;
 
     @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) {
+        // 토큰 검사를 건너뛸 경로를 설정합니다.
+        String path = request.getRequestURI();
+        return path.startsWith("/api/notices");
+    }
+
+    @Override
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {

@@ -43,9 +43,10 @@ public class MemberController {
     }
 
     @GetMapping("/register")
-    public void showCreateUserForm(@AuthenticationPrincipal UserDetails user, Model model) {
+    public String showCreateUserForm(@AuthenticationPrincipal UserDetails user, Model model) {
 //        model.addAttribute("user", new User());
         model.addAttribute("user", user);
+        return "member/register";
     }
 
     //프로필 이미지 업로드 형식으로, 몽고디비에 연결하는 코드

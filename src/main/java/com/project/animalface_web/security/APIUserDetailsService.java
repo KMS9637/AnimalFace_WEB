@@ -1,7 +1,7 @@
 package com.project.animalface_web.security;
 
 import com.project.animalface_web.domain.Member;
-import com.project.animalface_web.dto.APIUserDTO;
+import com.project.animalface_web.dto.MemberDTO;
 import com.project.animalface_web.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -11,7 +11,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -40,7 +39,7 @@ public class APIUserDetailsService implements UserDetailsService {
 
 
         // 일반 유저 로그인과, api 로그인 처리 확인 필요
-        APIUserDTO dto = new APIUserDTO(
+        MemberDTO dto = new MemberDTO(
                 apiUser.getMemberName(),
                 apiUser.getMemberPw(),
                 apiUser.getMemberId(),
