@@ -27,9 +27,9 @@ public class MemberRestController {
         return memberService.getAllUsers();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Member> getUserById(@PathVariable Long id) {
-        Optional<Member> user = memberService.getUserById(id);
+    @GetMapping("/{memberNo}")
+    public ResponseEntity<Member> getUserById(@PathVariable Long memberNo) {
+        Optional<Member> user = memberService.getUserById(memberNo);
         return user.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
@@ -43,7 +43,7 @@ public class MemberRestController {
 
     // 파일 업로드 할 경우
     @PostMapping
-    public ResponseEntity<Member> createUser( @RequestPart("user") Member user,
+    public ResponseEntity<Member> createUser( @RequestPart("member") Member user,
                                             @RequestParam(value = "profileImage", required = false) MultipartFile file) {
         try {
 //            @RequestPart를 사용하여 멀티파트 요청의 user 부분을 User 객체로 자동 변환
@@ -64,23 +64,23 @@ public class MemberRestController {
     }
 
     // 이미지 같이 수정.
-    @PutMapping("/{id}/update")
+    @PutMapping("/{memberNo}/update")
     public ResponseEntity<Member> updateUser(
-            @PathVariable Long id,
-            @RequestPart("user") Member user,
+            @PathVariable Long memberNo,
+            @RequestPart("member") Member user,
             @RequestParam(value = "profileImage", required = false) MultipartFile file) {
 
         try {
-            Member updatedUser = memberService.updateUser(id, user);
+            Member updatedUser = memberService.updateUser(memberNo, user);
 
             // 파일이 존재할 경우 프로필 이미지 저장
             if (file !=null && !file.isEmpty()) {
                 // 기존 프로필 삭제
-                Optional<Member> loadUser = memberService.getUserById(id);
+                Optional<Member> loadUser = memberService.getUserById(memberNo);
                 Member loadedUser = loadUser.get();
                 memberService.deleteProfileImage(loadedUser);
 
-                memberService.saveProfileImage(id, file);
+                memberService.saveProfileImage(memberNo, file);
             }
 
             return ResponseEntity.ok(updatedUser);
@@ -97,18 +97,18 @@ public class MemberRestController {
 //        return ResponseEntity.ok(updatedUser);
 //    }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-        log.info("Deleting user with id: " + id);
-        memberService.deleteUser(id);
+    @DeleteMapping("/{memberNo}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long memberNo) {
+        log.info("Deleting user with id: " + memberNo);
+        memberService.deleteUser(memberNo);
         return ResponseEntity.noContent().build();
     }
 
     // 프로필 이미지, 몽고 디비에 연결
-    @PostMapping("/{id}/uploadProfileImage")
-    public ResponseEntity<String> uploadProfileImage(@PathVariable Long id, @RequestParam("file") MultipartFile file) {
+    @PostMapping("/{memberNo}/uploadProfileImage")
+    public ResponseEntity<String> uploadProfileImage(@PathVariable Long memberNo, @RequestParam("file") MultipartFile file) {
         try {
-            memberService.saveProfileImage(id, file);
+            memberService.saveProfileImage(memberNo, file);
             return ResponseEntity.ok("Profile image uploaded successfully");
         } catch (IOException e) {
             return ResponseEntity.status(500).body("Failed to upload profile image");
@@ -116,23 +116,23 @@ public class MemberRestController {
     }
 
 
-    @GetMapping("/{id}/profileImage")
-    public ResponseEntity<byte[]> getProfileImage(@PathVariable Long id) {
-        log.info("lsy users image 확인 ");
-        Optional<Member> user = memberService.getUserById(id);
-        if (user.isPresent() && user.get().getProfileImageId() != null) {
-            ProfileImage profileImage = memberService.getProfileImage(user.get().getProfileImageId());
-            return ResponseEntity.ok()
-                    .contentType(MediaType.parseMediaType(profileImage.getContentType()))
-                    .body(profileImage.getData());
-        }
-        return ResponseEntity.notFound().build();
-    }
+//    @GetMapping("/{memberNo}/profileImage")
+//    public ResponseEntity<byte[]> getProfileImage(@PathVariable Long memberNo) {
+//        log.info("lsy users image 확인 ");
+//        Optional<Member> user = memberService.getUserById(memberNo);
+//        if (user.isPresent() && user.get().getProfileImageId() != null) {
+//            ProfileImage profileImage = memberService.getProfileImage(user.get().getProfileImageId());
+//            return ResponseEntity.ok()
+//                    .contentType(MediaType.parseMediaType(profileImage.getContentType()))
+//                    .body(profileImage.getData());
+//        }
+//        return ResponseEntity.notFound().build();
+//    }
 
     // 프로필 이미지 삭제
-    @PostMapping("/{id}/deleteProfileImage")
-    public String deleteProfileImage(@RequestParam Long id) {
-        Optional<Member> user = memberService.getUserById(id);
+    @PostMapping("/{memberNo}/deleteProfileImage")
+    public String deleteProfileImage(@RequestParam Long memberNo) {
+        Optional<Member> user = memberService.getUserById(memberNo);
         Member user1 = user.get();
         if (user1 != null) {
             memberService.deleteProfileImage(user1);
