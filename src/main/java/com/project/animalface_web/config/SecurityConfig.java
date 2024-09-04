@@ -115,7 +115,7 @@ public class SecurityConfig {
                 .authorizeRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers(HttpMethod.GET,"/main","/member/register","/api/notices").permitAll()
-                                .requestMatchers("/reservations/**","/payments/**").authenticated()
+                                .requestMatchers("/createGame/create").authenticated()
 
                 )
                 .sessionManagement(sessionManagement ->
