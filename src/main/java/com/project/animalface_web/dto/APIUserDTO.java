@@ -17,14 +17,12 @@ public class APIUserDTO extends User {
     private String memberName;
     private String memberPw;
     private String memberId;
-    private String profileImageId;
 
-    public APIUserDTO(String memberId, String memberPw, String memberName, String profileImageId, Collection<GrantedAuthority> authorities) {
+    public APIUserDTO(String memberId, String memberPw, String memberName, Collection<GrantedAuthority> authorities) {
         super(memberId, memberPw, authorities);
         this.memberId = memberId;
         this.memberPw = memberPw;
         this.memberName = memberName;
-        this.profileImageId = profileImageId;
     }
 
 //    public APIUserDTO(String memberName, String memberPw, String memberId, String profileImageId, Collection<? extends GrantedAuthority> authorities) {

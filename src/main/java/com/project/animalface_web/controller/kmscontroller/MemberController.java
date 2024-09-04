@@ -53,19 +53,19 @@ public class MemberController {
     public String createUser(@ModelAttribute Member user, @RequestParam("profileImage") MultipartFile file) {
         log.info("lsy User created" + user, "multipart : " + file
         );
-        try {
+//        try {
             // 비밀번호 암호화
             user.setMemberPw(bCryptPasswordEncoder.encode(user.getMemberPw()));
             // 사용자 저장
             Member savedUser = memberService.createUser(user);
 
             // 프로필 이미지 저장
-            if (file != null && !file.isEmpty()) {
-                memberService.saveProfileImage(savedUser.getMemberNo(), file);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to save user profile image", e);
-        }
+//            if (file != null && !file.isEmpty()) {
+//                memberService.saveProfileImage(savedUser.getMemberNo(), file);
+//            }
+//        } catch (IOException e) {
+//            throw new RuntimeException("Failed to save user profile image", e);
+//        }
         return "redirect:/member/login";
         // Redirect to the list of users
     }
@@ -75,46 +75,46 @@ public class MemberController {
         memberService.getUserById(id).ifPresent(user -> model.addAttribute("user", user));
     }
 
-    @PostMapping("/edit")
-    public String updateUser( @ModelAttribute Member user , @RequestParam("profileImage") MultipartFile file) {
+//    @PostMapping("/edit")
+//    public String updateUser( @ModelAttribute Member user , @RequestParam("profileImage") MultipartFile file) {
+//
+//        try {
+//            if (!file.isEmpty()) {
+//                // 기존 프로필 삭제
+//                Optional<Member> loadUser = memberService.getUserById(user.getMemberNo());
+//                Member loadedUser = loadUser.get();
+//                memberService.deleteProfileImage(loadedUser);
+//                // 프로필 이미지 업데이트
+//                memberService.saveProfileImage(user.getMemberNo(), file);
+//                memberService.updateUser( user.getMemberNo(), user);
+//            } else {
+//                memberService.updateUser( user.getMemberNo(), user);
+//            }
+//        } catch (IOException e) {
+//            throw new RuntimeException("Failed to save user profile image", e);
+//        }
+//
+//        return "redirect:/users";
+//        // Redirect to the list of users
+//    }
+//
+//    @GetMapping("/{id}/delete")
+//    public String deleteUser(@PathVariable Long id) {
+//        memberService.deleteUser(id);
+//        return "redirect:/users";
+//        // Redirect to the list of users
+//    }
 
-        try {
-            if (!file.isEmpty()) {
-                // 기존 프로필 삭제
-                Optional<Member> loadUser = memberService.getUserById(user.getMemberNo());
-                Member loadedUser = loadUser.get();
-                memberService.deleteProfileImage(loadedUser);
-                // 프로필 이미지 업데이트
-                memberService.saveProfileImage(user.getMemberNo(), file);
-                memberService.updateUser( user.getMemberNo(), user);
-            } else {
-                memberService.updateUser( user.getMemberNo(), user);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to save user profile image", e);
-        }
-
-        return "redirect:/users";
-        // Redirect to the list of users
-    }
-
-    @GetMapping("/{id}/delete")
-    public String deleteUser(@PathVariable Long id) {
-        memberService.deleteUser(id);
-        return "redirect:/users";
-        // Redirect to the list of users
-    }
-
-    @GetMapping("/{id}/profileImage")
-    public ResponseEntity<byte[]> getProfileImage(@PathVariable Long id) {
-        log.info("lsy users image 확인 ");
-        Optional<Member> user = memberService.getUserById(id);
-        if (user.isPresent() && user.get().getProfileImageId() != null) {
-            ProfileImage profileImage = memberService.getProfileImage(user.get().getProfileImageId());
-            return ResponseEntity.ok()
-                    .contentType(MediaType.parseMediaType(profileImage.getContentType()))
-                    .body(profileImage.getData());
-        }
-        return ResponseEntity.notFound().build();
-    }
+//    @GetMapping("/{id}/profileImage")
+//    public ResponseEntity<byte[]> getProfileImage(@PathVariable Long id) {
+//        log.info("lsy users image 확인 ");
+//        Optional<Member> user = memberService.getUserById(id);
+//        if (user.isPresent() && user.get().getProfileImageId() != null) {
+//            ProfileImage profileImage = memberService.getProfileImage(user.get().getProfileImageId());
+//            return ResponseEntity.ok()
+//                    .contentType(MediaType.parseMediaType(profileImage.getContentType()))
+//                    .body(profileImage.getData());
+//        }
+//        return ResponseEntity.notFound().build();
+//    }
 }
