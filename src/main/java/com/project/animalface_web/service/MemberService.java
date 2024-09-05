@@ -2,9 +2,7 @@ package com.project.animalface_web.service;
 
 import com.project.animalface_web.domain.Member;
 import com.project.animalface_web.domain.MemberRole;
-import com.project.animalface_web.domain.mongoEntity.ProfileImage;
 import com.project.animalface_web.repository.MemberRepository;
-import com.project.animalface_web.repository.mongoRepository.ProfileImageRepository;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,10 +18,6 @@ public class MemberService {
 
     @Autowired
     MemberRepository memberRepository;
-
-    // 프로필 이미지, 몽고디비 연결
-    @Autowired
-    ProfileImageRepository profileImageRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
