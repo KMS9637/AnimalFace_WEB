@@ -19,7 +19,6 @@ public class GameDTO {
     private String answers;
     private String results;
 
-//    private Images images;
 
 }
 

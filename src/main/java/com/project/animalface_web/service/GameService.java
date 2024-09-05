@@ -44,7 +44,7 @@ public class GameService {
                 .filter(result -> score >= result.getMinScore() && score <= result.getMaxScore())
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("No result found for the given score: " + score));
-    }
+    }//calculateResult
 
 
 
