@@ -26,8 +26,8 @@ public class MemberService {
         return memberRepository.findAll();
     }
 
-    public Optional<Member> getUserById(Long id) {
-        return memberRepository.findById(id);
+    public Optional<Member> getUserById(Long memberNo) {
+        return memberRepository.findById(memberNo);
     }
 
     public Optional<Member> getUserById(String memberId) {
@@ -35,6 +35,9 @@ public class MemberService {
     }
 
     public Member createUser(Member user) {
+        // 비밀번호 인코딩
+        String encodedPassword = passwordEncoder.encode(user.getMemberPw());
+        user.setMemberPw(encodedPassword);
         user.addRole(MemberRole.USER);
         return memberRepository.save(user);
     }
@@ -49,15 +52,24 @@ public class MemberService {
         return memberRepository.save(user);
     }
 
-//    public void deleteUser(Long id) {
-//        Member user = memberRepository.findById(id)
-//                .orElseThrow(() -> new RuntimeException("User not found"));
-//        // 프로필 이미지 삭제
-//        if(user.getProfileImageId() != null && !user.getProfileImageId().isEmpty()) {
-//            deleteProfileImage(user);
+    public void deleteUser(String memberNo) {
+        log.info("lsy 2 MemberService memberNo : " + memberNo);
+//        Optional<Member> existingMember = memberRepository.findById(memberNo);
+//        Member member = existingMember.get();
+//        log.info("lsy 3 MemberService member : " + member.getMemberNo());
+            memberRepository.deleteByMemberId(memberNo);  // 회원 삭제
+//        memberRepository.deleteByMemberNo(memberNo);  // 회원 삭제
+//        if (existingMember.isPresent()) {
+//            //memberNo
+////            Member member = existingMember.get();
+//            log.info("lsy 4 MemberService member : " + member.getMemberNo());
+////            memberRepository.deleteById(memberNo);  // 회원 삭제
+//            memberRepository.deleteByMemberNo(memberNo);  // 회원 삭제
+//        } else {
+//            throw new RuntimeException("해당 ID의 사용자가 존재하지 않습니다.");
 //        }
-//        memberRepository.delete(user);
-//    }
+    }
+
 
     //프로필 이미지 업로드, 레스트 형식
 //    public void saveProfileImage(Long userId, MultipartFile file) throws IOException {

@@ -111,7 +111,7 @@ public class SecurityConfig {
                 )
                 .authorizeRequests(authorizeRequests ->
                         authorizeRequests
-                                .requestMatchers("/main","/member/register").permitAll()
+                                .requestMatchers("/main","/member/register","/api/member/**").permitAll()
                                 .requestMatchers("/reservations/**","/payments/**").authenticated()
 
                 )
