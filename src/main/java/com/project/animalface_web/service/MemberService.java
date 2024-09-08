@@ -52,12 +52,12 @@ public class MemberService {
         return memberRepository.save(user);
     }
 
-    public void deleteUser(String memberNo) {
-        log.info("lsy 2 MemberService memberNo : " + memberNo);
+    public void deleteUser(String memberId) {
+        log.info("lsy 2 MemberService memberId : " + memberId);
 //        Optional<Member> existingMember = memberRepository.findById(memberNo);
 //        Member member = existingMember.get();
 //        log.info("lsy 3 MemberService member : " + member.getMemberNo());
-            memberRepository.deleteByMemberId(memberNo);  // 회원 삭제
+            memberRepository.deleteByMemberId(memberId);  // 회원 삭제
 //        memberRepository.deleteByMemberNo(memberNo);  // 회원 삭제
 //        if (existingMember.isPresent()) {
 //            //memberNo

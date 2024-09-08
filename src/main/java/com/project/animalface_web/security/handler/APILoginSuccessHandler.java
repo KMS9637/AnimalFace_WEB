@@ -43,7 +43,7 @@ public class APILoginSuccessHandler implements AuthenticationSuccessHandler {
         Map<String,String> keyMap = Map.of(
                 "accessToken", accessToken,
                 "refreshToken", refreshToken,
-                "memberNo",authentication.getName());
+                "memberId",authentication.getName());
 
         String jsonStr = gson.toJson(keyMap);
 
