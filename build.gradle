@@ -74,6 +74,7 @@ dependencies {
     // 방법2,
     implementation "com.querydsl:querydsl-jpa:${queryDslVersion}:jakarta"
 
+
     // 모델 맵퍼 도구 설치.
     // https://mvnrepository.com/artifact/org.modelmapper/modelmapper
     implementation group: 'org.modelmapper', name: 'modelmapper', version: '3.1.0'

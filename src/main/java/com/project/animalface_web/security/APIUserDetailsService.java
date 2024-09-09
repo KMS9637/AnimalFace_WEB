@@ -26,7 +26,6 @@ public class APIUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String memberId) throws UsernameNotFoundException {
 
-        log.info("아 장난치지 말라고 ㅋㅋ 성공함ㅋ ㅅㄱ");
 
         Optional<Member> result = memberRepository.findByMemberId(memberId);
 
@@ -44,7 +43,6 @@ public class APIUserDetailsService implements UserDetailsService {
                 apiUser.getMemberName(),
                 apiUser.getMemberPw(),
                 apiUser.getMemberId(),
-                apiUser.getProfileImageId(),
                 apiUser.getRoleSet().stream().map(
                         memberRole -> new SimpleGrantedAuthority("ROLE_"+ memberRole.name())
                 ).collect(Collectors.toList()));

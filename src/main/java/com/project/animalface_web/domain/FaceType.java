@@ -20,7 +20,6 @@ public class FaceType extends BaseEntity{
     @JoinColumn(name = "memberNo")
     private Member member;
 
-//    private String animalImage;
     private String animalType;
     private Long animalAccuracy;
 }

@@ -15,7 +15,9 @@ import java.time.format.DateTimeFormatter;
 @NoArgsConstructor
 
 public class NoticeDTO {
+
     private Long noticeNo;
+
     @NotEmpty
     private String noticeName;
 

@@ -22,61 +22,76 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 
 @Log4j2
 @RestController
 public class ImageClassifyController {
 
     @PostMapping("/classify")
-    public ResponseEntity<String> classifyImage(@RequestParam("image") MultipartFile image) {
+    public ResponseEntity<Map<String, Object>> classifyImage(@RequestParam("image") MultipartFile image) {
+        log.info("Request received at /classify endpoint.");
+
         if (image.isEmpty()) {
-            return ResponseEntity.badRequest().body("No file was submitted.");
+            log.error("No file was submitted.");
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("error", "No file was submitted.");
+            return ResponseEntity.badRequest().body(errorResponse);
         }
 
-        // PyCharm에서 실행 중인 Python 서버의 URL
+        log.info("Image received: " + image.getOriginalFilename());
+
         String apiUrl = "http://localhost:8000/classify/";
 
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
-            // MultipartFile을 임시 파일로 변환
             File convFile = new File(System.getProperty("java.io.tmpdir") + "/" + image.getOriginalFilename());
             image.transferTo(convFile);
 
-            // POST 요청 준비
+            log.info("Converted file: " + convFile.getAbsolutePath());
+
             HttpPost uploadFile = new HttpPost(apiUrl);
             MultipartEntityBuilder builder = MultipartEntityBuilder.create();
             builder.addBinaryBody("image", convFile);
             HttpEntity multipart = builder.build();
             uploadFile.setEntity(multipart);
 
-            // 요청 실행
+            log.info("Sending POST request to: " + apiUrl);
+
             HttpResponse response = httpClient.execute(uploadFile);
             HttpEntity responseEntity = response.getEntity();
             String apiResult = EntityUtils.toString(responseEntity, "UTF-8");
 
-            // JSON 파싱 및 가공 (필요시)
-            // 예: 응답에서 predicted_label 값만 추출하여 새로운 형식으로 반환
+            log.info("API Response: " + apiResult);
+
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode rootNode = objectMapper.readTree(apiResult);
 
-            String predictedLabel = rootNode.path("face_type : ").asText();
-            log.info("predictedLabel : " + predictedLabel);
+            // 수정된 필드 접근
+            String predictedLabel = rootNode.path("predictedClassLabel").asText();
+            double confidence = rootNode.path("confidence").asDouble(); // 정확도 추가
 
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(new MediaType("text", "plain", StandardCharsets.UTF_8));
+            log.info("predictedLabel: " + predictedLabel);
+            log.info("confidence: " + confidence);
 
-            String customResponse = "당신의 얼굴상은 " + predictedLabel+"상 입니다.";
-            log.info("customResponse : "+customResponse);
+            // 응답 JSON 생성
+            Map<String, Object> jsonResponse = new HashMap<>();
+            jsonResponse.put("predictedClassLabel", predictedLabel); // 일관성 있게 필드 이름 수정
+            jsonResponse.put("confidence", confidence); // 정확도 추가
+            jsonResponse.put("status", "success");
 
-            // 임시 파일 정리
+            // Clean up the temporary file
             if (!convFile.delete()) {
                 System.err.println("Failed to delete the temporary file.");
             }
 
-            // API 응답 반환
-            return new ResponseEntity<>(customResponse, headers, HttpStatus.OK);
+            return ResponseEntity.ok(jsonResponse);
+
         } catch (IOException e) {
             e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("File processing error: " + e.getMessage());
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("error", "File processing error: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
         }
     }
 }

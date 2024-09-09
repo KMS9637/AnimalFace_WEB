@@ -17,56 +17,12 @@ public class APIUserDTO extends User {
     private String memberName;
     private String memberPw;
     private String memberId;
-    private String profileImageId;
 
-    public APIUserDTO(String memberId, String memberPw, String memberName, String profileImageId, Collection<GrantedAuthority> authorities) {
+    public APIUserDTO(String memberId, String memberPw, String memberName, Collection<GrantedAuthority> authorities) {
         super(memberId, memberPw, authorities);
         this.memberId = memberId;
         this.memberPw = memberPw;
         this.memberName = memberName;
-        this.profileImageId = profileImageId;
-    }
+    }//APIUserDTO
 
-//    public APIUserDTO(String memberName, String memberPw, String memberId, String profileImageId, Collection<? extends GrantedAuthority> authorities) {
-//        this.memberName = memberName;
-//        this.memberPw = memberPw;
-//        this.memberId = memberId;
-//        this.profileImageId = profileImageId;
-//        this.authorities = authorities;
-//    }
-
-//    @Override
-//    public Collection<? extends GrantedAuthority> getAuthorities() {
-//        return authorities;
-//    }
-//
-//    @Override
-//    public String getPassword() {
-//        return memberPw;
-//    }
-//
-//    @Override
-//    public String getUsername() {
-//        return memberId;
-//    }
-//
-//    @Override
-//    public boolean isAccountNonExpired() {
-//        return true; // Implement as needed
-//    }
-//
-//    @Override
-//    public boolean isAccountNonLocked() {
-//        return true; // Implement as needed
-//    }
-//
-//    @Override
-//    public boolean isCredentialsNonExpired() {
-//        return true; // Implement as needed
-//    }
-//
-//    @Override
-//    public boolean isEnabled() {
-//        return true; // Implement as needed
-//    }
-}
+}//Class
