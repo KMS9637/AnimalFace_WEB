@@ -78,7 +78,8 @@ public class TokenCheckFilter extends OncePerRequestFilter {
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
         // 회원가입 경로를 필터링에서 제외
-        return request.getRequestURI().startsWith("/api/member");
+        return request.getRequestURI().startsWith("/api/member")||
+                request.getRequestURI().startsWith("/api/notices");
     }
 
     private Map<String, Object> validateAccessToken(HttpServletRequest request) throws AccessTokenException {
