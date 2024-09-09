@@ -16,11 +16,11 @@ public class GameResult extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long resultNo;
 
-    private String resultText; // 결과에 대한 설명
+    private String resultText;
 
 
-    private int minScore; // 결과 적용 최소 점수
-    private int maxScore; // 결과 적용 최대 점수
+    private int minScore;
+    private int maxScore;
 }
 
 

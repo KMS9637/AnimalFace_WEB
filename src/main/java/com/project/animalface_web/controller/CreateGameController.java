@@ -27,7 +27,7 @@ public class CreateGameController {
     @GetMapping("/create")
     public String create(Model model) {
         return "createGame/create2";
-    }//@GetMapping("/create")
+    }
 
     @PostMapping("/create")
     public String createRegister(@Valid @ModelAttribute CreateGameDTO createGameDTO,
@@ -57,11 +57,6 @@ public class CreateGameController {
         log.info("CreateGameController 확인 중, createGameDTO1 : " + createGameDTO1);
         model.addAttribute("createGameDTO", createGameDTO1);
         model.addAttribute("user", user);
-    }//@GetMapping("/read")
+    }
 
-
-
-
-
-
-}//Class
+}

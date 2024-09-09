@@ -50,7 +50,7 @@ public class NoticeServiceImpl implements NoticeService {
             Notice updatedNotice = noticeRepository.save(notice);
             return entityToDto(updatedNotice);
         }
-        return null;  // or throw an exception
+        return null;
     }
 
     @Override

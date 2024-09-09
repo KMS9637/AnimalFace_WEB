@@ -31,7 +31,6 @@ public class MemberRestController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // 파일업로드 없을 경우
     @PostMapping
     public ResponseEntity<Member> createUser(@RequestBody Member user) {
         try {

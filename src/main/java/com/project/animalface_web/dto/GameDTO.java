@@ -1,6 +1,6 @@
 package com.project.animalface_web.dto;
 
-//import com.project.animalface_web.domain.Images;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

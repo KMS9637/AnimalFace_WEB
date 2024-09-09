@@ -67,20 +67,20 @@ public class ImageClassifyController {
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode rootNode = objectMapper.readTree(apiResult);
 
-            // 수정된 필드 접근
+
             String predictedLabel = rootNode.path("predictedClassLabel").asText();
             double confidence = rootNode.path("confidence").asDouble(); // 정확도 추가
 
             log.info("predictedLabel: " + predictedLabel);
             log.info("confidence: " + confidence);
 
-            // 응답 JSON 생성
+
             Map<String, Object> jsonResponse = new HashMap<>();
             jsonResponse.put("predictedClassLabel", predictedLabel); // 일관성 있게 필드 이름 수정
             jsonResponse.put("confidence", confidence); // 정확도 추가
             jsonResponse.put("status", "success");
 
-            // Clean up the temporary file
+
             if (!convFile.delete()) {
                 System.err.println("Failed to delete the temporary file.");
             }

@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class APIUserDetailsService implements UserDetailsService {
 
-    //주입
+
     private final MemberRepository memberRepository;
 
     @Override
@@ -35,15 +35,15 @@ public class APIUserDetailsService implements UserDetailsService {
         Member apiUser = result.orElseThrow(() -> new UsernameNotFoundException("Cannot find mid"));
 
 
-//        log.info("lsy APIUserDetailsService apiUser-------------------------------------");
+
         log.info("APIUserDetailsService - Found user: " + apiUser);
 
-        // 권한 설정
+
         List<SimpleGrantedAuthority> authorities = apiUser.getRoleSet().stream()
                 .map(memberRole -> new SimpleGrantedAuthority("ROLE_" + memberRole.name()))
                 .collect(Collectors.toList());
 
-        // 일반 유저 로그인과, api 로그인 처리 확인 필요
+
         APIUserDTO dto = new APIUserDTO(
                 apiUser.getMemberNo(),
                 apiUser.getMemberId(),

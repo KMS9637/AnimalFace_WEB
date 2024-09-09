@@ -43,7 +43,7 @@ public class RefreshTokenFilter  extends OncePerRequestFilter {
 
         log.info("lsy Refresh Token Filter...run..............1");
 
-        //전송된 JSON에서 accessToken과 refreshToken을 얻어온다.
+
         Map<String, String> tokens = parseRequestJSON(request);
 
         String accessToken = tokens.get("accessToken");
@@ -71,15 +71,14 @@ public class RefreshTokenFilter  extends OncePerRequestFilter {
             return;
         }
 
-        //Refresh Token의 유효시간이 얼마 남지 않은 경우
+
         Integer exp = (Integer)refreshClaims.get("exp");
 
         Date expTime = new Date(Instant.ofEpochMilli(exp).toEpochMilli() * 1000);
 
         Date current = new Date(System.currentTimeMillis());
 
-        //만료 시간과 현재 시간의 간격 계산
-        //만일 3일 미만인 경우에는 Refresh Token도 다시 생성
+
         long gapTime = (expTime.getTime() - current.getTime());
 
         log.info("-----------------------------------------");
@@ -89,15 +88,14 @@ public class RefreshTokenFilter  extends OncePerRequestFilter {
 
         String memberId = (String)refreshClaims.get("memberId");
 
-        //이상태까지 오면 무조건 AccessToken은 새로 생성
+
         String accessTokenValue = jwtUtil.generateToken(Map.of("memberId", memberId), 1);
 
         String refreshTokenValue = tokens.get("refreshToken");
 
-        //RefrshToken이 3분도 안남았다면..
+
         if(gapTime < (1000 * 60  * 3  ) ){
-            //RefrshToken이 3일도 안남았다면..
-//            if(gapTime < (1000 * 60 * 60 * 24 * 3  ) ){
+
             log.info("new Refresh Token required...  ");
             refreshTokenValue = jwtUtil.generateToken(Map.of("memberId", memberId), 3);
         }
@@ -105,7 +103,7 @@ public class RefreshTokenFilter  extends OncePerRequestFilter {
         log.info("Refresh Token result....................");
         log.info("accessToken: " + accessTokenValue);
         log.info("refreshToken: " + refreshTokenValue);
-//
+
         sendTokens(accessTokenValue, refreshTokenValue, response);
 
 
@@ -113,7 +111,7 @@ public class RefreshTokenFilter  extends OncePerRequestFilter {
 
     private Map<String,String> parseRequestJSON(HttpServletRequest request) {
 
-        //JSON 데이터를 분석해서 mid, mpw 전달 값을 Map으로 처리
+
         try(Reader reader = new InputStreamReader(request.getInputStream())){
 
             Gson gson = new Gson();

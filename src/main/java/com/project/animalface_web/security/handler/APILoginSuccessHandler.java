@@ -28,14 +28,14 @@ public class APILoginSuccessHandler implements AuthenticationSuccessHandler {
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 
         log.info("lsy authentication : " +authentication);
-        log.info("lsy authentication.getName() : " +authentication.getName()); //username
+        log.info("lsy authentication.getName() : " +authentication.getName());
 
 
-        // 인증한 유저명 으로 교체
+
         Map<String, Object> claim = Map.of("memberId", authentication.getName());
-        //Access Token 유효기간 1일
+
         String accessToken = jwtUtil.generateToken(claim, 1);
-        //Refresh Token 유효기간 30일
+
         String refreshToken = jwtUtil.generateToken(claim, 30);
 
         Gson gson = new Gson();

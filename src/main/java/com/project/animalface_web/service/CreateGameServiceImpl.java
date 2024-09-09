@@ -13,7 +13,7 @@ import java.util.Optional;
 @Service
 @Log4j2
 @RequiredArgsConstructor
-// all or nothing,
+
 @Transactional
 public class CreateGameServiceImpl implements CreateGameService {
 
@@ -24,7 +24,7 @@ public class CreateGameServiceImpl implements CreateGameService {
         CreateGame createGame = dtoToEntity(createGameDTO);
         Long createGameNo = createGameRepository.save(createGame).getCreateGameNo();
         return createGameNo;
-    }//registerCreateGame
+    }
 
     @Override
     public CreateGameDTO readCreateGame(Long createGameNo) {
@@ -33,7 +33,7 @@ public class CreateGameServiceImpl implements CreateGameService {
         CreateGameDTO createGameDTO = entityToDTO(createGame);
 
         return createGameDTO;
-    }//readCreateGame
+    }
 
 
-}//Class
+}

@@ -14,7 +14,7 @@ public interface FaceTypeService {
                 .animalAccuracy(faceType.getAnimalAccuracy())
                 .build();
         return faceTypeDTO;
-    }//entityToDTO
+    }
 
     default FaceType dtoToEntity(FaceTypeDTO faceTypeDTO) {
         FaceType faceType = FaceType.builder()
@@ -22,7 +22,7 @@ public interface FaceTypeService {
                 .animalAccuracy(faceTypeDTO.getAnimalAccuracy())
                 .build();
         return faceType;
-    }//dtoToEntity
+    }
 
 
 
@@ -31,4 +31,4 @@ public interface FaceTypeService {
 
 
 
-}//Class
+}
