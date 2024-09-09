@@ -11,21 +11,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class GameResult extends BaseEntity{
+public class GameResult extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long resultId;
+    private Long resultNo;
 
-    @ManyToOne
-    @JoinColumn(name = "gameNo")
-    private Game game;
+    private String resultText; // 결과에 대한 설명
 
-    private String gameResult;
 
-    private String gameResultImage;
-
-    @ManyToOne
-    @JoinColumn(name = "memberNo")
-    private Member member;
+    private int minScore; // 결과 적용 최소 점수
+    private int maxScore; // 결과 적용 최대 점수
 }
+
 
