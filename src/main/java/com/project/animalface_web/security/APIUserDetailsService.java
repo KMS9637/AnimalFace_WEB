@@ -35,19 +35,26 @@ public class APIUserDetailsService implements UserDetailsService {
         Member apiUser = result.orElseThrow(() -> new UsernameNotFoundException("Cannot find mid"));
 
 
-        log.info("lsy APIUserDetailsService apiUser-------------------------------------");
+//        log.info("lsy APIUserDetailsService apiUser-------------------------------------");
+        log.info("APIUserDetailsService - Found user: " + apiUser);
 
+        // 권한 설정
+        List<SimpleGrantedAuthority> authorities = apiUser.getRoleSet().stream()
+                .map(memberRole -> new SimpleGrantedAuthority("ROLE_" + memberRole.name()))
+                .collect(Collectors.toList());
 
         // 일반 유저 로그인과, api 로그인 처리 확인 필요
         APIUserDTO dto = new APIUserDTO(
-                apiUser.getMemberName(),
-                apiUser.getMemberPw(),
+                apiUser.getMemberNo(),
                 apiUser.getMemberId(),
+                apiUser.getMemberPw(),
+                apiUser.getMemberName(),
                 apiUser.getRoleSet().stream().map(
                         memberRole -> new SimpleGrantedAuthority("ROLE_"+ memberRole.name())
                 ).collect(Collectors.toList()));
 
 
+        log.info("Created APIUserDTO with memberNo: " + dto.getMemberNo());
         log.info("lsy dto : "+dto);
 
 

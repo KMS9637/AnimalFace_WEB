@@ -30,6 +30,7 @@ public class APILoginSuccessHandler implements AuthenticationSuccessHandler {
         log.info("lsy authentication : " +authentication);
         log.info("lsy authentication.getName() : " +authentication.getName()); //username
 
+
         // 인증한 유저명 으로 교체
         Map<String, Object> claim = Map.of("memberId", authentication.getName());
         //Access Token 유효기간 1일
@@ -41,7 +42,8 @@ public class APILoginSuccessHandler implements AuthenticationSuccessHandler {
 
         Map<String,String> keyMap = Map.of(
                 "accessToken", accessToken,
-                "refreshToken", refreshToken);
+                "refreshToken", refreshToken,
+                "memberId",authentication.getName());
 
         String jsonStr = gson.toJson(keyMap);
 

@@ -14,12 +14,15 @@ import java.util.Collection;
 @ToString
 //public class APIUserDTO implements UserDetails {
 public class APIUserDTO extends User {
+    private Long memberNo;
     private String memberName;
     private String memberPw;
     private String memberId;
 
-    public APIUserDTO(String memberId, String memberPw, String memberName, Collection<GrantedAuthority> authorities) {
+
+    public APIUserDTO(Long memberNo, String memberId, String memberPw, String memberName, Collection<GrantedAuthority> authorities) {
         super(memberId, memberPw, authorities);
+        this.memberNo = memberNo;
         this.memberId = memberId;
         this.memberPw = memberPw;
         this.memberName = memberName;

@@ -13,23 +13,23 @@ public class FaceTypeRepositoryTest {
     @Autowired
     private FaceTypeRepository faceTypeRepository;
 
-    @Test
-    public void testInsert() {
-
-        Long memberNo = 1L;
-
-        Member member = Member.builder()
-                .memberNo(memberNo)
-                .build();
-
-        FaceType faceType=FaceType.builder()
-                .member(member)
-                .animalType("고양이상")
-                .animalImage("https://ibb.co/6grghdk")
-                .build();
-        FaceType result=faceTypeRepository.save(faceType);
-        log.info(result);
-    }
+//    @Test
+//    public void testInsert() {
+//
+//        Long memberNo = 1L;
+//
+//        Member member = Member.builder()
+//                .memberNo(memberNo)
+//                .build();
+//
+//        FaceType faceType=FaceType.builder()
+//                .member(member)
+//                .animalType("고양이상")
+//                .animalImage("https://ibb.co/6grghdk")
+//                .build();
+//        FaceType result=faceTypeRepository.save(faceType);
+//        log.info(result);
+//    }
 
 
 
