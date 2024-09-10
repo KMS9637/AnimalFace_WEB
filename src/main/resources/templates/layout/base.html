@@ -15,6 +15,32 @@
           alert('성공적으로 로그아웃 되었습니다.');
         }
       }
+
+      // 로그아웃 버튼 클릭 시 처리
+      document.addEventListener('DOMContentLoaded', function() {
+        const logoutLink = document.querySelector('.logout a');
+        if (logoutLink) {
+          logoutLink.addEventListener('click', function(event) {
+            event.preventDefault(); // 기본 링크 클릭 동작 방지
+            fetch('/member/logout', {
+              method: 'POST',
+              credentials: 'include' // 쿠키를 포함하여 요청
+            }).then(response => {
+              if (response.ok) {
+                // localStorage에서 토큰 삭제
+                localStorage.removeItem("accessToken");
+                localStorage.removeItem("refreshToken");
+
+                // 로그인 페이지로 리다이렉트
+                window.location.href = "/member/login?logout=true";
+              }
+            }).catch(error => {
+              console.error("Logout failed:", error);
+            });
+          });
+        }
+      });
+
     </script>
 
   </head>
@@ -57,7 +83,6 @@
               <li class="login" th:if="${isLoggedIn != null and !isLoggedIn}">
                 <a href="/member/login">로그인</a>
               </li>
-
             </ul>
           </div>
         </div>
@@ -71,5 +96,4 @@
       <div layout:fragment="content"></div>
     </div>
   </body>
-
 </html>

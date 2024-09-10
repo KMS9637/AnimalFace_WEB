@@ -88,7 +88,7 @@ public class SecurityConfig {
                 )
                 .authorizeRequests(authorizeRequests ->
                         authorizeRequests
-                                .requestMatchers("/main","/member/register","/api/member/**","/api/notices/**").permitAll()
+                                .requestMatchers("/main","/member/register","/api/member/**","/api/notices/**","/apiLogin.html", "/static/**").permitAll()
                                 .requestMatchers("/reservations/**","/payments/**").authenticated()
 
                 )
@@ -98,8 +98,10 @@ public class SecurityConfig {
                 );
 
         http.logout(
-                logout -> logout.logoutUrl("/member/logout").logoutSuccessUrl("/member/login")
-
+                logout -> logout.logoutUrl("/member/logout")
+                        .logoutSuccessUrl("/member/login")
+                        .invalidateHttpSession(true)  // 세션 무효화
+                        .deleteCookies("JSESSIONID").permitAll()  // 쿠키 삭제
         );
 
         http.formLogin(formLogin ->
