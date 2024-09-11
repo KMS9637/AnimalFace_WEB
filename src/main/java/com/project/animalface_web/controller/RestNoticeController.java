@@ -1,7 +1,7 @@
 package com.project.animalface_web.controller;
 
 import com.project.animalface_web.dto.NoticeDTO;
-import com.project.animalface_web.service.ksyserviece.NoticeService;
+import com.project.animalface_web.service.NoticeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
@@ -57,7 +57,7 @@ public class RestNoticeController {
     public ResponseEntity<Void> delete(@PathVariable("noticeNo") Long noticeNo) {
         boolean deleted = noticeService.delete(noticeNo);
         if (deleted) {
-            return ResponseEntity.noContent().build();  // 204 No Content 상태 코드 반환
+            return ResponseEntity.noContent().build();
         } else {
             return ResponseEntity.notFound().build();
         }

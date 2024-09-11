@@ -1,6 +1,6 @@
 package com.project.animalface_web.controller;
 
-import com.project.animalface_web.service.kdkserviece.FaceTypeService;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @RequestMapping("/faceType")
 public class FaceTypeController {
-    private final FaceTypeService faceTypeService;
+
 
     @GetMapping("/upload")
     public String faceTypeUpload(Model model) {
@@ -25,4 +25,4 @@ public class FaceTypeController {
         return "faceType/result";
     }
 
-}//Class
+}

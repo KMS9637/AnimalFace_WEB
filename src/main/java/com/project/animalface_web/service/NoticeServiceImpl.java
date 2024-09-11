@@ -1,4 +1,4 @@
-package com.project.animalface_web.service.ksyserviece;
+package com.project.animalface_web.service;
 
 import com.project.animalface_web.domain.Notice;
 import com.project.animalface_web.dto.NoticeDTO;
@@ -50,7 +50,7 @@ public class NoticeServiceImpl implements NoticeService {
             Notice updatedNotice = noticeRepository.save(notice);
             return entityToDto(updatedNotice);
         }
-        return null;  // or throw an exception
+        return null;
     }
 
     @Override

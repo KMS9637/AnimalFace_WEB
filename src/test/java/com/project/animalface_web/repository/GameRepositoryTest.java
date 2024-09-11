@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.IntStream;
 
 @SpringBootTest
@@ -16,58 +18,71 @@ import java.util.stream.IntStream;
 public class GameRepositoryTest {
 
     @Autowired
-    GameRepository gameRepository;
+    private GameRepository gameRepository;
 
     @Autowired
-    GameAnswerRepository gameAnswerRepository;
+    private GameAnswerRepository gameAnswerRepository;
 
     @Autowired
-    GameQuestionRepository gameQuestionRepository;
+    private GameQuestionRepository gameQuestionRepository;
 
     @Autowired
-    GameResultRepository gameResultRepository;
+    private GameResultRepository gameResultRepository;
 
     @Test
-    public void GameQuestionInsertTest(){
-        // Game 객체 생성 및 저장
+    public void testSaveGameWithQuestionsAnswersAndResults() {
+        // Create and save a new Game
         Game game = Game.builder()
-                .gameName("1번 게임")
+                .gameName("Sample Game")
                 .build();
-
         Game savedGame = gameRepository.save(game);
-        log.info("추가한 게임 번호 : " + savedGame.getGameNo());
+        log.info("Added Game ID: " + savedGame.getGameNo());
 
-        // GameQuestion 저장
+        // Create and save GameQuestions and associated GameAnswers
+        List<GameQuestion> gameQuestions = new ArrayList<>();
         IntStream.rangeClosed(1, 10).forEach(i -> {
             GameQuestion gameQuestion = GameQuestion.builder()
                     .game(savedGame)
-                    .gameQuestion("1번 질문 " + i)
+                    .questionText("Sample Question " + i)
                     .build();
-
             GameQuestion savedGameQuestion = gameQuestionRepository.save(gameQuestion);
-            log.info("저장된 GameQuestion 번호 : " + savedGameQuestion.getQuestionId());
+            log.info("Saved GameQuestion ID: " + savedGameQuestion.getQuestionNo());
+
+            // Create and save GameAnswers for this GameQuestion
+            IntStream.rangeClosed(1, 2).forEach(j -> {
+                GameAnswer gameAnswer = GameAnswer.builder()
+                        .question(savedGameQuestion)
+                        .answerText("Sample Answer " + j + " for Question " + i)
+                        .score(j)
+                        .build();
+                GameAnswer savedGameAnswer = gameAnswerRepository.save(gameAnswer);
+                log.info("Saved GameAnswer ID: " + savedGameAnswer.getAnswerNo());
+            });
+
+            // Add to list for the Game
+            gameQuestions.add(savedGameQuestion);
         });
 
-        // GameAnswer 저장
-        IntStream.rangeClosed(1, 10).forEach(i -> {
-            GameAnswer gameAnswer = GameAnswer.builder()
-                    .game(savedGame)
-                    .gameAnswer("1번 질문의 답변 " + i)
-                    .build();
+        // Save the updated Game with GameQuestions
+        savedGame.setQuestions(gameQuestions);
+        gameRepository.save(savedGame);
 
-            GameAnswer savedGameAnswer = gameAnswerRepository.save(gameAnswer);
-            log.info("저장된 GameAnswer 번호 : " + savedGameAnswer.getAnswerId());
-        });
+        // Create and save GameResults with score ranges divided into 5 intervals
+        int intervalSize = 8; // (40-0) / 5
+        IntStream.rangeClosed(0, 4).forEach(i -> {
+            int minScore = i * intervalSize;
+            int maxScore = minScore + intervalSize - 1;
+            if (i == 4) {
+                maxScore = 40; // Ensure the last interval goes up to 40
+            }
 
-        // GameResult 저장
-        IntStream.rangeClosed(1, 10).forEach(i -> {
             GameResult gameResult = GameResult.builder()
-                    .game(savedGame)
-                    .gameResult("1번 게임의 결과 " + i)
+                    .resultText("Sample Result " + (i + 1))
+                    .minScore(minScore)
+                    .maxScore(maxScore)
                     .build();
-
             GameResult savedGameResult = gameResultRepository.save(gameResult);
-            log.info("저장된 GameResult 번호 : " + savedGameResult.getResultId());
+            log.info("Saved GameResult ID: " + savedGameResult.getResultNo());
         });
     }
 }

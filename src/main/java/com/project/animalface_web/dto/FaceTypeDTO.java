@@ -11,8 +11,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class FaceTypeDTO {
     private Long animalNo;
-    private String animalImage;
+
     private String animalType;
+
     private Long animalAccuracy;
 
 

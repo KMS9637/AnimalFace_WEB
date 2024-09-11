@@ -21,7 +21,7 @@ public class MainController {
         return "main";
     }
 
-    // 로그인 상태를 모델에 추가하는 메소드
+
     private void addLoginStatusToModel(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         boolean isLoggedIn = (authentication != null && authentication.isAuthenticated()
