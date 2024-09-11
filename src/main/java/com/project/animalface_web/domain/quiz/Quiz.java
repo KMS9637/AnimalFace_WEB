@@ -1,10 +1,11 @@
-package com.project.animalface_web.domain;
+package com.project.animalface_web.domain.quiz;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.util.List;
 
 @Entity
@@ -12,16 +13,15 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Game extends BaseEntity {
+public class Quiz {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long gameNo;
+    private Long quizNo;
+    private String quizName;
+    private String quizCategory;
 
-    private String gameName;
+    @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
+    private List<QuizQuestion> questions;
 
-    @OneToMany(mappedBy = "game", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<GameQuestion> questions;
+
 }
-
-
-

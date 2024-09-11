@@ -1,12 +1,10 @@
 package com.project.animalface_web.controller;
 
-import com.project.animalface_web.domain.Game;
-import com.project.animalface_web.domain.GameResult;
+import com.project.animalface_web.domain.game.Game;
+import com.project.animalface_web.domain.game.GameResult;
 import com.project.animalface_web.service.GameService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
