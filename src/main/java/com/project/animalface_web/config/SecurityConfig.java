@@ -94,7 +94,7 @@ public class SecurityConfig {
                 .authorizeRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers("/main","/member/register","/api/member/**","/api/notices/**","/apiLogin.html", "/static/**").permitAll()
-                                .requestMatchers("/reservations/**","/payments/**").authenticated()
+                                .requestMatchers("/reservations/**","/payments/**","/member/delete").authenticated()
 
                 )
                 .sessionManagement(sessionManagement ->

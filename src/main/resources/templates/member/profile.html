@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>프로필</title>
+</head>
+<body>
+<h1>프로필</h1>
+<p>아이디: <span th:text="${user.memberId}"></span></p>
+<p>닉네임: <span th:text="${user.memberName}"></span></p>
+<form action="/member/profile/edit" method="get">
+  <button type="submit">프로필 수정</button>
+</form>
+<form action="/member/delete" method="post">
+  <button type="submit">회원 탈퇴</button>
+</form>
+<form action="/member/logout" method="post">
+  <button type="submit">로그아웃</button>
+</form>
+</body>
+</html>

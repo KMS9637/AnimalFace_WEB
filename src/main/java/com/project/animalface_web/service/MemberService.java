@@ -2,6 +2,7 @@ package com.project.animalface_web.service;
 
 import com.project.animalface_web.domain.Member;
 import com.project.animalface_web.domain.MemberRole;
+import com.project.animalface_web.dto.MemberDTO;
 import com.project.animalface_web.repository.MemberRepository;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,7 +60,24 @@ public class MemberService {
 
     }
 
+    public Optional<MemberDTO> getMemberDTOById(Long memberNo) {
+        return memberRepository.findById(memberNo)
+                .map(member -> new MemberDTO(
+                        member.getMemberNo(),
+                        member.getMemberId(),
+                        member.getMemberPw(),
+                        member.getMemberName(),
+                        member.getMemberGameResult()
+                ));
+    }
 
+    public void updateMember(Long memberNo, MemberDTO updatedMember) {
+        Member member = memberRepository.findById(memberNo)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        member.setMemberName(updatedMember.getMemberName());
+        memberRepository.save(member);
+    }
 
 }
 
