@@ -29,24 +29,27 @@ public class APILoginFilter extends AbstractAuthenticationProcessingFilter {
         log.info("lsy APILoginFilter-----------------------------------");
 
         if (request.getMethod().equalsIgnoreCase("GET")) {
-            log.info("GET METHOD NOT SUPPORT");
+            log.info("GET METHOD NOT SUPPORTED");
             return null;
         }
-        log.info("-----------------------------------------");
-        log.info("lsy request.getMethod()" + request.getMethod());
+
+        log.info("Request Method: " + request.getMethod());
 
         Map<String, String> jsonData = parseRequestJSON(request);
 
-        log.info("lsy jsonData: "+jsonData);
+        log.info("Parsed JSON Data: " + jsonData);
+        String memberId = jsonData.get("memberId");
+        String memberPw = jsonData.get("memberPw");
 
+        // 로그 찍기
+        log.info("입력된 아이디: " + memberId);
+        log.info("입력된 비밀번호: " + memberPw);
+
+        // 인증 토큰 생성 시 변수 사용
         UsernamePasswordAuthenticationToken authenticationToken
-                = new UsernamePasswordAuthenticationToken(
+                = new UsernamePasswordAuthenticationToken(memberId, memberPw);
 
-                jsonData.get("memberId"),
-                jsonData.get("memberPw"));
-
-
-
+        // 인증 시도
         return getAuthenticationManager().authenticate(authenticationToken);
     }
 

@@ -1,6 +1,7 @@
 package com.project.animalface_web.config;
 
 import com.project.animalface_web.security.APIUserDetailsService;
+import com.project.animalface_web.security.CustomAuthenticationProvider;
 import com.project.animalface_web.security.filter.APILoginFilter;
 import com.project.animalface_web.security.filter.RefreshTokenFilter;
 import com.project.animalface_web.security.filter.TokenCheckFilter;
@@ -38,6 +39,8 @@ public class SecurityConfig {
 
     private final APIUserDetailsService apiUserDetailsService;
 
+    private final CustomAuthenticationProvider customAuthenticationProvider;
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -51,6 +54,8 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http, MemberService memberService) throws Exception {
         log.info("-----------------------configuration---------------------");
+
+        http.authenticationProvider(customAuthenticationProvider);
 
         AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
         authenticationManagerBuilder.userDetailsService(apiUserDetailsService).passwordEncoder(passwordEncoder());
