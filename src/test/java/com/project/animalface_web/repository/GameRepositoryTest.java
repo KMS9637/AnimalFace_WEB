@@ -1,9 +1,9 @@
 package com.project.animalface_web.repository;
 
-import com.project.animalface_web.domain.Game;
-import com.project.animalface_web.domain.GameAnswer;
-import com.project.animalface_web.domain.GameQuestion;
-import com.project.animalface_web.domain.GameResult;
+import com.project.animalface_web.domain.game.Game;
+import com.project.animalface_web.domain.game.GameAnswer;
+import com.project.animalface_web.domain.game.GameQuestion;
+import com.project.animalface_web.domain.game.GameResult;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
