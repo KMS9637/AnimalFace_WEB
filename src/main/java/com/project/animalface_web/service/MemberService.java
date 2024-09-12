@@ -31,7 +31,16 @@ public class MemberService {
         return memberRepository.findById(memberNo);
     }
 
-    public Optional<Member> getUserById(String memberId) {
+    @Autowired
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
+
+    public List<Member> getAllMembers() {
+        return memberRepository.findAll();
+    }
+
+    public Optional<Member> getMemberById(String memberId) {
         return memberRepository.findByMemberId(memberId);
     }
 
@@ -53,11 +62,13 @@ public class MemberService {
         return memberRepository.save(user);
     }
 
-    public void deleteUser(String memberId) {
-        log.info("lsy 2 MemberService memberId : " + memberId);
-
-            memberRepository.deleteByMemberId(memberId);
-
+    public void deleteMemberById(String memberId) {
+        Optional<Member> member = memberRepository.findByMemberId(memberId);
+        if (member.isPresent()) {
+            memberRepository.delete(member.get());
+        } else {
+            throw new IllegalArgumentException("회원 정보를 찾을 수 없습니다.");
+        }
     }
 
     public Optional<MemberDTO> getMemberDTOById(Long memberNo) {

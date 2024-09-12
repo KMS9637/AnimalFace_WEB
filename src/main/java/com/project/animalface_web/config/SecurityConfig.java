@@ -22,6 +22,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.session.HttpSessionEventPublisher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -83,7 +84,7 @@ public class SecurityConfig {
                 TokenCheckFilter.class);
 
         http.csrf(csrf -> csrf.disable());
-        http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+        http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS));
 
         http
                 .formLogin(formLogin ->
@@ -93,13 +94,19 @@ public class SecurityConfig {
                 )
                 .authorizeRequests(authorizeRequests ->
                         authorizeRequests
-                                .requestMatchers("/main","/member/register","/api/member/**","/api/notices/**","/apiLogin.html", "/static/**").permitAll()
-                                .requestMatchers("/reservations/**","/payments/**","/member/delete").authenticated()
+                                .requestMatchers("/main","/member/member","/member/members","/member/register","/api/member/**","/api/notices/**","/apiLogin.html", "/static/**").permitAll()
+                                .requestMatchers("/reservations/**","/payments/**","/member/delete","/member/profile").authenticated()
 
                 )
                 .sessionManagement(sessionManagement ->
                         sessionManagement
                                 .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+                )
+                .rememberMe(rememberMe ->
+                        rememberMe
+                                .key("uniqueAndSecret")  // remember-me 쿠키의 서명을 위한 비밀키
+                                .tokenValiditySeconds(60 * 60 * 24 * 7)  // 쿠키 유효 기간 (7일)
+                                .userDetailsService(apiUserDetailsService)  // UserDetailsService 설정
                 );
 
         http.logout(
@@ -136,5 +143,10 @@ public class SecurityConfig {
         source.registerCorsConfiguration("/**", configuration);
 
         return source;
+    }
+
+    @Bean
+    public HttpSessionEventPublisher httpSessionEventPublisher() {
+        return new HttpSessionEventPublisher();
     }
 }

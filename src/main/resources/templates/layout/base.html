@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:th="www.thymeleaf.org">
+      xmlns:xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8">
     <title>재미보따리 공지사항</title>
@@ -58,7 +58,6 @@
             <div class="profile">
               <div>
                 <a th:if="${isLoggedIn != null and !isLoggedIn}" class="login" href="/member/login">로그인이 필요합니다.</a>
-<!--                <a th:if="${isLoggedIn != null and isLoggedIn}" class="profile" href="/member/profile">내 프로필</a>-->
                 <img src="/img/mainlogo.png" width="100px" height="100px" style="margin-top: 15px">
               </div>
             </div>
@@ -79,11 +78,6 @@
               </li>
               <li class="logout" th:if="${isLoggedIn != null and isLoggedIn}">
                 <a href="/member/logout">로그아웃</a>
-              </li>
-              <li class="logout" th:if="${isLoggedIn != null and isLoggedIn}">
-                <form action="/member/delete" method="post">
-                  <button type="submit" onclick="return confirm('정말로 회원탈퇴를 하시겠습니까?')">회원 탈퇴</button>
-                </form>
               </li>
               <li class="login" th:if="${isLoggedIn != null and !isLoggedIn}">
                 <a href="/member/login">로그인</a>

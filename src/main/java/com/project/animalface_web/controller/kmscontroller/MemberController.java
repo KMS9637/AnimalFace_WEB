@@ -6,7 +6,9 @@ import com.project.animalface_web.dto.MemberDTO;
 import com.project.animalface_web.service.MemberService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -27,6 +29,11 @@ public class MemberController {
 
     @Autowired
     PasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    public MemberController(MemberService memberService) {
+        this.memberService = memberService;
+    }
 
     @GetMapping("/main")
     public void getAllUsers(@AuthenticationPrincipal UserDetails user, Model model) {
@@ -89,36 +96,41 @@ public class MemberController {
     }
 
     @GetMapping("/profile")
-    public String showProfilePage(@AuthenticationPrincipal APIUserDTO user, Model model) {
-        log.info("Authenticated user: " + user);
-        if (user == null) {
-            log.info("프로필 이동 실패");
-            return "redirect:/main"; // 로그인 페이지로 리다이렉트
-        }
+    public String profile(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String memberId = authentication.getName();
 
-        Long memberNo = user.getMemberNo();
-        Optional<MemberDTO> memberDTOOptional = memberService.getMemberDTOById(memberNo);
-        log.info("Authenticated user: " + memberDTOOptional);
-        if (memberDTOOptional.isPresent()) {
-            model.addAttribute("user", memberDTOOptional.get());
+        if (memberId != null && !memberId.isEmpty()) {
+            // MemberService에서 Optional<Member>를 반환하도록 수정한 후, Optional에서 Member를 가져옵니다.
+            Member member = memberService.getMemberById(memberId).orElse(null);
+
+            if (member != null) {
+                model.addAttribute("memberId", member.getMemberId());
+                model.addAttribute("memberName", member.getMemberName());
+            } else {
+                model.addAttribute("error", "No member found with the provided ID.");
+            }
         } else {
-            log.error("User not found with memberNo: " + memberNo);
-            return "redirect:/login"; // 로그인 페이지로 리다이렉트
+            model.addAttribute("error", "No authenticated user found.");
         }
 
-        return "member/profile";
+        return "profile"; // profile.html 템플릿을 반환
     }
 
     @PostMapping("/delete")
-    public String deleteUserAccount(@AuthenticationPrincipal APIUserDTO user) {
-        log.info("delete1 Authenticated user: " + user);
-        if (user == null) {
-            return "redirect:/main";
-        }
+    public String deleteMember(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof UserDetails) {
+            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+            String username = userDetails.getUsername();
 
-        String memberId = user.getMemberId(); // 로그인한 사용자의 ID를 가져옴
-        log.info("delete2 Authenticated user: " + memberId);
-        memberService.deleteUser(memberId); // 회원탈퇴 서비스 호출
-        return "redirect:/member/logout"; // 탈퇴 후 로그아웃
+            // DB에서 회원 정보 삭제
+            memberService.deleteMemberById(username);
+            SecurityContextHolder.clearContext(); // 로그아웃 처리
+            return "redirect:/member/login?deleteSuccess"; // 탈퇴 후 로그인 페이지로 리다이렉트
+        } else {
+            model.addAttribute("error", "No authenticated user found");
+            return "profile";
+        }
     }
 }

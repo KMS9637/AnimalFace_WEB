@@ -8,6 +8,11 @@
 <h1>User Profile</h1>
 <p>Member ID: <span th:text="${memberId}"></span></p>
 <p>Member Name: <span th:text="${memberName}"></span></p>
+
+<!--<form th:action="@{/member/delete}" method="post" onsubmit="return confirm('정말로 회원 탈퇴를 하시겠습니까?');">-->
+<!--  <button type="submit">회원 탈퇴</button>-->
+<!--</form>-->
+
 <p th:if="${error}" th:text="${error}"></p>
 </body>
 </html>

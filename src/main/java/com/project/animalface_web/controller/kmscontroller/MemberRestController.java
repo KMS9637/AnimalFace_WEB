@@ -59,7 +59,7 @@ public class MemberRestController {
     public ResponseEntity<Void> deleteUser(@RequestHeader("Authorization") String token,@PathVariable String memberId) {
         try {
             log.info("lsy 1 controller memberId : " + memberId);
-            memberService.deleteUser(memberId);
+            memberService.deleteMemberById(memberId);
             return ResponseEntity.noContent().build();
         } catch (Exception e) {
             log.error("회원 삭제 중 오류 발생", e);
