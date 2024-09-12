@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class QuizQuestion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long quizQuestionId;
+    private Long quizQuestionNo;
     private String questionText;
 
     @ManyToOne
