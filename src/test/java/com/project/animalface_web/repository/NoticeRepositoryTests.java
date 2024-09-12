@@ -1,7 +1,7 @@
 package com.project.animalface_web.repository;
 
 import com.project.animalface_web.domain.Notice;
-import com.project.animalface_web.service.ksyserviece.NoticeService;
+import com.project.animalface_web.service.NoticeService;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class NoticeRepositoryTests {
 
     @Test
     public void testInsert() {
-        IntStream.rangeClosed(1,100).forEach(i->
+        IntStream.rangeClosed(1,10).forEach(i->
                 {
                     Notice notice = Notice.builder()
                             .noticeNo((long) i)

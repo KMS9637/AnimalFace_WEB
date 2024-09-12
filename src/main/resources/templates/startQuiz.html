@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>퀴즈 시작하기</title>
+</head>
+<body>
+<h1>퀴즈 목록</h1>
+<ul>
+    <li>
+        <form action="/quiz/{{ quiz.quiz_no }}/start" method="get">
+            <button type="submit">퀴즈 시작</button>
+        </form>
+    </li>
+</ul>
+</body>
+</html>

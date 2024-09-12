@@ -15,7 +15,9 @@ import java.time.format.DateTimeFormatter;
 @NoArgsConstructor
 
 public class NoticeDTO {
+
     private Long noticeNo;
+
     @NotEmpty
     private String noticeName;
 
@@ -24,7 +26,4 @@ public class NoticeDTO {
 
     private LocalDate date;
 
-    public String getFormattedDate() {
-        return date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-    }
 }
