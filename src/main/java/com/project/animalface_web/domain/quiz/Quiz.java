@@ -18,7 +18,6 @@ public class Quiz {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long quizNo;
     private String quizName;
-    private String quizCategory;
 
     @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
     private List<QuizQuestion> questions;
