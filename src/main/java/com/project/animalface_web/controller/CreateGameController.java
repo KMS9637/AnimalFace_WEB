@@ -2,7 +2,7 @@ package com.project.animalface_web.controller;
 
 
 import com.project.animalface_web.dto.CreateGameDTO;
-import com.project.animalface_web.service.kdkserviece.CreateGameService;
+import com.project.animalface_web.service.CreateGameService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -27,7 +27,7 @@ public class CreateGameController {
     @GetMapping("/create")
     public String create(Model model) {
         return "createGame/create2";
-    }//@GetMapping("/create")
+    }
 
     @PostMapping("/create")
     public String createRegister(@Valid @ModelAttribute CreateGameDTO createGameDTO,
@@ -57,11 +57,6 @@ public class CreateGameController {
         log.info("CreateGameController 확인 중, createGameDTO1 : " + createGameDTO1);
         model.addAttribute("createGameDTO", createGameDTO1);
         model.addAttribute("user", user);
-    }//@GetMapping("/read")
+    }
 
-
-
-
-
-
-}//Class
+}

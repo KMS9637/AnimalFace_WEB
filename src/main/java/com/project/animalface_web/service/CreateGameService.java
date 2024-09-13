@@ -1,4 +1,4 @@
-package com.project.animalface_web.service.kdkserviece;
+package com.project.animalface_web.service;
 
 import com.project.animalface_web.domain.CreateGame;
 import com.project.animalface_web.dto.CreateGameDTO;
@@ -18,7 +18,7 @@ public interface CreateGameService {
                 .createResult(createGame.getCreateGameResult())
                 .build();
         return createGameDTO;
-    }//entityToDTO
+    }
 
     default CreateGame dtoToEntity(CreateGameDTO createGameDTO) {
         CreateGame createGame = CreateGame.builder()
@@ -29,8 +29,8 @@ public interface CreateGameService {
                 .createGameResult(createGameDTO.getCreateResult())
                 .build();
         return createGame;
-    }//dtoToEntity
+    }
 
 
-}//class
+}
 

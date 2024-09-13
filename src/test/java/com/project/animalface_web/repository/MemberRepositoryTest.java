@@ -39,4 +39,10 @@ public class MemberRepositoryTest {
         assertEquals("testUser", foundMember.getMemberId());
         assertEquals("Test User", foundMember.getMemberName());
     }
+
+    @Test
+    public void testDeleteById() {
+     memberRepository.deleteByMemberId("asd1");
+
+    }
 }

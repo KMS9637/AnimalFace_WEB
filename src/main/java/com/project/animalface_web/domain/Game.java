@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.util.List;
 
 @Entity
@@ -13,24 +12,16 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Game extends BaseEntity{
+public class Game extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long gameNo;
 
     private String gameName;
 
-    @OneToMany(mappedBy = "game", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "game", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<GameQuestion> questions;
-
-    @OneToMany(mappedBy = "game", cascade = CascadeType.ALL)
-    private List<GameAnswer> answers;
-
-    @OneToMany(mappedBy = "game", cascade = CascadeType.ALL)
-    private List<GameResult> results;
-
-
-
 }
+
 
 
