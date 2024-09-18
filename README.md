@@ -65,6 +65,7 @@
 > 2024.08.28 ~ 2024.09.23
 
 ### 👩‍💻 기술 스택
+![기술 스택 이미지](https://ibb.co/rQDc9Gg)
 
 ### 📊 ERD & Structure
 <details>
