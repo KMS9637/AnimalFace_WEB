@@ -92,4 +92,4 @@
 
 # 📕 기타 자료
 ### 1. 기획 문서
-https://docs.google.com/presentation/d/14uEYI3QQhC7UJwhcBb-PxOp9u2ENkFDQ/edit?usp=drive_link&ouid=106198133912896303045&rtpof=true&sd=true
+https://drive.google.com/file/d/1YCiw6DQfStu_rEObQ-CauoTYavncP-vP/view?usp=drive_link
