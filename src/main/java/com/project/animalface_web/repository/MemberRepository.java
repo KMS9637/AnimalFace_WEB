@@ -20,10 +20,8 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     @EntityGraph(attributePaths = "roleSet")
     List<Member> findAll();
 
-//    void deleteByMemberNo(Long memberNo);
-
-@Modifying
-@Transactional
-@Query("DELETE FROM Member m WHERE m.memberId = :memberId")
-void deleteByMemberId(@Param("memberId") String memberId);
+    @Modifying
+    @Transactional
+    @Query("DELETE FROM Member m WHERE m.memberId = :memberId")
+    void deleteByMemberId(@Param("memberId") String memberId);
 }

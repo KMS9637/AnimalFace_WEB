@@ -54,9 +54,8 @@ public class MemberController {
     }
 
     @PostMapping("/register")
-    public String createUser(@ModelAttribute Member user, @RequestParam("profileImage") MultipartFile file) {
-        log.info("lsy User created" + user, "multipart : " + file
-        );
+    public String createUser(@ModelAttribute Member user) {
+        log.info("lsy User created" + user);
 
             user.setMemberPw(bCryptPasswordEncoder.encode(user.getMemberPw()));
 
