@@ -23,5 +23,3 @@ public class GameResult extends BaseEntity {
     private int minScore; // 결과 적용 최소 점수
     private int maxScore; // 결과 적용 최대 점수
 }
-
-

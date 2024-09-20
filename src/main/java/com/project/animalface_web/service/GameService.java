@@ -23,12 +23,12 @@ public class GameService {
     public Game startGame(Long gameId) {
         return gameRepository.findById(gameId)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid game ID: " + gameId));
-    }//startGame
+    }
 
     private int findAnswerScoreById(Long answerId) {
         return gameRepository.findAnswerScoreById(answerId)
                 .orElse(0);  // 기본값 0으로 처리
-    }//findAnswerScoreById
+    }
 
     public GameResult calculateResult(List<Long> answerIds) {
         int score = answerIds.stream()
@@ -43,9 +43,9 @@ public class GameService {
                 .filter(result -> score >= result.getMinScore() && score <= result.getMaxScore())
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("No result found for the given score: " + score));
-    }//calculateResult
+    }
 
 
 
-}//Class
+}
 

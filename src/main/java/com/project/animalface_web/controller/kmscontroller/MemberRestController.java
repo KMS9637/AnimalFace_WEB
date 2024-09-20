@@ -31,7 +31,6 @@ public class MemberRestController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // 파일업로드 없을 경우
     @PostMapping
     public ResponseEntity<Member> createUser(@RequestBody Member user) {
         try {
@@ -60,7 +59,7 @@ public class MemberRestController {
     public ResponseEntity<Void> deleteUser(@RequestHeader("Authorization") String token,@PathVariable String memberId) {
         try {
             log.info("lsy 1 controller memberId : " + memberId);
-            memberService.deleteUser(memberId);
+            memberService.deleteMemberById(memberId);
             return ResponseEntity.noContent().build();
         } catch (Exception e) {
             log.error("회원 삭제 중 오류 발생", e);

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:th="www.thymeleaf.org">
+      xmlns:xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8">
     <title>재미보따리 공지사항</title>
@@ -15,6 +15,32 @@
           alert('성공적으로 로그아웃 되었습니다.');
         }
       }
+
+      // 로그아웃 버튼 클릭 시 처리
+      document.addEventListener('DOMContentLoaded', function() {
+        const logoutLink = document.querySelector('.logout a');
+        if (logoutLink) {
+          logoutLink.addEventListener('click', function(event) {
+            event.preventDefault(); // 기본 링크 클릭 동작 방지
+            fetch('/member/logout', {
+              method: 'POST',
+              credentials: 'include' // 쿠키를 포함하여 요청
+            }).then(response => {
+              if (response.ok) {
+                // localStorage에서 토큰 삭제
+                localStorage.removeItem("accessToken");
+                localStorage.removeItem("refreshToken");
+
+                // 로그인 페이지로 리다이렉트
+                window.location.href = "/member/login?logout=true";
+              }
+            }).catch(error => {
+              console.error("Logout failed:", error);
+            });
+          });
+        }
+      });
+
     </script>
 
   </head>
@@ -32,14 +58,13 @@
             <div class="profile">
               <div>
                 <a th:if="${isLoggedIn != null and !isLoggedIn}" class="login" href="/member/login">로그인이 필요합니다.</a>
-<!--                <a th:if="${isLoggedIn != null and isLoggedIn}" class="profile" href="/member/profile">내 프로필</a>-->
                 <img src="/img/mainlogo.png" width="100px" height="100px" style="margin-top: 15px">
               </div>
             </div>
             <ul class="list">
 
               <li class="profile2" th:if="${isLoggedIn != null and isLoggedIn}">
-                <a href="#">나의 보따리</a>
+                <a href="/member/profile">나의 보따리</a>
               </li>
               <li class="notice">
                 <a href="/notice/list">
@@ -57,7 +82,6 @@
               <li class="login" th:if="${isLoggedIn != null and !isLoggedIn}">
                 <a href="/member/login">로그인</a>
               </li>
-
             </ul>
           </div>
         </div>
@@ -71,5 +95,4 @@
       <div layout:fragment="content"></div>
     </div>
   </body>
-
 </html>

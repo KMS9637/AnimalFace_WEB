@@ -23,6 +23,3 @@ public class Game extends BaseEntity {
     @OneToMany(mappedBy = "game", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<GameQuestion> questions;
 }
-
-
-

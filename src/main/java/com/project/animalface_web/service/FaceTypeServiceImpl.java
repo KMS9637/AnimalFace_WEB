@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Log4j2
 @RequiredArgsConstructor
-// all or nothing,
+
 @Transactional
 public class FaceTypeServiceImpl implements FaceTypeService{
 
@@ -22,7 +22,7 @@ public class FaceTypeServiceImpl implements FaceTypeService{
         FaceType faceType = dtoToEntity(faceTypeDTO);
         Long faceTypeNo = faceTypeRepository.save(faceType).getAnimalNo();
         return faceTypeNo;
-    }//registerFaceType
+    }
 
 
 

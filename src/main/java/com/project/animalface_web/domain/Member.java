@@ -32,8 +32,6 @@ public class Member extends BaseEntity{
     @Builder.Default
     private Set<MemberRole> roleSet = new HashSet<>();
 
-    // 멤버를 조회시 roleSet 를 같이 조회를 하기.
-
 
     public void changePassword(String memberPw) {
         this.memberPw = memberPw;

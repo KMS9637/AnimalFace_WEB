@@ -57,7 +57,7 @@ public class RestNoticeController {
     public ResponseEntity<Void> delete(@PathVariable("noticeNo") Long noticeNo) {
         boolean deleted = noticeService.delete(noticeNo);
         if (deleted) {
-            return ResponseEntity.noContent().build();  // 204 No Content 상태 코드 반환
+            return ResponseEntity.noContent().build();
         } else {
             return ResponseEntity.notFound().build();
         }

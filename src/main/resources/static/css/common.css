@@ -190,7 +190,7 @@ input {
 footer {
     width: 100%;
     text-align: center;
-    background: url('https://cdn.banggooso.com/assets/images/common/bg_footer.png') no-repeat;
+    /*background: url('https://cdn.banggooso.com/assets/images/common/bg_footer.png') no-repeat;*/
     background-size: cover;
     padding: 2.5rem 0 0.6rem;
     font-weight: 300;

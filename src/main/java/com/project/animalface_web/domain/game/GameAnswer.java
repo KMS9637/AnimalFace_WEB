@@ -26,6 +26,3 @@ public class GameAnswer extends BaseEntity {
     private GameQuestion question;
 
 }
-
-
-

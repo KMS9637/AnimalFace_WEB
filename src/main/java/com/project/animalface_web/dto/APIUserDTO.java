@@ -12,7 +12,7 @@ import java.util.Collection;
 @Getter
 @Setter
 @ToString
-//public class APIUserDTO implements UserDetails {
+
 public class APIUserDTO extends User {
     private Long memberNo;
     private String memberName;
@@ -26,6 +26,6 @@ public class APIUserDTO extends User {
         this.memberId = memberId;
         this.memberPw = memberPw;
         this.memberName = memberName;
-    }//APIUserDTO
+    }
 
-}//Class
+}

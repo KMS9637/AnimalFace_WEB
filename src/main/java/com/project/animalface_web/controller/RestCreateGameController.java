@@ -21,7 +21,7 @@ public class RestCreateGameController {
     @GetMapping("/created")
     public String create(Model model) {
         return "createGame/create2";
-    }//@GetMapping("/create")
+    }
 
     @PostMapping("/create")
     public ResponseEntity<?> createRegister(@Valid @RequestBody CreateGameDTO createGameDTO,
@@ -48,8 +48,7 @@ public class RestCreateGameController {
         log.info("CreateGameController 확인 중, createGameDTO1 : " + createGameDTO1);
         model.addAttribute("createGameDTO", createGameDTO1);
 
-        // 적절한 뷰 이름을 반환합니다.
-        return "createGame/read"; // 뷰의 이름을 반환합니다.
+        return "createGame/read";
     }
 
 
