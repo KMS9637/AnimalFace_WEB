@@ -1,6 +1,5 @@
-package com.project.animalface_web.domain.game;
+package com.project.animalface_web.domain;
 
-import com.project.animalface_web.domain.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

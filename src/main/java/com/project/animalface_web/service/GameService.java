@@ -1,7 +1,7 @@
 package com.project.animalface_web.service;
 
-import com.project.animalface_web.domain.game.Game;
-import com.project.animalface_web.domain.game.GameResult;
+import com.project.animalface_web.domain.Game;
+import com.project.animalface_web.domain.GameResult;
 import com.project.animalface_web.repository.GameRepository;
 import com.project.animalface_web.repository.GameResultRepository;
 import jakarta.transaction.Transactional;
