@@ -6,11 +6,11 @@
     <title>문제 풀기</title>
 </head>
 <body>
-<h1>문제 {{quizQuestionNo}} 풀기</h1>
-<form action="/quiz/{{quizNo}}/answer" method="post">
-    <p>문제: {{question.questionText}}</p> <!-- 현재 문제 텍스트 표시 -->
-    <input type="hidden" name="questionId" value="{{question.quiz_question_no}}" />
-    <input type="hidden" name="quizQuestionNo" value="{{quizQuestionNo}}" />
+<h1>문제 [[${quizQuestionNo}]] 풀기</h1>
+<form action="/quiz/[[${quizNo}]]/answer" method="post">
+    <p>문제: [[${question.questionText}]]</p> <!-- 현재 문제 텍스트 표시 -->
+    <input type="hidden" name="questionId" value="[[${question.quizQuestionNo}]]" />
+    <input type="hidden" name="quizQuestionNo" value="[[${quizQuestionNo}]]" />
     <input type="text" name="userAnswer" placeholder="정답을 입력하세요" />
     <button type="submit">제출</button>
 </form>

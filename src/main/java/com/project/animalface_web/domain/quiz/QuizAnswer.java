@@ -19,7 +19,7 @@ public class QuizAnswer {
     private String correctAnswer;
 
     @OneToOne
-    @JoinColumn(name = "question_id")
+    @JoinColumn(name = "quiz_question_no")
     private QuizQuestion question;
 
 

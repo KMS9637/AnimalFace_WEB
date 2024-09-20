@@ -2,6 +2,7 @@ package com.project.animalface_web.controller;
 
 import com.project.animalface_web.domain.quiz.Quiz;
 import com.project.animalface_web.domain.quiz.QuizQuestion;
+import com.project.animalface_web.dto.QuizDTO;
 import com.project.animalface_web.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -71,5 +72,18 @@ public class QuizController {
     public String showResult(@PathVariable Long quiz_no, @ModelAttribute("correctCount") Integer correctCount, Model model) {
         model.addAttribute("totalCorrect", correctCount);  // 맞춘 문제 개수
         return "quizResult"; // 결과 화면으로 이동
+    }
+
+    @GetMapping("/api/list")
+    public List<QuizDTO> getAllQuizzes() {
+        return quizService.getAllQuizzes();
+    }
+
+    // HTML 페이지 렌더링
+    @GetMapping("/list")
+    public String getQuizList(Model model) {
+        List<QuizDTO> quizzes = quizService.getAllQuizzes();
+        model.addAttribute("quizzes", quizzes);
+        return "quiz/list"; // Thymeleaf 템플릿 "list.html" 렌더링
     }
 }

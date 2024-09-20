@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Quiz List</title>
+</head>
+<body>
+<h1>Quiz List</h1>
+<ul>
+  <!-- 퀴즈 목록을 표시 -->
+  <li th:each="quiz : ${quizzes}">
+    <a th:href="@{'/quiz/' + ${quiz.quizNo} + '/start/1'}" th:text="${quiz.quizName}">Quiz Name</a>
+  </li>
+</ul>
+</body>
+</html>
