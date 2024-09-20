@@ -1,5 +1,6 @@
-package com.project.animalface_web.domain;
+package com.project.animalface_web.domain.game;
 
+import com.project.animalface_web.domain.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,20 +12,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class GameAnswer extends BaseEntity {
+public class GameResult extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long answerNo;
+    private Long resultNo;
 
-    private String answerText;
+    private String resultText;
 
-    private int score;
 
-    @ManyToOne
-    @JoinColumn(name = "question_no")
-    private GameQuestion question;
-
+    private int minScore;
+    private int maxScore;
 }
-
 
 
