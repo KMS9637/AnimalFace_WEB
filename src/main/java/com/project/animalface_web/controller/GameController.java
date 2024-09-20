@@ -1,34 +1,66 @@
 package com.project.animalface_web.controller;
 
 import com.project.animalface_web.domain.Game;
-import com.project.animalface_web.domain.GameResult;
+import com.project.animalface_web.domain.GameAnswer;
+import com.project.animalface_web.domain.GameQuestion;
 import com.project.animalface_web.service.GameService;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequiredArgsConstructor
+@Controller
+@Log4j2
 @RequestMapping("/game")
 public class GameController {
 
     private final GameService gameService;
 
-    @GetMapping("/{gameId}/start")
-    public ResponseEntity<Game> startGame(@PathVariable Long gameId) {
-        Game game = gameService.startGame(gameId);
-        return ResponseEntity.ok(game);
+    public GameController(GameService gameService) {
+        this.gameService = gameService;
     }
 
-    @PostMapping("/{gameId}/result")
-    public ResponseEntity<GameResult> getGameResult(@PathVariable Long gameId, @RequestBody List<Long> selectedAnswerIds) {
-        GameResult result = gameService.calculateResult(selectedAnswerIds);
-        return ResponseEntity.ok(result);
+    @GetMapping
+    public String listGames(Model model) {
+        List<Game> games = gameService.getAllGames();
+        model.addAttribute("games", games);
+        return "game/list";  // games/list.html
+    }
+
+    @GetMapping("/{gameNo}")
+    public String viewGame(@PathVariable Long gameNo, Model model) {
+        Game game = gameService.getGameById(gameNo);
+        List<GameQuestion> questions = gameService.getQuestionsByGameId(gameNo);
+        model.addAttribute("game", game);
+        model.addAttribute("questions", questions);
+        return "game/view";  // games/view.html
+    }
+
+    @GetMapping("/{gameNo}/questions/{questionNo}")
+    public String viewQuestion(@PathVariable Long gameNo, @PathVariable Long questionNo, Model model) {
+        List<GameAnswer> answers = gameService.getAnswersByQuestionId(questionNo);
+        model.addAttribute("answers", answers);
+        return "questions/view";  // questions/view.html
+    }
+
+    @GetMapping("/create")
+    public String createGameForm(Model model) {
+        model.addAttribute("game", new Game());
+        return "game/create";  // games/create.html
+    }
+
+    @PostMapping
+    public String createGame(@ModelAttribute Game game) {
+        gameService.saveGame(game);
+        return "redirect:/game";
+    }
+
+    @DeleteMapping("/{gameNo}")
+    public String deleteGame(@PathVariable Long gameNo) {
+        gameService.deleteGame(gameNo);
+        return "redirect:/game";
     }
 }
-
 

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/base.html}">
+<head>
+  <title>Game Details</title>
+  <link rel="stylesheet" href="/css/game.css">
+</head>
+<body>
+<div layout:fragment="content">
+
+<h1 th:text="${game.gameName}"></h1>
+<h2>Questions:</h2>
+<ul>
+  <li th:each="question : ${questions}">
+    <a th:href="@{/game/{gameNo}/questions/{questionNo}(gameNo=${game.gameNo}, questionNo=${question.questionNo})}" th:text="${question.questionText}"></a>
+  </li>
+</ul>
+</div>
+</body>
+</html>
