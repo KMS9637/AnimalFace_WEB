@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-class QuizAnswerDTO {
+public class QuizAnswerDTO {
     private Long quizAnswerNo;  // 정답 번호
     private String correctAnswer;  // 정답 텍스트
 }

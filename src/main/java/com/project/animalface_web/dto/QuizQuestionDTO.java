@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-class QuizQuestionDTO {
+public class QuizQuestionDTO {
     private Long quizQuestionNo;  // 질문 번호
     private String questionText;  // 질문 텍스트
     private QuizAnswerDTO answer;  // 질문에 대한 정답 정보
