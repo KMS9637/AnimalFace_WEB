@@ -15,18 +15,13 @@ import java.util.List;
 
 @Service
 @Log4j2
+@RequiredArgsConstructor // 생성자 자동 생성
 @Transactional
 public class GameServiceImpl implements GameService {
 
     private final GameRepository gameRepository;
     private final GameQuestionRepository gameQuestionRepository;
     private final GameAnswerRepository gameAnswerRepository;
-
-    public GameServiceImpl(GameRepository gameRepository, GameQuestionRepository gameQuestionRepository, GameAnswerRepository gameAnswerRepository) {
-        this.gameRepository = gameRepository;
-        this.gameQuestionRepository = gameQuestionRepository;
-        this.gameAnswerRepository = gameAnswerRepository;
-    }
 
     @Override
     public List<Game> getAllGames() {
@@ -36,7 +31,7 @@ public class GameServiceImpl implements GameService {
     @Override
     public Game getGameById(Long gameNo) {
         return gameRepository.findById(gameNo)
-                .orElseThrow(() -> new IllegalArgumentException("Game not found"));
+                .orElseThrow(() -> new IllegalArgumentException("Game not found")); // 예외 처리
     }
 
     @Override
@@ -58,5 +53,10 @@ public class GameServiceImpl implements GameService {
     public List<GameAnswer> getAnswersByQuestionId(Long questionNo) {
         return gameAnswerRepository.findByQuestion_QuestionNo(questionNo);
     }
-}
 
+    @Override
+    public GameQuestion getQuestionById(Long questionNo) { // 추가된 메서드
+        return gameQuestionRepository.findById(questionNo)
+                .orElseThrow(() -> new IllegalArgumentException("Question not found")); // 예외 처리
+    }
+}

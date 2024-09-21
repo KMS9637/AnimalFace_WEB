@@ -4,19 +4,34 @@
       xmlns:th="http://www.thymeleaf.org"
       layout:decorate="~{layout/base.html}">
 <head>
-  <title>Game Details</title>
   <link rel="stylesheet" href="/css/game.css">
+  <title th:text="${game.gameName}">MBTI Game</title>
 </head>
 <body>
 <div layout:fragment="content">
+  <h1 th:text="${game.gameName}"></h1>
+  <h2>Current Question:</h2>
 
-<h1 th:text="${game.gameName}"></h1>
-<h2>Questions:</h2>
-<ul>
-  <li th:each="question : ${questions}">
-    <a th:href="@{/game/{gameNo}/questions/{questionNo}(gameNo=${game.gameNo}, questionNo=${question.questionNo})}" th:text="${question.questionText}"></a>
-  </li>
-</ul>
+  <form th:action="@{/game/{gameNo}/questions(gameNo=${game.gameNo})}" method="get" id="questionForm">
+    <p th:if="${question}" th:text="${question.questionText}">질문이 없습니다.</p>
+
+    <div th:each="answer : ${answers}">
+      <button type="button" class="btn"
+              th:text="${answer.answerText}"
+              onclick="submitAnswer('${answer.answerText}')"></button>
+    </div>
+
+    <input type="hidden" name="answer" id="selectedAnswer">
+    <input type="hidden" name="page" th:value="${currentPage + 1}">
+  </form>
+
 </div>
+
+<script>
+  function submitAnswer(answer) {
+    document.getElementById("selectedAnswer").value = answer;
+    document.getElementById("questionForm").submit();
+  }
+</script>
 </body>
 </html>

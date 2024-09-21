@@ -10,11 +10,11 @@
 <body>
 <div layout:fragment="content">
   <ul>
-  <li th:each="game : ${games}">
-    <a th:href="@{/games/{gameNo}(gameNo=${game.gameNo})}" th:text="${game.gameName}"></a>
-  </li>
-</ul>
-<a href="/game/create">Create a new game</a>
+    <li th:each="game : ${games}">
+      <a th:href="@{/game/{gameNo}(gameNo=${game.gameNo})}" th:text="${game.gameName}"></a>
+    </li>
+  </ul>
+  <a href="/game/create">Create a new game</a>
 </div>
 </body>
 </html>

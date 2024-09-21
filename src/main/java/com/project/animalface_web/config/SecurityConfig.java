@@ -94,7 +94,7 @@ public class SecurityConfig {
                 )
                 .authorizeRequests(authorizeRequests ->
                         authorizeRequests
-                                .requestMatchers("/main","/member/member","/member/members","/member/register","/api/member/**","/api/notices/**","/apiLogin.html", "/static/**").permitAll()
+                                .requestMatchers("/main","/member/member","/member/members","/member/register","/api/member/**","/api/notices/**","/apiLogin.html", "/static/**","/game/**").permitAll()
                                 .requestMatchers("/reservations/**","/payments/**","/member/delete","/member/profile").authenticated()
 
                 )
