@@ -4,6 +4,8 @@ import com.project.animalface_web.domain.Game;
 import com.project.animalface_web.domain.GameQuestion;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface GameQuestionRepository extends JpaRepository<GameQuestion, Long> {
+import java.util.List;
 
+public interface GameQuestionRepository extends JpaRepository<GameQuestion, Long> {
+    List<GameQuestion> findByGame_GameNo(Long gameNo);
 }
