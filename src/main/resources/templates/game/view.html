@@ -5,33 +5,17 @@
       layout:decorate="~{layout/base.html}">
 <head>
   <link rel="stylesheet" href="/css/game.css">
-  <title th:text="${game.gameName}">MBTI Game</title>
+  <title>MBTI Game</title>
 </head>
 <body>
 <div layout:fragment="content">
-  <h1 th:text="${game.gameName}"></h1>
-  <h2>Current Question:</h2>
+  <h2 th:text="'질문: ' + ${question.questionText}"></h2>
 
-  <form th:action="@{/game/{gameNo}/questions(gameNo=${game.gameNo})}" method="get" id="questionForm">
-    <p th:if="${question}" th:text="${question.questionText}">질문이 없습니다.</p>
-
-    <div th:each="answer : ${answers}">
-      <button type="button" class="btn"
-              th:text="${answer.answerText}"
-              onclick="submitAnswer('${answer.answerText}')"></button>
-    </div>
-
-    <input type="hidden" name="answer" id="selectedAnswer">
-    <input type="hidden" name="page" th:value="${currentPage + 1}">
+  <form th:action="@{/game/{gameNo}/answer(gameNo=${gameNo})}" method="POST">
+    <button type="submit" name="answer" th:value="${answers.get(0).getAnswerText()}" th:text="${answers.get(0).getAnswerText()}"></button>
+    <button type="submit" name="answer" th:value="${answers.get(1).getAnswerText()}" th:text="${answers.get(1).getAnswerText()}"></button>
   </form>
 
 </div>
-
-<script>
-  function submitAnswer(answer) {
-    document.getElementById("selectedAnswer").value = answer;
-    document.getElementById("questionForm").submit();
-  }
-</script>
 </body>
 </html>
