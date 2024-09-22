@@ -19,8 +19,6 @@ public class QuizAnswer {
     private String correctAnswer;
 
     @OneToOne
-    @JoinColumn(name = "quiz_question_no")
+    @JoinColumn(name = "question_id")  // 외래키 매핑
     private QuizQuestion question;
-
-
 }

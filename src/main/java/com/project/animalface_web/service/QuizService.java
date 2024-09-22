@@ -43,8 +43,11 @@ public class QuizService {
 
     // 정답 확인 (quiz_question_no와 매칭된 정답 확인)
     public boolean checkAnswer(Long questionId, String userAnswer) {
+        // 질문 ID와 매칭된 정답을 찾기
         QuizAnswer answer = answerRepository.findByQuestion_QuizQuestionNo(questionId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 정답을 찾을 수 없습니다. ID: " + questionId));
+                .orElseThrow(() -> new IllegalArgumentException("해당 정답을 찾을 수 없습니다. 질문 ID: " + questionId));
+
+        // 정답과 사용자가 입력한 답을 대소문자 구분 없이 비교
         return answer.getCorrectAnswer().equalsIgnoreCase(userAnswer);
     }
 

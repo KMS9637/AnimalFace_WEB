@@ -14,7 +14,9 @@
 <div th:if="${!isCorrect}">
   <p>오답입니다! 정답은 [[${correctAnswer}]] 입니다.</p>
 </div>
-<!-- 다음 문제로 이동 -->
-<a th:href="@{'/quiz/' + ${quizNo} + '/start/' + (${quizQuestionNo + 1})}">다음 문제 풀기</a>
+
+<!-- 미리 계산된 nextQuestionNo를 사용하여 다음 문제로 이동 -->
+<a th:href="@{'/quiz/' + ${quizNo} + '/start/' + ${nextQuestionNo}}">다음 문제 풀기</a>
+
 </body>
 </html>

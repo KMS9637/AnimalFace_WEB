@@ -7,12 +7,23 @@
 </head>
 <body>
 <h1>문제 [[${quizQuestionNo}]] 풀기</h1>
-<form action="/quiz/[[${quizNo}]]/answer" method="post">
-    <p>문제: [[${question.questionText}]]</p> <!-- 현재 문제 텍스트 표시 -->
-    <input type="hidden" name="questionId" value="[[${question.quizQuestionNo}]]" />
-    <input type="hidden" name="quizQuestionNo" value="[[${quizQuestionNo}]]" />
+
+<!-- th:action을 사용하여 Thymeleaf가 URL을 올바르게 생성하도록 수정 -->
+<form th:action="@{'/quiz/' + ${quizNo} + '/answer'}" method="post">
+
+    <!-- 현재 문제 텍스트 표시 -->
+    <p>문제: [[${question.questionText}]]</p>
+
+    <!-- 문제 ID와 현재 문제 번호를 서버로 전달 -->
+    <input type="hidden" name="questionId" th:value="${question.quizQuestionNo}" />
+    <input type="hidden" name="quizQuestionNo" th:value="${quizQuestionNo}" />
+
+    <!-- 사용자가 입력할 정답 필드 -->
     <input type="text" name="userAnswer" placeholder="정답을 입력하세요" />
+
+    <!-- 제출 버튼 -->
     <button type="submit">제출</button>
 </form>
+
 </body>
 </html>
