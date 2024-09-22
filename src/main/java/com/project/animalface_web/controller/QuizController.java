@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 
 import java.util.List;
 import java.util.Optional;
@@ -31,7 +32,16 @@ public class QuizController {
 
     // 퀴즈 시작 및 특정 문제 가져오기
     @GetMapping("/{quiz_no}/start/{quiz_question_no}")
-    public String startQuiz(@PathVariable Long quiz_no, @PathVariable Long quiz_question_no, Model model) {
+    public String startQuiz(@PathVariable Long quiz_no, @PathVariable Long quiz_question_no,
+                            Model model, @SessionAttribute("correctCount") Integer correctCount) {
+
+        Long quizQuestionNo = quiz_question_no;
+
+        // 퀴즈 시작 시 정답 갯수를 초기화
+        if (quizQuestionNo == 0L) {
+            correctCount = 0;  // 새로운 퀴즈 시작 시 정답 갯수 리셋
+        }
+
         // 유효한 문제 번호 찾기
         Optional<QuizQuestion> questionOpt = quizService.getNextValidQuestion(quiz_no, quiz_question_no);
 
@@ -40,14 +50,14 @@ public class QuizController {
             model.addAttribute("question", currentQuestion);
             model.addAttribute("quizNo", quiz_no);
             model.addAttribute("quizQuestionNo", currentQuestion.getQuizQuestionNo());
+            model.addAttribute("correctCount", correctCount);  // 정답 갯수 모델에 추가
             return "quizQuestion"; // 문제 풀기 화면으로 이동
         } else {
-            // 유효한 문제가 더 없을 경우 결과 페이지로 이동
             return "redirect:/quiz/" + quiz_no + "/result";
         }
     }
 
-    // 정답 제출 및 다음 문제로 이동
+
     @PostMapping("/{quiz_no}/answer")
     public String checkAnswer(@RequestParam Long questionId, @RequestParam String userAnswer,
                               @RequestParam Long quizQuestionNo,
@@ -59,27 +69,50 @@ public class QuizController {
             correctCount++;  // 맞춘 문제 수 증가
         }
 
+        // 다음 문제 번호 계산
+        Long nextQuestionNo = quizQuestionNo;
+
+        // 로그를 추가해 값을 확인
+        System.out.println("Current Question No: " + quizQuestionNo);
+        System.out.println("Next Question No: " + nextQuestionNo);
+
+        // 모델에 필요한 값 추가
         model.addAttribute("isCorrect", isCorrect);
         model.addAttribute("correctAnswer", question.getAnswer().getCorrectAnswer());
         model.addAttribute("correctCount", correctCount);
+        model.addAttribute("quizNo", question.getQuiz().getQuizNo());
+        model.addAttribute("quizQuestionNo", quizQuestionNo);
+        model.addAttribute("nextQuestionNo", nextQuestionNo);  // 다음 문제 번호 추가
 
-        // 다음 문제로 이동 (quizQuestionNo + 1부터 유효한 문제 찾기)
-        return "redirect:/quiz/" + question.getQuiz().getQuizNo() + "/start/" + (quizQuestionNo + 1);
+        return "quiz/answerResult";  // 결과 페이지로 이동
     }
+
+
 
     // 결과 페이지 (모든 문제를 다 풀었을 때)
     @GetMapping("/{quiz_no}/result")
-    public String showResult(@PathVariable Long quiz_no, @ModelAttribute("correctCount") Integer correctCount, Model model) {
-        model.addAttribute("totalCorrect", correctCount);  // 맞춘 문제 개수
+    public String showResult(@PathVariable Long quiz_no,
+                             @ModelAttribute("correctCount") Integer correctCount,
+                             SessionStatus sessionStatus, Model model) {
+
+        // 맞춘 문제 수를 모델에 추가
+        model.addAttribute("totalCorrect", correctCount);
+
+        // 세션 종료 (세션에 저장된 correctCount를 리셋)
+        sessionStatus.setComplete();
+
         return "quizResult"; // 결과 화면으로 이동
     }
 
+
+    // JSON 형식으로 퀴즈 목록 반환
     @GetMapping("/api/list")
+    @ResponseBody  // JSON 형식으로 반환
     public List<QuizDTO> getAllQuizzes() {
         return quizService.getAllQuizzes();
     }
 
-    // HTML 페이지 렌더링
+    // HTML 페이지 렌더링 (퀴즈 목록 보기)
     @GetMapping("/list")
     public String getQuizList(Model model) {
         List<QuizDTO> quizzes = quizService.getAllQuizzes();
