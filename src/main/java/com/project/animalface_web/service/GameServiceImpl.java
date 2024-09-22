@@ -51,7 +51,11 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public List<GameAnswer> getAnswersByQuestionId(Long questionNo) {
-        return gameAnswerRepository.findByQuestion_QuestionNo(questionNo);
+        List<GameAnswer> answers = gameAnswerRepository.findByQuestion_QuestionNo(questionNo);
+        if (answers.size() < 2) {
+            throw new IllegalArgumentException("Two answers are required for each question.");
+        }
+        return answers;
     }
 
     @Override
