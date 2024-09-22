@@ -79,16 +79,22 @@ public class SecurityConfig {
         http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS));
 
         http
-                .formLogin(formLogin -> formLogin.loginPage("/member/login").permitAll())
-                .authorizeRequests(authorizeRequests -> authorizeRequests
-                        .requestMatchers("/main", "/member/member", "/member/members", "/member/register", "/api/member/**", "/api/notices/**", "/apiLogin.html", "/static/**").permitAll()
-                        .requestMatchers("/reservations/**", "/payments/**", "/member/delete", "/member/profile").authenticated()
+                .formLogin(formLogin -> formLogin.loginPage("/member/login").permitAll()
+                .authorizeRequests(authorizeRequests ->
+                        authorizeRequests
+                                .requestMatchers("/main","/member/member","/member/members","/member/register","/api/member/**","/api/notices/**","/apiLogin.html", "/static/**","/game/**").permitAll()
+                                .requestMatchers("/reservations/**","/payments/**","/member/delete","/member/profile").authenticated()
+
                 )
-                .sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
-                .rememberMe(rememberMe -> rememberMe
-                        .key("uniqueAndSecret")
-                        .tokenValiditySeconds(60 * 60 * 24 * 7)
-                        .userDetailsService(apiUserDetailsService)
+                .sessionManagement(sessionManagement ->
+                        sessionManagement
+                                .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+                )
+                .rememberMe(rememberMe ->
+                        rememberMe
+                                .key("uniqueAndSecret")  // remember-me 쿠키의 서명을 위한 비밀키
+                                .tokenValiditySeconds(60 * 60 * 24 * 7)  // 쿠키 유효 기간 (7일)
+                                .userDetailsService(apiUserDetailsService)  // UserDetailsService 설정
                 );
 
         http.logout(logout -> logout.logoutUrl("/member/logout")
