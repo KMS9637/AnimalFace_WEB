@@ -73,7 +73,10 @@ public class MemberService {
         Optional<Member> member = memberRepository.findByMemberId(memberId);
         if (member.isPresent()) {
             memberRepository.delete(member.get());
+            memberRepository.flush(); // 변경 사항을 DB에 강제로 반영
+            log.info("회원탈퇴 성공: " + memberId);
         } else {
+            log.error("회원 정보를 찾을 수 없습니다: " + memberId);
             throw new IllegalArgumentException("회원 정보를 찾을 수 없습니다.");
         }
     }

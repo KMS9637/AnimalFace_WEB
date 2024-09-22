@@ -77,6 +77,23 @@
     .btn-back:hover {
       background-color: #0056b3;
     }
+
+    .btn-delete {
+      background-color: #dc3545;
+      border: none;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      text-align: center;
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    .btn-delete:hover {
+      background-color: #c82333;
+    }
   </style>
 </head>
 <body>
@@ -93,6 +110,11 @@
 
   <!-- 메인 화면으로 돌아가는 버튼 -->
   <button class="btn-back" onclick="window.location.href='http://localhost:8080/main'">메인 화면으로 돌아가기</button>
+
+  <!-- 회원탈퇴 버튼 -->
+<!--  <form action="/member/delete" method="post" style="width: 100%;">-->
+<!--    <button type="submit" class="btn-delete">회원탈퇴</button>-->
+<!--  </form>-->
 </div>
 
 </body>
