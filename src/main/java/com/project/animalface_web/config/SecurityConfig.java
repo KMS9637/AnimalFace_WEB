@@ -11,6 +11,7 @@ import com.project.animalface_web.util.JWTUtil;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -37,9 +38,10 @@ import java.util.Arrays;
 public class SecurityConfig {
 
     private final JWTUtil jwtUtil;
-
     private final APIUserDetailsService apiUserDetailsService;
 
+
+    @Autowired
     private final CustomAuthenticationProvider customAuthenticationProvider;
 
     @Bean
@@ -47,8 +49,7 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    private TokenCheckFilter tokenCheckFilter(JWTUtil jwtUtil, APIUserDetailsService
-            apiUserDetailsService){
+    private TokenCheckFilter tokenCheckFilter(JWTUtil jwtUtil, APIUserDetailsService apiUserDetailsService) {
         return new TokenCheckFilter(apiUserDetailsService, jwtUtil);
     }
 
@@ -62,36 +63,23 @@ public class SecurityConfig {
         authenticationManagerBuilder.userDetailsService(apiUserDetailsService).passwordEncoder(passwordEncoder());
 
         AuthenticationManager authenticationManager = authenticationManagerBuilder.build();
-
         http.authenticationManager(authenticationManager);
 
         APILoginFilter apiLoginFilter = new APILoginFilter("/generateToken");
         apiLoginFilter.setAuthenticationManager(authenticationManager);
 
         APILoginSuccessHandler successHandler = new APILoginSuccessHandler(jwtUtil);
-
         apiLoginFilter.setAuthenticationSuccessHandler(successHandler);
 
         http.addFilterBefore(apiLoginFilter, UsernamePasswordAuthenticationFilter.class);
-
-        http.addFilterBefore(
-                tokenCheckFilter(jwtUtil, apiUserDetailsService),
-
-                UsernamePasswordAuthenticationFilter.class
-        );
-
-        http.addFilterBefore(new RefreshTokenFilter("/refreshToken", jwtUtil),
-                TokenCheckFilter.class);
+        http.addFilterBefore(tokenCheckFilter(jwtUtil, apiUserDetailsService), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(new RefreshTokenFilter("/refreshToken", jwtUtil), TokenCheckFilter.class);
 
         http.csrf(csrf -> csrf.disable());
         http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS));
 
         http
-                .formLogin(formLogin ->
-                        formLogin
-                                .loginPage("/member/login")
-                                .permitAll()
-                )
+                .formLogin(formLogin -> formLogin.loginPage("/member/login").permitAll()
                 .authorizeRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers("/main","/member/member","/member/members","/member/register","/api/member/**","/api/notices/**","/apiLogin.html", "/static/**","/game/**").permitAll()
@@ -109,31 +97,22 @@ public class SecurityConfig {
                                 .userDetailsService(apiUserDetailsService)  // UserDetailsService 설정
                 );
 
-        http.logout(
-                logout -> logout.logoutUrl("/member/logout")
-                        .logoutSuccessUrl("/member/login")
-                        .invalidateHttpSession(true)  // 세션 무효화
-                        .deleteCookies("JSESSIONID").permitAll()  // 쿠키 삭제
+        http.logout(logout -> logout.logoutUrl("/member/logout")
+                .logoutSuccessUrl("/member/login")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID").permitAll()
         );
 
-        http.formLogin(formLogin ->
-                formLogin.defaultSuccessUrl("/main",true)
-        );
+        http.formLogin(formLogin -> formLogin.defaultSuccessUrl("/main", true));
 
-        http.cors(httpSecurityCorsConfigurer -> {
-            httpSecurityCorsConfigurer.configurationSource(corsConfigurationSource());
-        });
+        http.cors(httpSecurityCorsConfigurer -> httpSecurityCorsConfigurer.configurationSource(corsConfigurationSource()));
 
         return http.build();
     }
 
-
     @Bean
-
     public CorsConfigurationSource corsConfigurationSource() {
-
         CorsConfiguration configuration = new CorsConfiguration();
-
         configuration.setAllowedOriginPatterns(Arrays.asList("*"));
         configuration.setAllowedMethods(Arrays.asList("HEAD", "GET", "POST", "PUT", "DELETE"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));

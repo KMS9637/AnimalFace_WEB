@@ -18,13 +18,12 @@ public class GameAnswer extends BaseEntity {
 
     private String answerText;
 
-    private int score;
+    private int score; // 각 답변에 할당된 점수
 
     @ManyToOne
     @JoinColumn(name = "question_no")
     private GameQuestion question;
 
 }
-
 
 
