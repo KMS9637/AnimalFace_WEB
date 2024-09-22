@@ -27,4 +27,3 @@ public class GameQuestion extends BaseEntity {
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<GameAnswer> answers; // 두 개의 선택지를 가질 수 있도록 설정
 }
-

@@ -79,7 +79,7 @@ public class SecurityConfig {
         http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS));
 
         http
-                .formLogin(formLogin -> formLogin.loginPage("/member/login").permitAll()
+                .formLogin(formLogin -> formLogin.loginPage("/member/login").permitAll())
                 .authorizeRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers("/main","/member/member","/member/members","/member/register","/api/member/**","/api/notices/**","/apiLogin.html", "/static/**","/game/**").permitAll()

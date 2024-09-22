@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -15,7 +15,7 @@
     <div class="logo">
     <img src="/image/mainlogo2.png" >
     </div>
-    <button>앱으로 보기</button>
+
 </header>
 
 <!--미들타이틀 -->
@@ -29,6 +29,12 @@
 
 <!--메인결과-->
 <div class ="main">
+
+    <h1>결과</h1>
+    <p>당신의 점수: <span th:text="${totalScore}">점수</span></p>
+    <p>결과 설명: <span th:text="${result != null ? result.resultText : '결과가 없습니다.'}">결과 설명</span></p>
+
+
     <h2>나의 운명의 새싹은...</h2>
     <h1>당돌한 얼음 새싹</h1>
     <div class ="main_sub">
@@ -37,7 +43,7 @@
        자주 뚝딱거림</br>
         </p>
     </div>
-    <p>꾹 눌러 이미지를 저장해주세요.</p>
+
 </div>
 <div>
         <div class="black_button">
