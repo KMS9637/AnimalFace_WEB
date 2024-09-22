@@ -31,6 +31,10 @@ public class MemberService {
         return memberRepository.findById(memberNo);
     }
 
+    public boolean isMemberIdDuplicate(String memberId) {
+        return memberRepository.findByMemberId(memberId).isPresent();
+    }
+
     @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
@@ -45,6 +49,9 @@ public class MemberService {
     }
 
     public Member createUser(Member user) {
+        if (isMemberIdDuplicate(user.getMemberId())) {
+            throw new IllegalArgumentException("이미 사용 중인 아이디입니다.");
+        }
 
         String encodedPassword = passwordEncoder.encode(user.getMemberPw());
         user.setMemberPw(encodedPassword);

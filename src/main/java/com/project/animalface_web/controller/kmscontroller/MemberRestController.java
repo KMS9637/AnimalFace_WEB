@@ -32,12 +32,16 @@ public class MemberRestController {
     }
 
     @PostMapping
-    public ResponseEntity<Member> createUser(@RequestBody Member user) {
+    public ResponseEntity<?> createUser(@RequestBody Member user) {
         try {
             Member createdUser = memberService.createUser(user);
             return ResponseEntity.ok(createdUser);
+        } catch (IllegalArgumentException e) {
+            // 중복된 아이디가 있을 때
+            log.error("아이디 중복 체크 오류: {}", e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         } catch (Exception e) {
-            log.error("회원가입 중 오류",e);
+            log.error("회원가입 중 오류", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -65,5 +69,11 @@ public class MemberRestController {
             log.error("회원 삭제 중 오류 발생", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
+    }
+
+    @GetMapping("/check-duplicate")
+    public ResponseEntity<Boolean> checkDuplicate(@RequestParam String memberId) {
+        boolean isDuplicate = memberService.isMemberIdDuplicate(memberId);
+        return ResponseEntity.ok(isDuplicate);
     }
 }
